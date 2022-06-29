@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、关系模式分解的算法基础1. 函数依赖的逻辑蕴含 设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。 2. Armstrong 公理系统 （1）Armstrong 公理 设 𝘜 为属性集，𝘍">
+  <meta name="description" content="&amp;emsp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="4.关系模式的分解">
 <meta property="og:url" content="https://toki.github.io/2022/06/29/4.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
-<meta property="og:description" content="一、关系模式分解的算法基础1. 函数依赖的逻辑蕴含 设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。 2. Armstrong 公理系统 （1）Armstrong 公理 设 𝘜 为属性集，𝘍">
+<meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-29T07:03:37.728Z">
-<meta property="article:modified_time" content="2022-06-29T07:32:44.740Z">
+<meta property="article:modified_time" content="2022-06-29T17:34:57.134Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
@@ -200,10 +200,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-06-29 15:03:37 / 修改时间：15:32:44" itemprop="dateCreated datePublished" datetime="2022-06-29T15:03:37+08:00">2022-06-29</time>
+              <time title="创建时间：2022-06-29 15:03:37" itemprop="dateCreated datePublished" datetime="2022-06-29T15:03:37+08:00">2022-06-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-30 01:34:57" itemprop="dateModified" datetime="2022-06-30T01:34:57+08:00">2022-06-30</time>
+              </span>
 
           
 
@@ -216,7 +222,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="一、关系模式分解的算法基础"><a href="#一、关系模式分解的算法基础" class="headerlink" title="一、关系模式分解的算法基础"></a>一、关系模式分解的算法基础</h1><p><strong>1. 函数依赖的逻辑蕴含</strong></p>
+        <p>&emsp;</p>
+<span id="more"></span>
+<h1 id="一、关系模式分解的算法基础"><a href="#一、关系模式分解的算法基础" class="headerlink" title="一、关系模式分解的算法基础"></a>一、关系模式分解的算法基础</h1><p><strong>1. 函数依赖的逻辑蕴含</strong></p>
 <p>设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。</p>
 <p><strong>2. Armstrong 公理系统</strong></p>
 <p><strong>（1）Armstrong 公理</strong></p>
