@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title></title>
+    <url>/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="一、关系的数学定义"><a href="#一、关系的数学定义" class="headerlink" title="一、关系的数学定义"></a>一、关系的数学定义</h1><p>现实世界中存在的可以相互区分的事物或概念称为实体（Entity）。在关系模型中，无论是实体集，还是实体集之间的联系均有单一的关系表示。由于关系模型是建立在集合代数基础上的，因而一般从集合论角度对关系数据结构进行定义。</p>
+<p><strong>1. 域（Domain）的定义</strong></p>
+<p>域（Domain）是一组具有相同数据类型的值的集合。</p>
+<p>例如，整数、正数、负数、｛0、1｝等，都可以作为域。</p>
+<p><strong>2. 笛卡尔积（Cartesian Product）的定义</strong></p>
+<p>给定一组域 $D_1, D_2, \cdots, D_n$，这些域中可以有相同的部分，则 $D_1, D_2, \cdots, D_n$  的笛卡尔积（Cartesian Product）为</p>
+<script type="math/tex; mode=display">
+D_1\times D_2\times \cdots \times D_n=\{ (d_1,d_2,\cdots,d_n)|d_i\in D_i, i=1, 2, \cdots, n \}</script><p>式中，每一个元素 $(d_1, d_2, \cdots, d_n)$ 为一个 𝘯 元组（n-Tuple），简称元组（Tuple）。元素中的每一个值 $d_i$ 称作一个分量（Component）。</p>
+<p><strong>3. 关系（Relation）的定义</strong></p>
+<p>$D_1\times D_2\times \cdots \times D_n$ 的子集称为在域 $D_1, D_2, \cdots, D_n$ 上的关系（Relation），表示为</p>
+<script type="math/tex; mode=display">
+R(D_1, D_2, \cdots, D_n)</script><p>式中，𝘙 表示关系的名字，𝘯 是关系的目或度（Degree）。当 𝘯 = 1 时，称该关系为单元关系（Unary Relation）；当 𝘯 = 2 时，称该关系为二元关系（Binary Relation）。</p>
+<p><strong>4. 关系模式（Relation Schema）的定义</strong></p>
+<p>关系的描述称为关系模式（Relation Schema），关系模式可以形式化地表示为</p>
+<script type="math/tex; mode=display">
+R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集合，𝘋 为属性集合 𝘜 中属性的数据域，𝘋𝘰𝘮 为属性到域的映射的集合，𝘍 为属性间数据的依赖关系集合。</p>
+<h1 id="二、关系中的基本名词"><a href="#二、关系中的基本名词" class="headerlink" title="二、关系中的基本名词"></a>二、关系中的基本名词</h1><p><strong>1. 元组</strong></p>
+<p>关系表中的每一横行称作一个元组（Tuple），组成元组的元素为分量。数据库中的一个实体或实体间的一个联系均使用一个元组表示。</p>
+<p><strong>2. 属性</strong></p>
+<p>关系中的每一列称为一个属性（Attribute）。属性具有型和值两层含义：属性的型指属性名和属性取值域；属性值指属性具体的取值。由于关系中的属性名具有标识列的作用，因而同一关系中的属性名不能相同。关系中往往有多个属性，属性用于表示实体的特征。</p>
+<p><strong>3. 候选码和主码</strong></p>
+<p>若关系中的某一属性值（或单个属性）的值能唯一地标识一个元组，则称该属性组（或属性）为候选码（Candidata Key）。为数据管理方便，当一个关系有多个候选码时，应选定其中的一个候选码为主码（Primary Key）。当然，如果关系中只有一个候选码，这个唯一的候选码就是主码。</p>
+<p><strong>4. 全码</strong></p>
+<p>若关系的候选码中只包含一个属性，则称它为单属性码；若候选码是由多个属性构成的，则称它为多属性码。若关系中只有一个候选码，且这个候选码中包括全部属性，则这种候选码为全码（All-Key）。全码是候选码的特例，它说明该关系中不存在属性之间相互决定的情况。</p>
+<p><strong>5. 主属性和非主属性</strong></p>
+<p>关系中，候选码中的属性称为主属性（Prime Attribute），不包含在任何候选码中的属性称为非主属性（Non-Key Attribute）。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/06/29/2.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/</url>
+    <content><![CDATA[<h1 id="一、函数依赖（Functional-Dependency）"><a href="#一、函数依赖（Functional-Dependency）" class="headerlink" title="一、函数依赖（Functional Dependency）"></a>一、函数依赖（Functional Dependency）</h1><p><strong>（1）函数依赖</strong></p>
+<p>设 𝘙&lt;𝘜&gt; 是属性集合 𝘜 上的关系模式，𝘟、𝘠 是 𝘜 的子集。若对于 𝘙&lt;𝘜&gt; 的任意一个可能的关系 𝘳，𝘳 中不存在两个元组在 𝘟 上的属性值相等，而 𝘠 上的属性值不等，则称 𝘟 函数确定 𝘠 函数，或 𝘠 函数依赖于 𝘟 函数，记作 𝘟 $\to$ 𝘠，其中，𝘟 叫做决定因素（Determinant），𝘠 叫做依赖因素（Dependent）。若 𝘠 不函数依赖于 𝘟，则记作 𝘟 $\nrightarrow$ 𝘠。若 𝘟 $\to$ 𝘠，𝘠 $\to$ 𝘟，则记作 𝘟 $\leftrightarrow$ 𝘠。</p>
+<p>函数依赖具有自反律：若 𝘟 $\to$ 𝘠 在 𝘙&lt;𝘜&gt; 上成立，则对任何 𝘠’ $\subset$ 𝘠，有 𝘟 $\to$ 𝘠’ 成立。</p>
+<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
+<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
+<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
+<p><strong>（2）平凡函数依赖</strong></p>
+<p>𝘟 $\to$ 𝘠，但 𝘠 $\nsubseteq$ 𝘟，则称 𝘟 $\to$ 𝘠 是非平凡函数依赖。若不特别声明，总是讨论非平凡函数依赖。</p>
+<p>𝘟 $\to$ 𝘠，但 𝘠 $\subseteq$ 𝘟，则称 𝘟 $\to$ 𝘠 是平凡函数依赖。</p>
+<p><strong>（3）完全函数依赖</strong></p>
+<p>在 𝘙&lt;𝘜&gt; 中，如果 𝘟 $\to$ 𝘠，并且对于 𝘟 的任何一个真子集 𝘟’，都有 𝘟’ $\nrightarrow$ 𝘠，则称 𝘠 对 𝘟 完全函数依赖，记作 𝘟 $\stackrel{F}{\longrightarrow}$ 𝘠。如果 𝘟 $\to$ 𝘠，但 𝘠 不完全函数依赖于 𝘟，则称 𝘠 对 𝘟 部分函数依赖，记作 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘠。</p>
+<p>例如，在教学关系模式中，学号和课程名为主码，而（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名。</p>
+<p><strong>（4）传递函数依赖</strong></p>
+<p>在 𝘙&lt;𝘜&gt; 中，如果 𝘟 $\to$ 𝘠，（𝘠 $\nsubseteq$ 𝘟），𝘠 $\nrightarrow$ 𝘟，𝘠 $\to$ 𝘡，则称 𝘡 对 𝘟 传递函数依赖，记作 𝘟 $\stackrel{传递}{\longrightarrow}$ 𝘡。</p>
+<p>例如，在教学关系模式中，因为存在：学号 $\to$ 系名，系名 $\to$ 系主任，所以也存在：学号 $\to$ 系主任。</p>
+<h1 id="二、多值依赖（Multivalued-Dependency）"><a href="#二、多值依赖（Multivalued-Dependency）" class="headerlink" title="二、多值依赖（Multivalued Dependency）"></a>二、多值依赖（Multivalued Dependency）</h1><p><strong>（1）多值依赖</strong></p>
+<p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的一个关系模式，𝘟、𝘠、𝘡 是 𝘜 的子集，并且 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。关系模式 𝘙&lt;𝘜&gt; 中多值依赖 𝘟 $\to\to$ 𝘠 成立，当且仅当对 𝘙&lt;𝘜&gt; 的任一关系 𝘳，给定的一对（𝘹，𝘻）值，有一组 𝘠 的值与之对应，这组值仅仅决定于 𝘹 值而与 𝘻 值无关。</p>
+<p>对于多值依赖的另一个等价的形式化定义是：在 𝘙&lt;𝘜&gt; 的任一关系 𝘳 中，如果存在元组 𝘵、𝘴 使得 𝘵[𝘟]＝𝘴[𝘟]，那么就必然存在元组 𝘸、𝘷 $\in$ 𝘳（𝘸、𝘷 可以与 𝘴、𝘵 相同），使得 𝘸[𝘟]＝𝘷[𝘟]＝𝘵[𝘟]，而 𝘸[𝘠]＝𝘵[𝘠]，𝘸[𝘡]＝𝘴[𝘡]，𝘷[𝘠]＝𝘴[𝘠]，𝘷[𝘡]＝𝘵[𝘡]（即<strong>交换 𝘴、𝘵 元组的 𝘠 值所得的两个新元组必在关系 𝘳 中</strong>），则 𝘠 多值依赖于 𝘟，记为 𝘟 $\to\to$ 𝘠。这里，𝘟、𝘠 是 𝘜 的子集，𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。</p>
+<p>多值依赖具有对称性，即：若 𝘟 $\to\to$ 𝘠，则 𝘟 $\to\to$ 𝘡，其中 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。</p>
+<p>函数依赖是多值依赖的特殊情况，即：若  𝘟 $\to$ 𝘠，则  𝘟 $\to\to$ 𝘠。这是因为当 𝘟 $\to$ 𝘠 时，对 𝘟 的每一个值 𝘹，𝘠 都有一个确定的值 𝘺 与之对应，所以 𝘟 $\to\to$ 𝘠。</p>
+<p>多值依赖的有效性与属性集的范围有关。在关系模式 𝘙 中，函数依赖 𝘟 $\to$ 𝘠 的有效性仅仅决定于 𝘟、𝘠 这两个属性集；在多值依赖中，𝘟 $\to\to$ 𝘠 在 𝘜 上是否成立，不仅要检查 𝘟、𝘠 上的值，而且要检查 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠 上的值。因此，如果 𝘟 $\to\to$ 𝘠 在 𝘞（𝘞 $\subset$ 𝘜）上成立，则在 𝘜 上则不一定成立。除此之外，对多值依赖  𝘟 $\to\to$ 𝘠，若在 𝘙 上成立，也并不能断言对于任何 𝘠’ $\subset$ 𝘠，有  𝘟 $\to\to$ 𝘠’ 成立。</p>
+<p><strong>（2）平凡的多值依赖</strong></p>
+<p>若 𝘟 $\to\to$ 𝘠，而 𝘡＝$\varnothing$ ，即 𝘡 为空集，则称 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。即对于 𝘙&lt;𝘟，𝘠&gt;，如果有 𝘟 $\to\to$ 𝘠 成立，则 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。</p>
+<h1 id="三、连接依赖（Join-Dependency）"><a href="#三、连接依赖（Join-Dependency）" class="headerlink" title="三、连接依赖（Join Dependency）"></a>三、连接依赖（Join Dependency）</h1><p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的关系模式，$x_1,x_2,\cdots,x_n$ 是 𝘜 的子集，并且 $\bigcup\limits^n_{i=1}x_i=U$，如果 $R=\Join \mathop{R}\limits^n_{i=1}[x_i]$ 对 𝘙 的一切关系均成立，则称 𝘙 在 $x_1,x_2,\cdots,x_n$ 上具有 𝘯 目连接依赖，记作：$\Join [x_1][x_2]\cdots[x_n]$。</p>
+<p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="一、1NF"><a href="#一、1NF" class="headerlink" title="一、1NF"></a>一、1NF</h1><p>如果关系模式 𝘙，其所有的属性均为简单属性，即每个属性都是不可再分的，则称 𝘙 属于第一范式（First Normal Form，1NF），记作 𝘙 $\in$ 1NF。</p>
+<p>例如，教学关系模式中所有的属性都是不可再分的简单属性，即：教学 $\in$ 1NF。</p>
+<h1 id="二、2NF"><a href="#二、2NF" class="headerlink" title="二、2NF"></a>二、2NF</h1><p>若 𝘙 $\in$ 1NF，且每一个非主属性完全依赖于码，则 𝘙 $\in$ 2NF。</p>
+<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
+<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
+<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
+<p>主码＝（学号，课程名）</p>
+<p>非主属性＝（姓名，年龄，性别，系名，系主任，成绩）</p>
+<p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
+<p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
+<h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
+<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
+<blockquote>
+<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
+</blockquote>
+<p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
+<h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
+<p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
+<p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
+<p>（1）所有非主属性对每一个码都是完全函数依赖。</p>
+<p>（2）所有的主属性对每一个不包含它的码，也是完全函数依赖。</p>
+<p>（3）没有任何属性完全函数依赖于非码的任何一组属性。</p>
+<p>例如，对于选课关系模式（学生，教师，课程），语义为：每位教师只能讲授一门课程，每门课程由若干教师讲授；每个学生选修某门课程对应一个固定的教师。由语义可以得到选课关系模式的函数依赖为：𝘍 = ｛（学生，课程）$\to$ 教师，（学生，教师）$\to$ 课程，教师 $\to$ 课程｝。这里（学生，课程）和（学生，教师）都是关系的码，所以关系模式的主属性集合为：｛学生，教师，课程｝，非主属性为：$\varnothing$。由于选课关系模式中无非主属性，所以它属于 3NF，但因为存在函数依赖：教师 $\to$ 课程，由于“教师”不是码，所以选课关系模式不属于 BCNF。可以按 BCNF 的要求将选课关系模式分解为以下两个关系模式：</p>
+<p>学生_教师（学生，教师），教师_课程（教师，课程）</p>
+<h1 id="五、4NF"><a href="#五、4NF" class="headerlink" title="五、4NF"></a>五、4NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，如果对于 𝘙 的每个非平凡多值依赖 𝘟 $\to\to$ 𝘠（𝘠 $\nsubseteq$ 𝘟），𝘟 必含有码，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 4NF。</p>
+<p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
+<h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/06/29/4.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="一、关系模式分解的算法基础"><a href="#一、关系模式分解的算法基础" class="headerlink" title="一、关系模式分解的算法基础"></a>一、关系模式分解的算法基础</h1><p><strong>1. 函数依赖的逻辑蕴含</strong></p>
+<p>设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。</p>
+<p><strong>2. Armstrong 公理系统</strong></p>
+<p><strong>（1）Armstrong 公理</strong></p>
+<p>设 𝘜 为属性集，𝘍 是 𝘜 上的函数依赖集，于是有关系模式 𝘙&lt;𝘜，𝘍&gt;。对 𝘙&lt;𝘜，𝘍&gt; 来说，有以下的推理规则：</p>
+<ul>
+<li>自反律（Reflexivity）：若 𝘠 $\subseteq$ 𝘟 $\subseteq$ 𝘜，则 𝘟 $\to$ 𝘠 为 𝘍 所蕴含。</li>
+<li>增广律（Augmentation）：若 𝘟 $\to$ 𝘠 为 𝘍 所蕴含，且 𝘡 $\subseteq$ 𝘜，则 𝘟𝘡 $\to$ 𝘠𝘡 为 𝘍 所蕴含。</li>
+<li>传递律（Transitivity）：若 𝘟 $\to$ 𝘠 及 𝘠 $\to$ 𝘡 为 𝘍 所蕴含，则 𝘟 $\to$ 𝘡 为 𝘍 所蕴含。</li>
+</ul>
+<p><strong>（2）Armstrong 公理的三个推理规则</strong></p>
+<p>根据 Armstrong 公理可以得到下面三条很有用的推理规则：</p>
+<ul>
+<li>合并规则（Union Rule）：由 𝘟 $\to$ 𝘠，𝘟 $\to$ 𝘡，有 𝘟 $\to$ 𝘠𝘡。</li>
+<li>伪传递规则（Pseudo-transitivity Rule）：由 𝘟 $\to$ 𝘠，𝘞𝘠 $\to$ 𝘡，有 𝘞𝘟 $\to$ 𝘡。</li>
+<li>分解规则（Decomposition Rule）：由 𝘟 $\to$ 𝘠 及 𝘡 $\subseteq$ 𝘠，有 𝘟 $\to$ 𝘡。</li>
+</ul>
+<p><strong>（3）两个引理</strong></p>
+<p>根据合并规则和分解规则，可以得到引理1；根据属性集闭包的定义和引理1，可以得到引理2。</p>
+<p>引理1：$X \to A_1A_2\cdots A_k$ 成立的充分必要条件是 $X\to A_i(i=1,2,\cdots,k)$ 成立。</p>
+<p>引理2：设 𝘍 为属性集 𝘜 上的一组函数依赖，𝘟、𝘠 $\subseteq$ 𝘜，𝘟 $\to$ 𝘠 能由 𝘍 根据 Armstrong 公理导出的充分必要条件是 $Y\subseteq X_F^+$。 </p>
+<p><strong>（4）Armstrong 公理是有效的和完备的</strong></p>
+<p><strong>Armstrong 公理的有效性</strong>是指，在 𝘍 中根据 Armstrong 公理推导出来的每一个函数依赖一定为 𝘍 所逻辑蕴含。要证明 Armstrong 公理，即是要证明自反律、增广律、传递律。</p>
+<p>𝘢. 自反律</p>
+<p>设 𝘠 $\subseteq$ 𝘟 $\subseteq$ 𝘜。对 𝘙&lt;𝘜，𝘍&gt; 的任一关系 𝘳 中的任意两个元组 𝘵、𝘴，若 𝘵[𝘟]＝𝘴[𝘟]，由于 𝘠 $\subseteq$ 𝘟，故有 𝘵[𝘠]＝𝘴[𝘠]，所以 𝘟 $\to$ 𝘠 成立，自反律得证。</p>
+<p>𝘣. 增广律</p>
+<p>设 𝘟 $\to$ 𝘠 为 𝘍 所蕴含，且 𝘡 $\subseteq$ 𝘜。设 𝘙&lt;𝘜，𝘍&gt; 的任一关系 𝘳 中任意的两个元组 𝘵、𝘴，若 𝘵[𝘟𝘡]＝𝘴[𝘟𝘡]，则有 𝘵[𝘟]＝𝘴[𝘟] 和 𝘵[𝘡]＝𝘴[𝘡]。由 𝘟 $\to$ 𝘠，于是有 𝘵[𝘠]＝𝘴[𝘠]，所以 𝘵[𝘠𝘡]＝𝘴[𝘠𝘡]，𝘟𝘡 $\to$ 𝘠𝘡 为 𝘍 所蕴含，增广律得证。</p>
+<p>𝘤. 传递律</p>
+<p>设 𝘟 $\to$ 𝘠 及 𝘠 $\to$ 𝘡 为 𝘍 所蕴含。对 𝘙&lt;𝘜，𝘍&gt; 的任一关系 𝘳 中的任意两个元组 𝘵、𝘴，若 𝘵[𝘟]＝𝘴[𝘟]，由于 𝘟 $\to$ 𝘠，有 𝘵[𝘠]＝𝘴[𝘠]；再由 𝘠 $\to$ 𝘡，有 𝘵[𝘡]＝𝘴[𝘡]，所以 𝘟 $\to$ 𝘡 为 𝘍 所蕴含，传递律得证。</p>
+<p><strong>Armstrong 公理的完备性</strong>是指，𝘍 所逻辑蕴含的每一个函数依赖，必定可以由 𝘍 出发根据 Armstrong 公理推导出来。下面证明 Armstrong 公理完备性的逆否命题，即：若函数依赖 𝘟 $\to$ 𝘠 不能由 𝘍 从 Armstrong 公理导出，那么它必然不为 𝘍 所蕴含。其证明思路是构造一个具体的关系 𝘳 $\in$ 𝘙&lt;𝘜，𝘍&gt;，证明在关系 𝘳 中 𝘟 $\nrightarrow$ 𝘠，根据逻辑蕴含的定义，函数依赖 𝘟 $\to$ 𝘠 不为 𝘍 所蕴含。证明分三步。</p>
+<p>𝘢. 若 𝘝 $\to$ 𝘞 成立，且 $𝘝\subseteq X^+_F$，则 $W\subseteq X^+_F$。</p>
+<p>证：因为 $𝘝\subseteq X^+_F$ ，由引理2，有 𝘟 $\to$ 𝘝 成立，于是 𝘟 $\to$ 𝘞 成立，所以 $W\subseteq X^+_F$。</p>
+<p>𝘣. 构造一张二维表 𝘳，它由两个元组构成，下面证明 𝘳 是 𝘙&lt;𝘜，𝘍&gt; 的一个关系，此时 𝘍 中的全部函数依赖在 𝘳 上成立。</p>
+<p>证：设关系模式 𝘙&lt;𝘜，𝘍&gt; 中，$U=\{A_1,A_2,\cdots,A_n\}$，构造关系 𝘳 仅有两个元组，元组 $t_1=(1,1,\cdots,1)$，元组 $t_2$ 被定义为：</p>
+<script type="math/tex; mode=display">
+t_2=
+\begin{cases}
+1,\quad &A_i\in X^+_F \\
+0,\quad &A_i\notin X^+_F
+\end{cases}</script><p>故而关系 𝘳 的二维表如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+t_2:\overbrace{11\cdots\cdots\cdots1}^{X^+_F}\quad &\overbrace{00\cdots\cdots\cdots0}^{U-X^+_F}\\
+t_1:11\cdots\cdots\cdots1\quad &11\cdots\cdots\cdots1
+\end{aligned}</script><p>利用反证法，若 𝘳 不是 𝘙&lt;𝘜，𝘍&gt; 的关系，则一定是因为 𝘍 中有某一个函数依赖 𝘝 $\to$ 𝘞 在 𝘳 上不成立导致的，即 𝘝 $\nrightarrow$ 𝘞。依据属性集闭包和函数依赖的定义，由 𝘳 的构成可知，一定有 $𝘝\subseteq X^+_F$，而 $W\nsubseteq X^+_F$，这与 𝘢 中结论 $W\subseteq X^+_F$ 矛盾。所以 𝘳 必是 𝘙&lt;𝘜，𝘍&gt; 的一个关系。</p>
+<p>𝘤. 若 𝘟 $\to$ 𝘠 不能由 𝘍 从 Armstrong 公理导出，由引理2，有 $Y\nsubseteq X^+_F$ ，因此必有 𝘠 的子集 𝘠’ 满足 $Y’\subseteq U-X^+_F$，依据函数依赖的定义，𝘟 $\to$ 𝘠 在 𝘳 中不成立，即 𝘟 $\to$ 𝘠 必不为 𝘙&lt;𝘜，𝘍&gt; 所蕴含。</p>
+<p><strong>3. 闭包</strong></p>
+<p><strong>（1）函数依赖集闭包</strong></p>
+<p>在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，为 𝘍 所逻辑蕴含的函数依赖的全体叫做 𝘍 的闭包，记作 $F^+$。在一般情况下，$F\le F^+$。如果 $F=F^+$，则称 𝘍 是函数依赖的完备集。</p>
+<p><strong>（2）属性集闭包</strong></p>
+<p>设有关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘟 是 𝘜 的子集，称所有用公理从 𝘍 推出的函数依赖集 $X \to A_i$ 中 $A_i$ 的属性集为 𝘟 的属性闭包，记作 $X^+_F$，即：</p>
+<script type="math/tex; mode=display">
+X^+_F=\{A_i|A_i\in U,X\to A_i \in F^+\}</script><p>由公理的自反律可知 𝘟 $\to$ 𝘟，因此 $X\subseteq X^+_F$。</p>
+<p><strong>（3）属性集闭包的求法</strong></p>
+<ul>
+<li>选 𝘟 作为闭包 $X_F^+$ 的初值 $X_F^{(0)}$。</li>
+<li>$X_F^{(i+1)}$ 是由 $X_F^{(i)}$ 并上集合 𝘈 组成的，其中，𝘈 为 𝘍 中存在的函数依赖 𝘠 $\to$ 𝘡，而且 $A\subseteq Z$，$Y\subseteq X_F^{(i)}$。</li>
+<li>重复上一步骤，一旦发现 $X_F^{(i)}=X_F^{(i+1)}$，则 $X_F^{(i)}$ 为所求的 $X_F^+$。</li>
+</ul>
+<p>例题：已知关系 𝘙&lt;𝘜，𝘍&gt;，其中 𝘜＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝，𝘍＝｛𝘈𝘉 $\to$ 𝘊，𝘉 $\to$ 𝘋，𝘊 $\to$ 𝘌，𝘌𝘊 $\to$ 𝘉，𝘈𝘊 $\to$ 𝘉｝，求 $(AB)^+_F$。</p>
+<p>$X_F^{(0)}$＝𝘈𝘉；𝘈𝘉 为闭包初值</p>
+<p>$X_F^{(1)}$＝𝘈𝘉𝘊𝘋；由 𝘈𝘉 $\to$ 𝘊，𝘉 $\to$ 𝘋 可得 𝘊𝘋 在闭包中</p>
+<p>$X_F^{(2)}$＝𝘈𝘉𝘊𝘋𝘌；由 𝘊 $\to$ 𝘌 可得 𝘌 在闭包中</p>
+<p>$X_F^{(3)}=X_F^{(2)}$＝𝘈𝘉𝘊𝘋𝘌；进一步求得的结果与上一步结果相同，结束。</p>
+<p>所以 $(AB)^+_F$＝𝘈𝘉𝘊𝘋𝘌＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝。</p>
+<p><strong>4. 最小函数依赖集</strong></p>
+<p><strong>（1）函数依赖集的等价和覆盖</strong></p>
+<p>设 𝘍 和 𝘎 是两个函数依赖集，如果 $F^+$＝$G^+$，则称 𝘍 和 𝘎 等价。𝘍 和 𝘎 等价说明 𝘍 覆盖 𝘎，同时 𝘎 也覆盖 𝘍。</p>
+<p><strong>（2）判定两函数依赖集等价的方法</strong></p>
+<p>从定义可知，判断 𝘍 和 𝘎 是否等价就是要判断它们是否相互覆盖，既要检查是否 𝘍 $\subseteq$ 𝘎$^+$，又要检查是否 𝘎 $\subseteq$ 𝘍$^+$，如果两者都成立才能确定 𝘍 和 𝘎 等价，具体判断方法如下：</p>
+<p>a. 在 𝘎 上计算 $X_G^+$，看是否 $Y \subseteq X_G^+$。若是，则说明 𝘟 $\to$ 𝘠 $\subseteq$ 𝘎$^+$，</p>
+<p><strong>（3）函数依赖集的最小化</strong></p>
+<p><strong>（4）最小函数依赖集的求法</strong></p>
+<h1 id="二、判断分解服从规范的方法"><a href="#二、判断分解服从规范的方法" class="headerlink" title="二、判断分解服从规范的方法"></a>二、判断分解服从规范的方法</h1><p><strong>1. 关系分解的无损连接性（Lossless Join）</strong></p>
+<p>设关系模式 𝘙，如果把它分解为两个（或多个）子模式 $R_1$ 和 $R_2$，相应一个 𝘙 关系中是数据就要被分成 $R_1$、$R_2$ 两个（或多个）子表。假如把这些子表自然连接，即进行 $R_1 \Join R_2$ 操作，得到的结果与原来关系中的数据一致，信息并没有丢失，则称该分解具有无损连接性，否则如果 $R\neq R_1 \Join R_2$，则称该分解不具有无损连接性。</p>
+<p><strong>2. 判断分解具有无损连接性的方法</strong></p>
+<p><strong>3. 判断分解成两个关系具有无损连接性的方法</strong></p>
+<p><strong>4. 判断分解保持函数依赖的方法</strong></p>
+<h1 id="三、关系模式的分解方法"><a href="#三、关系模式的分解方法" class="headerlink" title="三、关系模式的分解方法"></a>三、关系模式的分解方法</h1><p><strong>1. 将关系模式转化为 3NF 的保持函数依赖的分解</strong></p>
+<p><strong>2. 将关系模式转化为 3NF，且既具有无损连接性又能保持函数依赖的分解</strong></p>
+<p><strong>3. 将关系模式转化为 BCNF 的无损链接的分解</strong></p>
+<p><strong>4. 关系模式分解的重要结论</strong></p>
+<ul>
+<li>若要求分解保持函数依赖，则模式分解总可以达到 3NF，但不一定达到 BCNF。</li>
+<li>若要求分解具有无损连接性，则分解一定可以达到 BCNF。</li>
+<li>若要求分解既保持函数依赖，又具有无损连接性，那么模式分解一定可以达到 3NF，但不一定达到 BCNF。</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/06/29/Hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h2 id="前置依赖环境"><a href="#前置依赖环境" class="headerlink" title="前置依赖环境"></a>前置依赖环境</h2><ul>
+<li><p><code>git</code></p>
+</li>
+<li><p><code>node v12.15.0</code></p>
+</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init     <span class="comment"># 初始化静态博客</span></span><br><span class="line">npm install   <span class="comment"># 安装依赖项</span></span><br><span class="line">hexo server   <span class="comment"># 开启本地服务端口</span></span><br></pre></td></tr></table></figure>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><h3 id="更换"><a href="#更换" class="headerlink" title="更换"></a>更换</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p><code>\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<h3 id="分栏"><a href="#分栏" class="headerlink" title="分栏"></a>分栏</h3><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo new page tags         <span class="comment"># 生成标签页</span></span><br><span class="line">hexo new page categories   <span class="comment"># 生成目录页</span></span><br></pre></td></tr></table></figure>
+<p><code>\source\categories\index.md</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">categories</span></span><br></pre></td></tr></table></figure>
+<p><code>\source\tags\index.md</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p><code>\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Local Search</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="概述折叠"><a href="#概述折叠" class="headerlink" title="概述折叠"></a>概述折叠</h3><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line"><span class="attr">excerpt_description:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="GitHub-Pages部署"><a href="#GitHub-Pages部署" class="headerlink" title="GitHub Pages部署"></a>GitHub Pages部署</h2><p><code>\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;http://example.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://grocerynotes.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:grocerynotes/grocerynotes.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="mathjax支持"><a href="#mathjax支持" class="headerlink" title="mathjax支持"></a>mathjax支持</h2><h3 id="更换渲染器"><a href="#更换渲染器" class="headerlink" title="更换渲染器"></a>更换渲染器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<h3 id="开启渲染"><a href="#开启渲染" class="headerlink" title="开启渲染"></a>开启渲染</h3><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Formulas Render Support</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="禁用渲染"><a href="#禁用渲染" class="headerlink" title="禁用渲染"></a>禁用渲染</h3><p><code>\scaffolds\post.md</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> &#123;&#123; <span class="string">title</span> &#125;&#125;</span><br><span class="line"><span class="attr">date:</span> &#123;&#123; <span class="string">date</span> &#125;&#125;</span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">false</span>  <span class="comment"># 在文章front-matter中需要写true开启渲染</span></span><br></pre></td></tr></table></figure>
+<h3 id="解决转义冲突"><a href="#解决转义冲突" class="headerlink" title="解决转义冲突"></a>解决转义冲突</h3><p><code>\node_modules\kramed\lib\rules\inline.js</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/**</span></span><br><span class="line"> <span class="string">*</span> <span class="string">修改下列转义规则</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">escape:</span> <span class="string">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">em:</span> <span class="string">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"><span class="string">*/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">escape:</span> <span class="string">/^\\([`*\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="attr">em:</span> <span class="string">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+</search>

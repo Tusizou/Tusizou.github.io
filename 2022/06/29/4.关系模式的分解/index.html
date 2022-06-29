@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、关系模式分解的算法基础1. 函数依赖的逻辑蕴含 设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。 2. Armstrong 公理系统 （1）Armstrong 公理 设 𝘜 为属性集，𝘍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://toki.github.io/2022/06/29/4.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、关系模式分解的算法基础1. 函数依赖的逻辑蕴含 设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。 2. Armstrong 公理系统 （1）Armstrong 公理 设 𝘜 为属性集，𝘍">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-29T07:03:37.728Z">
+<meta property="article:modified_time" content="2022-06-28T15:23:57.217Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://toki.github.io/2022/06/29/4.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/06/29/4.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-29 15:03:37" itemprop="dateCreated datePublished" datetime="2022-06-29T15:03:37+08:00">2022-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-28 23:23:57" itemprop="dateModified" datetime="2022-06-28T23:23:57+08:00">2022-06-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、关系模式分解的算法基础"><a href="#一、关系模式分解的算法基础" class="headerlink" title="一、关系模式分解的算法基础"></a>一、关系模式分解的算法基础</h1><p><strong>1. 函数依赖的逻辑蕴含</strong></p>
+<p>设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。</p>
+<p><strong>2. Armstrong 公理系统</strong></p>
+<p><strong>（1）Armstrong 公理</strong></p>
+<p>设 𝘜 为属性集，𝘍 是 𝘜 上的函数依赖集，于是有关系模式 𝘙&lt;𝘜，𝘍&gt;。对 𝘙&lt;𝘜，𝘍&gt; 来说，有以下的推理规则：</p>
+<ul>
+<li>自反律（Reflexivity）：若 𝘠 $\subseteq$ 𝘟 $\subseteq$ 𝘜，则 𝘟 $\to$ 𝘠 为 𝘍 所蕴含。</li>
+<li>增广律（Augmentation）：若 𝘟 $\to$ 𝘠 为 𝘍 所蕴含，且 𝘡 $\subseteq$ 𝘜，则 𝘟𝘡 $\to$ 𝘠𝘡 为 𝘍 所蕴含。</li>
+<li>传递律（Transitivity）：若 𝘟 $\to$ 𝘠 及 𝘠 $\to$ 𝘡 为 𝘍 所蕴含，则 𝘟 $\to$ 𝘡 为 𝘍 所蕴含。</li>
+</ul>
+<p><strong>（2）Armstrong 公理的三个推理规则</strong></p>
+<p>根据 Armstrong 公理可以得到下面三条很有用的推理规则：</p>
+<ul>
+<li>合并规则（Union Rule）：由 𝘟 $\to$ 𝘠，𝘟 $\to$ 𝘡，有 𝘟 $\to$ 𝘠𝘡。</li>
+<li>伪传递规则（Pseudo-transitivity Rule）：由 𝘟 $\to$ 𝘠，𝘞𝘠 $\to$ 𝘡，有 𝘞𝘟 $\to$ 𝘡。</li>
+<li>分解规则（Decomposition Rule）：由 𝘟 $\to$ 𝘠 及 𝘡 $\subseteq$ 𝘠，有 𝘟 $\to$ 𝘡。</li>
+</ul>
+<p><strong>（3）两个引理</strong></p>
+<p>根据合并规则和分解规则，可以得到引理1；根据属性集闭包的定义和引理1，可以得到引理2。</p>
+<p>引理1：$X \to A_1A_2\cdots A_k$ 成立的充分必要条件是 $X\to A_i(i=1,2,\cdots,k)$ 成立。</p>
+<p>引理2：设 𝘍 为属性集 𝘜 上的一组函数依赖，𝘟、𝘠 $\subseteq$ 𝘜，𝘟 $\to$ 𝘠 能由 𝘍 根据 Armstrong 公理导出的充分必要条件是 $Y\subseteq X_F^+$。 </p>
+<p><strong>（4）Armstrong 公理是有效的和完备的</strong></p>
+<p><strong>Armstrong 公理的有效性</strong>是指，在 𝘍 中根据 Armstrong 公理推导出来的每一个函数依赖一定为 𝘍 所逻辑蕴含。要证明 Armstrong 公理，即是要证明自反律、增广律、传递律。</p>
+<p>𝘢. 自反律</p>
+<p>设 𝘠 $\subseteq$ 𝘟 $\subseteq$ 𝘜。对 𝘙&lt;𝘜，𝘍&gt; 的任一关系 𝘳 中的任意两个元组 𝘵、𝘴，若 𝘵[𝘟]＝𝘴[𝘟]，由于 𝘠 $\subseteq$ 𝘟，故有 𝘵[𝘠]＝𝘴[𝘠]，所以 𝘟 $\to$ 𝘠 成立，自反律得证。</p>
+<p>𝘣. 增广律</p>
+<p>设 𝘟 $\to$ 𝘠 为 𝘍 所蕴含，且 𝘡 $\subseteq$ 𝘜。设 𝘙&lt;𝘜，𝘍&gt; 的任一关系 𝘳 中任意的两个元组 𝘵、𝘴，若 𝘵[𝘟𝘡]＝𝘴[𝘟𝘡]，则有 𝘵[𝘟]＝𝘴[𝘟] 和 𝘵[𝘡]＝𝘴[𝘡]。由 𝘟 $\to$ 𝘠，于是有 𝘵[𝘠]＝𝘴[𝘠]，所以 𝘵[𝘠𝘡]＝𝘴[𝘠𝘡]，𝘟𝘡 $\to$ 𝘠𝘡 为 𝘍 所蕴含，增广律得证。</p>
+<p>𝘤. 传递律</p>
+<p>设 𝘟 $\to$ 𝘠 及 𝘠 $\to$ 𝘡 为 𝘍 所蕴含。对 𝘙&lt;𝘜，𝘍&gt; 的任一关系 𝘳 中的任意两个元组 𝘵、𝘴，若 𝘵[𝘟]＝𝘴[𝘟]，由于 𝘟 $\to$ 𝘠，有 𝘵[𝘠]＝𝘴[𝘠]；再由 𝘠 $\to$ 𝘡，有 𝘵[𝘡]＝𝘴[𝘡]，所以 𝘟 $\to$ 𝘡 为 𝘍 所蕴含，传递律得证。</p>
+<p><strong>Armstrong 公理的完备性</strong>是指，𝘍 所逻辑蕴含的每一个函数依赖，必定可以由 𝘍 出发根据 Armstrong 公理推导出来。下面证明 Armstrong 公理完备性的逆否命题，即：若函数依赖 𝘟 $\to$ 𝘠 不能由 𝘍 从 Armstrong 公理导出，那么它必然不为 𝘍 所蕴含。其证明思路是构造一个具体的关系 𝘳 $\in$ 𝘙&lt;𝘜，𝘍&gt;，证明在关系 𝘳 中 𝘟 $\nrightarrow$ 𝘠，根据逻辑蕴含的定义，函数依赖 𝘟 $\to$ 𝘠 不为 𝘍 所蕴含。证明分三步。</p>
+<p>𝘢. 若 𝘝 $\to$ 𝘞 成立，且 $𝘝\subseteq X^+_F$，则 $W\subseteq X^+_F$。</p>
+<p>证：因为 $𝘝\subseteq X^+_F$ ，由引理2，有 𝘟 $\to$ 𝘝 成立，于是 𝘟 $\to$ 𝘞 成立，所以 $W\subseteq X^+_F$。</p>
+<p>𝘣. 构造一张二维表 𝘳，它由两个元组构成，下面证明 𝘳 是 𝘙&lt;𝘜，𝘍&gt; 的一个关系，此时 𝘍 中的全部函数依赖在 𝘳 上成立。</p>
+<p>证：设关系模式 𝘙&lt;𝘜，𝘍&gt; 中，$U=\{A_1,A_2,\cdots,A_n\}$，构造关系 𝘳 仅有两个元组，元组 $t_1=(1,1,\cdots,1)$，元组 $t_2$ 被定义为：</p>
+<script type="math/tex; mode=display">
+t_2=
+\begin{cases}
+1,\quad &A_i\in X^+_F \\
+0,\quad &A_i\notin X^+_F
+\end{cases}</script><p>故而关系 𝘳 的二维表如下：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+t_2:\overbrace{11\cdots\cdots\cdots1}^{X^+_F}\quad &\overbrace{00\cdots\cdots\cdots0}^{U-X^+_F}\\
+t_1:11\cdots\cdots\cdots1\quad &11\cdots\cdots\cdots1
+\end{aligned}</script><p>利用反证法，若 𝘳 不是 𝘙&lt;𝘜，𝘍&gt; 的关系，则一定是因为 𝘍 中有某一个函数依赖 𝘝 $\to$ 𝘞 在 𝘳 上不成立导致的，即 𝘝 $\nrightarrow$ 𝘞。依据属性集闭包和函数依赖的定义，由 𝘳 的构成可知，一定有 $𝘝\subseteq X^+_F$，而 $W\nsubseteq X^+_F$，这与 𝘢 中结论 $W\subseteq X^+_F$ 矛盾。所以 𝘳 必是 𝘙&lt;𝘜，𝘍&gt; 的一个关系。</p>
+<p>𝘤. 若 𝘟 $\to$ 𝘠 不能由 𝘍 从 Armstrong 公理导出，由引理2，有 $Y\nsubseteq X^+_F$ ，因此必有 𝘠 的子集 𝘠’ 满足 $Y’\subseteq U-X^+_F$，依据函数依赖的定义，𝘟 $\to$ 𝘠 在 𝘳 中不成立，即 𝘟 $\to$ 𝘠 必不为 𝘙&lt;𝘜，𝘍&gt; 所蕴含。</p>
+<p><strong>3. 闭包</strong></p>
+<p><strong>（1）函数依赖集闭包</strong></p>
+<p>在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，为 𝘍 所逻辑蕴含的函数依赖的全体叫做 𝘍 的闭包，记作 $F^+$。在一般情况下，$F\le F^+$。如果 $F=F^+$，则称 𝘍 是函数依赖的完备集。</p>
+<p><strong>（2）属性集闭包</strong></p>
+<p>设有关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘟 是 𝘜 的子集，称所有用公理从 𝘍 推出的函数依赖集 $X \to A_i$ 中 $A_i$ 的属性集为 𝘟 的属性闭包，记作 $X^+_F$，即：</p>
+<script type="math/tex; mode=display">
+X^+_F=\{A_i|A_i\in U,X\to A_i \in F^+\}</script><p>由公理的自反律可知 𝘟 $\to$ 𝘟，因此 $X\subseteq X^+_F$。</p>
+<p><strong>（3）属性集闭包的求法</strong></p>
+<ul>
+<li>选 𝘟 作为闭包 $X_F^+$ 的初值 $X_F^{(0)}$。</li>
+<li>$X_F^{(i+1)}$ 是由 $X_F^{(i)}$ 并上集合 𝘈 组成的，其中，𝘈 为 𝘍 中存在的函数依赖 𝘠 $\to$ 𝘡，而且 $A\subseteq Z$，$Y\subseteq X_F^{(i)}$。</li>
+<li>重复上一步骤，一旦发现 $X_F^{(i)}=X_F^{(i+1)}$，则 $X_F^{(i)}$ 为所求的 $X_F^+$。</li>
+</ul>
+<p>例题：已知关系 𝘙&lt;𝘜，𝘍&gt;，其中 𝘜＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝，𝘍＝｛𝘈𝘉 $\to$ 𝘊，𝘉 $\to$ 𝘋，𝘊 $\to$ 𝘌，𝘌𝘊 $\to$ 𝘉，𝘈𝘊 $\to$ 𝘉｝，求 $(AB)^+_F$。</p>
+<p>$X_F^{(0)}$＝𝘈𝘉；𝘈𝘉 为闭包初值</p>
+<p>$X_F^{(1)}$＝𝘈𝘉𝘊𝘋；由 𝘈𝘉 $\to$ 𝘊，𝘉 $\to$ 𝘋 可得 𝘊𝘋 在闭包中</p>
+<p>$X_F^{(2)}$＝𝘈𝘉𝘊𝘋𝘌；由 𝘊 $\to$ 𝘌 可得 𝘌 在闭包中</p>
+<p>$X_F^{(3)}=X_F^{(2)}$＝𝘈𝘉𝘊𝘋𝘌；进一步求得的结果与上一步结果相同，结束。</p>
+<p>所以 $(AB)^+_F$＝𝘈𝘉𝘊𝘋𝘌＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝。</p>
+<p><strong>4. 最小函数依赖集</strong></p>
+<p><strong>（1）函数依赖集的等价和覆盖</strong></p>
+<p>设 𝘍 和 𝘎 是两个函数依赖集，如果 $F^+$＝$G^+$，则称 𝘍 和 𝘎 等价。𝘍 和 𝘎 等价说明 𝘍 覆盖 𝘎，同时 𝘎 也覆盖 𝘍。</p>
+<p><strong>（2）判定两函数依赖集等价的方法</strong></p>
+<p>从定义可知，判断 𝘍 和 𝘎 是否等价就是要判断它们是否相互覆盖，既要检查是否 𝘍 $\subseteq$ 𝘎$^+$，又要检查是否 𝘎 $\subseteq$ 𝘍$^+$，如果两者都成立才能确定 𝘍 和 𝘎 等价，具体判断方法如下：</p>
+<p>a. 在 𝘎 上计算 $X_G^+$，看是否 $Y \subseteq X_G^+$。若是，则说明 𝘟 $\to$ 𝘠 $\subseteq$ 𝘎$^+$，</p>
+<p><strong>（3）函数依赖集的最小化</strong></p>
+<p><strong>（4）最小函数依赖集的求法</strong></p>
+<h1 id="二、判断分解服从规范的方法"><a href="#二、判断分解服从规范的方法" class="headerlink" title="二、判断分解服从规范的方法"></a>二、判断分解服从规范的方法</h1><p><strong>1. 关系分解的无损连接性（Lossless Join）</strong></p>
+<p>设关系模式 𝘙，如果把它分解为两个（或多个）子模式 $R_1$ 和 $R_2$，相应一个 𝘙 关系中是数据就要被分成 $R_1$、$R_2$ 两个（或多个）子表。假如把这些子表自然连接，即进行 $R_1 \Join R_2$ 操作，得到的结果与原来关系中的数据一致，信息并没有丢失，则称该分解具有无损连接性，否则如果 $R\neq R_1 \Join R_2$，则称该分解不具有无损连接性。</p>
+<p><strong>2. 判断分解具有无损连接性的方法</strong></p>
+<p><strong>3. 判断分解成两个关系具有无损连接性的方法</strong></p>
+<p><strong>4. 判断分解保持函数依赖的方法</strong></p>
+<h1 id="三、关系模式的分解方法"><a href="#三、关系模式的分解方法" class="headerlink" title="三、关系模式的分解方法"></a>三、关系模式的分解方法</h1><p><strong>1. 将关系模式转化为 3NF 的保持函数依赖的分解</strong></p>
+<p><strong>2. 将关系模式转化为 3NF，且既具有无损连接性又能保持函数依赖的分解</strong></p>
+<p><strong>3. 将关系模式转化为 BCNF 的无损链接的分解</strong></p>
+<p><strong>4. 关系模式分解的重要结论</strong></p>
+<ul>
+<li>若要求分解保持函数依赖，则模式分解总可以达到 3NF，但不一定达到 BCNF。</li>
+<li>若要求分解具有无损连接性，则分解一定可以达到 BCNF。</li>
+<li>若要求分解既保持函数依赖，又具有无损连接性，那么模式分解一定可以达到 3NF，但不一定达到 BCNF。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">一、关系模式分解的算法基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%A4%E6%96%AD%E5%88%86%E8%A7%A3%E6%9C%8D%E4%BB%8E%E8%A7%84%E8%8C%83%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二、判断分解服从规范的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三、关系模式的分解方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

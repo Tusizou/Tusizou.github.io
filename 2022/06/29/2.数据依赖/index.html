@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、函数依赖（Functional Dependency）（1）函数依赖 设 𝘙&lt;𝘜&gt; 是属性集合 𝘜 上的关系模式，𝘟、𝘠 是 𝘜 的子集。若对于 𝘙&lt;𝘜&gt; 的任意一个可能的关系 𝘳，𝘳 中不存在两个元组在 𝘟 上的属性值相等，而 𝘠 上的属性值不等，则称 𝘟 函数确定 𝘠 函数，或 𝘠 函数依赖于 𝘟 函数，记作 𝘟 $\to$ 𝘠，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://toki.github.io/2022/06/29/2.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、函数依赖（Functional Dependency）（1）函数依赖 设 𝘙&lt;𝘜&gt; 是属性集合 𝘜 上的关系模式，𝘟、𝘠 是 𝘜 的子集。若对于 𝘙&lt;𝘜&gt; 的任意一个可能的关系 𝘳，𝘳 中不存在两个元组在 𝘟 上的属性值相等，而 𝘠 上的属性值不等，则称 𝘟 函数确定 𝘠 函数，或 𝘠 函数依赖于 𝘟 函数，记作 𝘟 $\to$ 𝘠，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-29T07:03:37.734Z">
+<meta property="article:modified_time" content="2022-06-19T15:27:47.554Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://toki.github.io/2022/06/29/2.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/06/29/2.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-29 15:03:37" itemprop="dateCreated datePublished" datetime="2022-06-29T15:03:37+08:00">2022-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-06-19 23:27:47" itemprop="dateModified" datetime="2022-06-19T23:27:47+08:00">2022-06-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="一、函数依赖（Functional-Dependency）"><a href="#一、函数依赖（Functional-Dependency）" class="headerlink" title="一、函数依赖（Functional Dependency）"></a>一、函数依赖（Functional Dependency）</h1><p><strong>（1）函数依赖</strong></p>
+<p>设 𝘙&lt;𝘜&gt; 是属性集合 𝘜 上的关系模式，𝘟、𝘠 是 𝘜 的子集。若对于 𝘙&lt;𝘜&gt; 的任意一个可能的关系 𝘳，𝘳 中不存在两个元组在 𝘟 上的属性值相等，而 𝘠 上的属性值不等，则称 𝘟 函数确定 𝘠 函数，或 𝘠 函数依赖于 𝘟 函数，记作 𝘟 $\to$ 𝘠，其中，𝘟 叫做决定因素（Determinant），𝘠 叫做依赖因素（Dependent）。若 𝘠 不函数依赖于 𝘟，则记作 𝘟 $\nrightarrow$ 𝘠。若 𝘟 $\to$ 𝘠，𝘠 $\to$ 𝘟，则记作 𝘟 $\leftrightarrow$ 𝘠。</p>
+<p>函数依赖具有自反律：若 𝘟 $\to$ 𝘠 在 𝘙&lt;𝘜&gt; 上成立，则对任何 𝘠’ $\subset$ 𝘠，有 𝘟 $\to$ 𝘠’ 成立。</p>
+<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
+<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
+<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
+<p><strong>（2）平凡函数依赖</strong></p>
+<p>𝘟 $\to$ 𝘠，但 𝘠 $\nsubseteq$ 𝘟，则称 𝘟 $\to$ 𝘠 是非平凡函数依赖。若不特别声明，总是讨论非平凡函数依赖。</p>
+<p>𝘟 $\to$ 𝘠，但 𝘠 $\subseteq$ 𝘟，则称 𝘟 $\to$ 𝘠 是平凡函数依赖。</p>
+<p><strong>（3）完全函数依赖</strong></p>
+<p>在 𝘙&lt;𝘜&gt; 中，如果 𝘟 $\to$ 𝘠，并且对于 𝘟 的任何一个真子集 𝘟’，都有 𝘟’ $\nrightarrow$ 𝘠，则称 𝘠 对 𝘟 完全函数依赖，记作 𝘟 $\stackrel{F}{\longrightarrow}$ 𝘠。如果 𝘟 $\to$ 𝘠，但 𝘠 不完全函数依赖于 𝘟，则称 𝘠 对 𝘟 部分函数依赖，记作 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘠。</p>
+<p>例如，在教学关系模式中，学号和课程名为主码，而（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名。</p>
+<p><strong>（4）传递函数依赖</strong></p>
+<p>在 𝘙&lt;𝘜&gt; 中，如果 𝘟 $\to$ 𝘠，（𝘠 $\nsubseteq$ 𝘟），𝘠 $\nrightarrow$ 𝘟，𝘠 $\to$ 𝘡，则称 𝘡 对 𝘟 传递函数依赖，记作 𝘟 $\stackrel{传递}{\longrightarrow}$ 𝘡。</p>
+<p>例如，在教学关系模式中，因为存在：学号 $\to$ 系名，系名 $\to$ 系主任，所以也存在：学号 $\to$ 系主任。</p>
+<h1 id="二、多值依赖（Multivalued-Dependency）"><a href="#二、多值依赖（Multivalued-Dependency）" class="headerlink" title="二、多值依赖（Multivalued Dependency）"></a>二、多值依赖（Multivalued Dependency）</h1><p><strong>（1）多值依赖</strong></p>
+<p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的一个关系模式，𝘟、𝘠、𝘡 是 𝘜 的子集，并且 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。关系模式 𝘙&lt;𝘜&gt; 中多值依赖 𝘟 $\to\to$ 𝘠 成立，当且仅当对 𝘙&lt;𝘜&gt; 的任一关系 𝘳，给定的一对（𝘹，𝘻）值，有一组 𝘠 的值与之对应，这组值仅仅决定于 𝘹 值而与 𝘻 值无关。</p>
+<p>对于多值依赖的另一个等价的形式化定义是：在 𝘙&lt;𝘜&gt; 的任一关系 𝘳 中，如果存在元组 𝘵、𝘴 使得 𝘵[𝘟]＝𝘴[𝘟]，那么就必然存在元组 𝘸、𝘷 $\in$ 𝘳（𝘸、𝘷 可以与 𝘴、𝘵 相同），使得 𝘸[𝘟]＝𝘷[𝘟]＝𝘵[𝘟]，而 𝘸[𝘠]＝𝘵[𝘠]，𝘸[𝘡]＝𝘴[𝘡]，𝘷[𝘠]＝𝘴[𝘠]，𝘷[𝘡]＝𝘵[𝘡]（即<strong>交换 𝘴、𝘵 元组的 𝘠 值所得的两个新元组必在关系 𝘳 中</strong>），则 𝘠 多值依赖于 𝘟，记为 𝘟 $\to\to$ 𝘠。这里，𝘟、𝘠 是 𝘜 的子集，𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。</p>
+<p>多值依赖具有对称性，即：若 𝘟 $\to\to$ 𝘠，则 𝘟 $\to\to$ 𝘡，其中 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。</p>
+<p>函数依赖是多值依赖的特殊情况，即：若  𝘟 $\to$ 𝘠，则  𝘟 $\to\to$ 𝘠。这是因为当 𝘟 $\to$ 𝘠 时，对 𝘟 的每一个值 𝘹，𝘠 都有一个确定的值 𝘺 与之对应，所以 𝘟 $\to\to$ 𝘠。</p>
+<p>多值依赖的有效性与属性集的范围有关。在关系模式 𝘙 中，函数依赖 𝘟 $\to$ 𝘠 的有效性仅仅决定于 𝘟、𝘠 这两个属性集；在多值依赖中，𝘟 $\to\to$ 𝘠 在 𝘜 上是否成立，不仅要检查 𝘟、𝘠 上的值，而且要检查 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠 上的值。因此，如果 𝘟 $\to\to$ 𝘠 在 𝘞（𝘞 $\subset$ 𝘜）上成立，则在 𝘜 上则不一定成立。除此之外，对多值依赖  𝘟 $\to\to$ 𝘠，若在 𝘙 上成立，也并不能断言对于任何 𝘠’ $\subset$ 𝘠，有  𝘟 $\to\to$ 𝘠’ 成立。</p>
+<p><strong>（2）平凡的多值依赖</strong></p>
+<p>若 𝘟 $\to\to$ 𝘠，而 𝘡＝$\varnothing$ ，即 𝘡 为空集，则称 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。即对于 𝘙&lt;𝘟，𝘠&gt;，如果有 𝘟 $\to\to$ 𝘠 成立，则 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。</p>
+<h1 id="三、连接依赖（Join-Dependency）"><a href="#三、连接依赖（Join-Dependency）" class="headerlink" title="三、连接依赖（Join Dependency）"></a>三、连接依赖（Join Dependency）</h1><p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的关系模式，$x_1,x_2,\cdots,x_n$ 是 𝘜 的子集，并且 $\bigcup\limits^n_{i=1}x_i=U$，如果 $R=\Join \mathop{R}\limits^n_{i=1}[x_i]$ 对 𝘙 的一切关系均成立，则称 𝘙 在 $x_1,x_2,\cdots,x_n$ 上具有 𝘯 目连接依赖，记作：$\Join [x_1][x_2]\cdots[x_n]$。</p>
+<p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%EF%BC%88Functional-Dependency%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一、函数依赖（Functional Dependency）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E5%80%BC%E4%BE%9D%E8%B5%96%EF%BC%88Multivalued-Dependency%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">二、多值依赖（Multivalued Dependency）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%BF%9E%E6%8E%A5%E4%BE%9D%E8%B5%96%EF%BC%88Join-Dependency%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">三、连接依赖（Join Dependency）</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
