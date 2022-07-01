@@ -262,7 +262,7 @@
       <i class="fa fa-chevron-left"></i> 1.关系数据结构
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/07/01/Hexo%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" rel="next" title="Hexo 配置指南">
+    <a href="/2022/07/02/Hexo%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" rel="next" title="Hexo 配置指南">
       Hexo 配置指南 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -336,7 +336,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -426,6 +426,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

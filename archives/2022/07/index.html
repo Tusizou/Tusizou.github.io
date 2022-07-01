@@ -176,7 +176,7 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 5 篇日志。 继续努力。</span>
+        <span class="collection-header">嗯..! 目前共计 6 篇日志。 继续努力。</span>
       </div>
 
       
@@ -189,15 +189,35 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2022-07-01T17:41:59+08:00"
-              content="2022-07-01">
-          07-01
+              datetime="2022-07-02T01:22:02+08:00"
+              content="2022-07-02">
+          07-02
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/07/01/Hexo%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" itemprop="url">
+          <a class="post-title-link" href="/2022/07/02/Hexo%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" itemprop="url">
             <span itemprop="name">Hexo 配置指南</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2022-07-02T01:22:58+08:00"
+              content="2022-07-02">
+          07-02
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2022/07/02/Minecraft%20%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/" itemprop="url">
+            <span itemprop="name">Minecraft 安装指南</span>
           </a>
       </div>
 
@@ -275,7 +295,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -365,6 +385,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
