@@ -32,6 +32,9 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p><strong>5. 主属性和非主属性</strong></p>
 <p>关系中，候选码中的属性称为主属性（Prime Attribute），不包含在任何候选码中的属性称为非主属性（Non-Key Attribute）。</p>
 ]]></content>
+      <categories>
+        <category>关系模式</category>
+      </categories>
   </entry>
   <entry>
     <title>2.数据依赖</title>
@@ -64,6 +67,9 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <h1 id="三、连接依赖（Join-Dependency）"><a href="#三、连接依赖（Join-Dependency）" class="headerlink" title="三、连接依赖（Join Dependency）"></a>三、连接依赖（Join Dependency）</h1><p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的关系模式，$x_1,x_2,\cdots,x_n$ 是 𝘜 的子集，并且 $\bigcup\limits^n_{i=1}x_i=U$，如果 $R=\Join \mathop{R}\limits^n_{i=1}[x_i]$ 对 𝘙 的一切关系均成立，则称 𝘙 在 $x_1,x_2,\cdots,x_n$ 上具有 𝘯 目连接依赖，记作：$\Join [x_1][x_2]\cdots[x_n]$。</p>
 <p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
 ]]></content>
+      <categories>
+        <category>关系模式</category>
+      </categories>
   </entry>
   <entry>
     <title>3.关系模式的规范化</title>
@@ -98,6 +104,9 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
 <h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
 ]]></content>
+      <categories>
+        <category>关系模式</category>
+      </categories>
   </entry>
   <entry>
     <title>4.关系模式的分解</title>
@@ -192,6 +201,9 @@ X^+_F=\{A_i|A_i\in U,X\to A_i \in F^+\}</script><p>由公理的自反律可知 �
 <li>若要求分解既保持函数依赖，又具有无损连接性，那么模式分解一定可以达到 3NF，但不一定达到 BCNF。</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>关系模式</category>
+      </categories>
   </entry>
   <entry>
     <title>Hexo 配置指南</title>
@@ -235,5 +247,8 @@ X^+_F=\{A_i|A_i\in U,X\to A_i \in F^+\}</script><p>由公理的自反律可知 �
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> &#123;&#123; <span class="string">title</span> &#125;&#125;</span><br><span class="line"><span class="attr">date:</span> &#123;&#123; <span class="string">date</span> &#125;&#125;</span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">false</span>  <span class="comment"># 在文章front-matter中需要写true开启渲染</span></span><br></pre></td></tr></table></figure>
 <h3 id="解决转义冲突"><a href="#解决转义冲突" class="headerlink" title="解决转义冲突"></a>解决转义冲突</h3><p><code>\node_modules\kramed\lib\rules\inline.js</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/**</span></span><br><span class="line"> <span class="string">*</span> <span class="string">修改下列转义规则</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">escape:</span> <span class="string">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">em:</span> <span class="string">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"><span class="string">*/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">escape:</span> <span class="string">/^\\([`*\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="attr">em:</span> <span class="string">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
   </entry>
 </search>
