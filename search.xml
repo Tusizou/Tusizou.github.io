@@ -33,7 +33,7 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p>关系中，候选码中的属性称为主属性（Prime Attribute），不包含在任何候选码中的属性称为非主属性（Non-Key Attribute）。</p>
 ]]></content>
       <categories>
-        <category>未分类</category>
+        <category>关系模式</category>
       </categories>
   </entry>
   <entry>
@@ -68,7 +68,7 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
 ]]></content>
       <categories>
-        <category>未分类</category>
+        <category>关系模式</category>
       </categories>
   </entry>
   <entry>
@@ -105,7 +105,7 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
 ]]></content>
       <categories>
-        <category>未分类</category>
+        <category>关系模式</category>
       </categories>
   </entry>
   <entry>
@@ -246,7 +246,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的�
 </ul>
 ]]></content>
       <categories>
-        <category>未分类</category>
+        <category>关系模式</category>
       </categories>
   </entry>
   <entry>
@@ -316,6 +316,215 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的�
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/**</span></span><br><span class="line"> <span class="string">*</span> <span class="string">修改下列转义规则</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">escape:</span> <span class="string">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">em:</span> <span class="string">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"><span class="string">*/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">escape:</span> <span class="string">/^\\([`*\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="attr">em:</span> <span class="string">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>未分类</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>不等式</title>
+    <url>/2022/07/02/%E4%B8%8D%E7%AD%89%E5%BC%8F/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="绝对值不等式-三角不等式"><a href="#绝对值不等式-三角不等式" class="headerlink" title="绝对值不等式/三角不等式"></a>绝对值不等式/三角不等式</h1><p>对任意实数 $a$ 和 $b$, 都有</p>
+<script type="math/tex; mode=display">
+||a|-|b||\le |a+b|\le|a|+|b|</script><p><strong>证</strong> </p>
+<p>对任意实数 $a$ 和 $b$, 都有</p>
+<script type="math/tex; mode=display">
+-|a||b|\le ab\le |a||b|</script><p>所以</p>
+<script type="math/tex; mode=display">
+|a|^2-2|a||b|+|b|^2\le a^2+2ab+b^2\le|a|^2+2|a||b|+|b|^2\\</script><p>即</p>
+<script type="math/tex; mode=display">
+(|a|-|b|)^2\le(a+b)^2\le(|a|+|b|)^2</script><p>开方得</p>
+<script type="math/tex; mode=display">
+|a|-|b|\le a+b\le|a|+|b|</script><p>证毕.</p>
+<h1 id="平均值不等式"><a href="#平均值不等式" class="headerlink" title="平均值不等式"></a>平均值不等式</h1><p>对任意 $n$ 个正数 $a_1, a_2, \cdots, a_n$, 有</p>
+<script type="math/tex; mode=display">
+\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}\ge \frac{n}{\frac{1}{a_1}+\frac{1}{a_2}+\cdots+\frac{1}{a_n}}</script><p> 等号当且仅当 $a_1, a_2, \cdots, a_n$ 全部相等时成立.</p>
+<p><strong>证</strong></p>
+<p>先证明左边的不等式</p>
+<script type="math/tex; mode=display">
+\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}</script><p>当 $n=1, 2$ 时, 不等式显然成立.</p>
+<p>当 $n=4$ 时, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{a_1+a_2+a_3+a_4}{4}&\ge \frac{2\sqrt[2]{a_1a_2}+2\sqrt[2]{a_3a_4}}{4}\\
+&=\frac{\sqrt[2]{a_1a_2}+\sqrt[2]{a_3a_4}}{2}\\
+&\ge \sqrt[4]{a_1a_2a_3a_4}
+\end{aligned}</script><p>等号当且仅当 $a_1, a_2, a_3, a_4$ 全部相等时成立.</p>
+<p>当 $n=2^k(k\in N^+)$ 时, 不等式是 $\frac{a+b}{2}\ge \sqrt{ab}$ 的直接推论.</p>
+<p>当 $n\ne 2^k$ 时, 取 $l\in N^+$, 使 $2^{l-1}&lt;n&lt;2^l$. 记</p>
+<script type="math/tex; mode=display">
+\sqrt[n]{a_1a_2\cdots a_n}=\bar{a}</script><p>在 $a_1, a_2, \cdots, a_n$ 后面加上$(2^l-n)$ 个$\bar{a}$, 将其扩充成 $2^l$ 个正数. 对这 $2^l$ 个正数应用不等式, 得到</p>
+<script type="math/tex; mode=display">
+\frac{1}{2^l}[a_1+a_2+\cdots+a_n+(2^l-n)\bar{a}]\ge (a_1a_2\cdots a_n \bar{a}^{2^l-n})^\frac{1}{2^l}=(\bar{a}^n\bar{a}^{2^l-n})^\frac{1}{2^l}=\bar{a}</script><p>整理后即有</p>
+<script type="math/tex; mode=display">
+\frac{a_1+a_2+\cdots+a_n}{n}\ge\sqrt[n]{a_1a_2\cdots a_n}</script><p>对 $\frac{1}{a_1}, \frac{1}{a_2}, \cdots, \frac{1}{a_n}$ 使用上面的结论, 便得到右边的不等式.</p>
+<p>证毕.</p>
+<h1 id="加权平均不等式"><a href="#加权平均不等式" class="headerlink" title="加权平均不等式"></a>加权平均不等式</h1><p>设 $a_1, a_2, \cdots, a_n$ 为正数, $p_1, p_2, \cdots, p_n$ 都是正实数, 并且 $p_1+p_2+\cdots+p_n=1$, 那么</p>
+<script type="math/tex; mode=display">
+p_1a_1+p_2a_2+\cdots+p_na_n\ge a_1^{p_1}a_2^{p_2}\cdots a_n^{p_n}</script><p><strong>证</strong></p>
+<p>设正有理数 $p_1, p_2, \cdots, p_n$ 的公分母为 $k$, </p>
+<script type="math/tex; mode=display">
+p_1 = \frac{m_1}{k}, p_2 = \frac{m_2}{k}, \cdots, p_n = \frac{m_n}{k}</script><p>因为 $p_1+p_2+\cdots+p_n=1$</p>
+<p>所以 $m_1+m_2+\cdots + m_n=k(p_1+p_2+\cdots+p_n)=k$</p>
+<p>在平均值不等式中取 $m_1$ 个 $a_1$, $m_2$ 个 $a_2$, $\cdots$, $m_n$ 个 $a_n$ (共取 $k$ 个元素), 得</p>
+<script type="math/tex; mode=display">
+\frac{m_1a_1+m_2a_2+\cdots+m_na_n}{k}\ge(a_1^{m_1}a_2^{m_2}\cdots a_n^{m_n})^\frac{1}{k}</script><p>由 $m_1, m_2, \cdots, m_n$ 的定义, 立即得</p>
+<script type="math/tex; mode=display">
+p_1a_1+p_2a_2+\cdots+p_na_n\ge a_1^{p_1}a_2^{p_2}\cdots a_n^{p_n}</script><p>证毕.</p>
+<h1 id="W-H-Young不等式"><a href="#W-H-Young不等式" class="headerlink" title="W.H.Young不等式"></a>W.H.Young不等式</h1><p>设 $p, q$ 为实数, 满足条件 $1&lt;p&lt;+\infty, 1&lt;q&lt;+\infty, \frac{1}{p}+\frac{1}{q}=1$, ( $p, q$ 互称为共轭指标), $a, b$ 为正数, 则</p>
+<script type="math/tex; mode=display">
+\frac{a^p}{p}+\frac{b^q}{q}\ge ab</script><p><strong>证</strong></p>
+<p>在加权平均不等式</p>
+<script type="math/tex; mode=display">
+p_1a_1+p_2a_2\ge a_1^{p_1}a_2^{p_2}</script><p>中, 令 $p_1=\frac{1}{p}, p_2=\frac{1}{q}$, 则 $p_1+q_1=1$, 再令 $a_1=a^p, a_2=b^q$, 即得</p>
+<script type="math/tex; mode=display">
+\frac{a^p}{p}+\frac{b^q}{q}\ge ab</script><p>证毕.</p>
+<p>W.H.Young不等式有如下几何意义, 如图在直角坐标系 $xOy$ 中, 设 $OA=a, OB=b$, 则矩阵 $OACB$ 的面积 $S_{OACB}=ab$, 设曲线 $y=x^{p-1}$ 交 $AC$ 的延长线于 $P$, 交 $BC$ 于 $Q$, 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&S_{OAPQ} = \int_0^ax^{p-1}dx=\frac{a^p}{p}\\
+&S_{OBQ} = \int_0^bx^{q-1}dx=\frac{b^q}{q}
+\end{aligned}</script><p>由 $S_{OAPQ}+S_{OBQ}\ge S_{OACB}$ 知</p>
+<script type="math/tex; mode=display">
+\frac{a^p}{p}+\frac{b^q}{q}\ge ab</script><p>等号成立当且仅当 $P$ 和 $C$ 重合, 即 $b=a^{p-1}$ 或 $a^p=b^q$.</p>
+<p><strong>注</strong>  当 $p=2$ 时, $q=2$, 此时 W.H.Young 不等式即为 $\frac{a^2+b^2}{2}\ge ab$, 此时在图(缺)中曲线 $OQP$ 成为直线 $y=x$ 上的线段.</p>
+<h1 id="伯努利不等式"><a href="#伯努利不等式" class="headerlink" title="伯努利不等式"></a>伯努利不等式</h1><p>设 $x&gt;-1$, 且 $x\ne 0$, $n$ 为大于 $1$ 的自然数, 则</p>
+<script type="math/tex; mode=display">
+(1+x)^n>1+nx</script><p><strong>证</strong></p>
+<p>当 $n=2$ 由 $x\ne 0$, 知</p>
+<script type="math/tex; mode=display">
+(1+x)^2 = 1+x^2+2x>1+2x</script><p>假设 $n=k$ ( $k\ge 2$ 为正整数) 时命题成立, 即</p>
+<script type="math/tex; mode=display">
+(1+x)^k>1+kx</script><p>则当 $n=k+1$ 时, </p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(1+x)^{k+1} &= (1+x)^k(1+x)\\
+& >(1+kx)(1+x)\\
+&=1+x+kx+kx^2\\
+&>1+(k+1)x
+\end{aligned}</script><p>由数学归纳法知命题成立.</p>
+<p>证毕.</p>
+<h2 id="推广的伯努利不等式"><a href="#推广的伯努利不等式" class="headerlink" title="推广的伯努利不等式"></a>推广的伯努利不等式</h2><p>设 $\alpha$ 为有理数, $x&gt;-1$, </p>
+<p>(1) 如果 $0&lt;\alpha &lt; 1$, 则</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha} \le 1+\alpha x</script><p>(2) 如果 $\alpha &lt; 0 $ 或者 $\alpha &gt;1$, 则</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha} \ge 1+\alpha x</script><p>当且仅当 $x=0$ 时等号成立.</p>
+<p><strong>证</strong></p>
+<p>显然当 $x=0$ 时等号成立.</p>
+<p>(1) $0&lt;\alpha &lt; 1$ 令</p>
+<script type="math/tex; mode=display">
+\alpha = \frac{m}{n}, 1\le m < n</script><p>其中 $m, n$ 为正整数, 则由平均值不等式</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(1+x)^{\alpha} &=(1+x)^{\frac{m}{n}}\\
+&=\sqrt[n]{\underbrace{(1+x)\cdots(1+x)}_{m}\overbrace{1\cdots1}^{n-m}}\\
+&\le \frac{m(1+x)+(n-m)}{n}\\
+&=\frac{mx+n}{n}\\
+&=1+\alpha x
+\end{aligned}</script><p>由平均值不等式知等号仅当 $1+x=1$, 即 $x=0$ 时成立.</p>
+<p>(2) $\alpha &gt;1$</p>
+<p>(a) 如果 $1+\alpha x<0$, 因为 $x>-1$, 所以 $1+x&gt;0$.</p>
+<p>所以 $(1+x)^{\alpha} &gt;0$, 从而</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha} > 1+\alpha x</script><p>(b) 如果 $1+\alpha x \ge 0$, 因为 $\alpha &gt;1$, 所以 $0&lt;\frac{1}{\alpha}&lt;1$, 故由 (1) 得</p>
+<script type="math/tex; mode=display">
+0\le (1+\alpha x)^{\frac{1}{\alpha}}\le 1+\frac{1}{\alpha}\cdot\alpha x=1+x</script><p>乘方后得</p>
+<script type="math/tex; mode=display">
+1+\alpha x \le (1+x)^{\alpha}</script><p>即</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha}\ge 1+\alpha x</script><p>上式中等号仅当 $x=0$ 时才成立.</p>
+<p>(3) $\alpha&lt;0$</p>
+<p>(a) 如果 $1+\alpha x&lt; 0$, 那么由 $1+x&gt;0$ 知</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha}> 1+\alpha x</script><p>(b) 如果 $1+\alpha x\ge 0$, 存在正整数 $n&gt;1$, 使得 $0&lt;-\frac{\alpha}{n}&lt;1$, 由 (1) 得</p>
+<script type="math/tex; mode=display">
+0<(1+x)^{-\frac{\alpha}{n}}\le1-\frac{\alpha}{n}x</script><p>上式两边都是正数, 两边取倒数, 得</p>
+<script type="math/tex; mode=display">
+(1+x)^{\frac{\alpha}{n}}\ge \frac{1}{1-\frac{\alpha}{n}x}=\frac{1+\frac{\alpha}{n}x}{(1-\frac{\alpha}{n}x)(1+\frac{\alpha}{n}x)}=\frac{1+\frac{\alpha}{n}x}{1-(\frac{\alpha}{n}x)^2}\ge 1+\frac{\alpha}{n}x</script><p>乘方后, 由于$\frac{\alpha}{n}x&gt;-1, n &gt; 1$, 则由 (2) 得</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha} \ge (1+\frac{\alpha}{n}x)^n \ge 1+\frac{\alpha}{n}nx=1+\alpha x</script><p>等号仅当 $x=0$ 时才成立.</p>
+<p>证毕.</p>
+<p><strong>注</strong>  可以证明当 $\alpha$ 为实数时, 定理仍然成立, 其基本思想是用有理数列逼近无理数 $\alpha$. 例如当 $0&lt;\alpha &lt;1$ 时, 取一列有理数 $r_1, r_2, \cdots, r_n, \cdots$ 满足条件 $0&lt;r_n&lt;1$, 且以 $\{r_n\}$ 逼近 $\alpha$, 于是</p>
+<script type="math/tex; mode=display">
+(1+x)^{r_n}\le 1+r_nx, n=1, 2, \cdots</script><p>利用极限理论可以证明</p>
+<script type="math/tex; mode=display">
+(1+x)^{\alpha} \le 1+\alpha x</script><p>且可以证明当且仅当 $x = 0$ 时等号成立. 类似地也可以用极限的思想来证明, 当 $\alpha$ 为实数且当 $\alpha<0$ 或 $\alpha > 1$ 时, 定理仍然成立.</p>
+<h1 id="柯西不等式"><a href="#柯西不等式" class="headerlink" title="柯西不等式"></a>柯西不等式</h1><h2 id="代数形式"><a href="#代数形式" class="headerlink" title="代数形式"></a>代数形式</h2><p>设 $a_1, a_2, b_1, b_2$ 均为实数, 则</p>
+<script type="math/tex; mode=display">
+(a_1^2+a_2^2)(b_1^2+b_2^2)\ge(a_1b_1+a_2b_2)^2</script><p>当且仅当 $\frac{a_1}{b_1}=\frac{a_2}{b_2}$ 时, 等号成立.</p>
+<p><strong>证</strong></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&(a_1^2+a_2^2)(b_1^2+b_2^2)-(a_1b_1+a_2b_2)^2\ge 0\\
+\iff& a_1^2b_1^2+a_2^2b_2^2+a_1^2b_2^2+a_2^2b_1^2-a_1^2b_1^2-a_2^2b_2^2-2a_1b_1a_2b_2 \ge 0\\
+\iff& a_1^2b_2^2-2a_1b_1a_2b_2+a_2^2b_1^2\ge 0\\
+\iff& (a_1b_2-a_2b_1)^2\ge 0
+\end{aligned}</script><p>上式中等号成立当且仅当 $a_1b_2=a_2b_1$.</p>
+<h3 id="一般代数形式"><a href="#一般代数形式" class="headerlink" title="一般代数形式"></a>一般代数形式</h3><p>设 $a_1, a_2, \cdots, a_n, b_1, b_2, \cdots, b_n$ 为实数, 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&(a_1^2+a_2^2+\cdots+a_n^2)(b_1^2+b_2^2+\cdots+b_n^2)\ge (a_1b_1+a_2b_2+\cdots+a_nb_n)^2\\
+\iff & \sum_{i=1}^n a_i^2\sum_{i=1}^nb_i^2\ge(\sum_{i=1}^n a_ib_i)^2
+\end{aligned}</script><p>当且仅当  $\frac{a_1}{b_1}=\frac{a_2}{b_2}=\cdots=\frac{a_n}{b_n}$ (当$b_i=0$ 时, 认为 $a_i=0, i = 1, 2, \cdots, n$)</p>
+<p><strong>证</strong></p>
+<p>记 $f(x) = (a_1+b_1x)^2+(a_2+b_2x)^2+\cdots+(a_n+b_nx)^2$</p>
+<p>由 $f(x)\ge 0$ 知, $f(x)$ 不可能存在两个不同的根.</p>
+<p>展开得</p>
+<script type="math/tex; mode=display">
+f(x) = (b_1^2+b_2^2+\cdots+b_n^2)x^2+2(a_1b_2+a_2b_2+\cdots+a_nb_n)x+(a_1^2+a_2^2+\cdots+a_n^2)</script><p>由二次函数根判别式</p>
+<script type="math/tex; mode=display">
+\Delta = 4(a_1b_2+a_2b_2+\cdots+a_nb_n)^2-4(b_1^2+b_2^2+\cdots+b_n^2)(a_1^2+a_2^2+\cdots+a_n^2)\le 0</script><p>所以</p>
+<script type="math/tex; mode=display">
+(a_1^2+a_2^2+\cdots+a_n^2)(b_1^2+b_2^2+\cdots+b_n^2)\ge (a_1b_1+a_2b_2+\cdots+a_nb_n)^2</script><h3 id="其他代数形式"><a href="#其他代数形式" class="headerlink" title="其他代数形式"></a>其他代数形式</h3><p>将 $\frac{a_i}{\sqrt{b_i}}, \sqrt{b_i}$ 分别代入柯西不等式即得</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n \frac{a_i^2}{b_i}\ge\frac{\left(\sum_{i=1}^n a_i\right)^2}{\sum_{i=1}^n b_i}</script><p>将 $\sqrt{a_i}, \frac{1}{\sqrt{a_i}}$ 分别代入柯西不等式即得</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^n a_i \sum_{i=1}^n \frac{1}{a_i} \ge n^2</script><p>将柯西不等式两边同时开方得</p>
+<script type="math/tex; mode=display">
+\sqrt{\sum_{i=1}^n a_i^2}\cdot\sqrt{\sum_{i=1}^n b_i^2}\ge \left|\sum_{i=1}^n a_ib_i\right|</script><p>由上式可得</p>
+<script type="math/tex; mode=display">
+|A\sin x+B\cos x|\le \sqrt{A^2+B^2}</script><h2 id="向量形式"><a href="#向量形式" class="headerlink" title="向量形式"></a>向量形式</h2><p>设 $\alpha, \beta$ 为平面上的两个向量, 则</p>
+<script type="math/tex; mode=display">
+|\alpha|\cdot|\beta|\ge |\alpha \cdot \beta|</script><p>当且仅当向量 $\alpha$ 和 $\beta$ 平行时, 等号成立.</p>
+<p><strong>证</strong></p>
+<p>由向量相乘和向量模长定义</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\alpha \cdot \beta = |\alpha|\cdot|\beta|\cdot \cos\langle\alpha, \beta\rangle\\
+&\alpha\cdot \beta = a_1b_1+a_2b_2\\
+&|\alpha| = \sqrt{\alpha \cdot \alpha}=\sqrt{a_1^2+a_2^2}\\
+&|\beta| = \sqrt{\beta \cdot \beta} = \sqrt{b_1^2+b_2^2}
+\end{aligned}</script><p>于是</p>
+<script type="math/tex; mode=display">
+\cos\langle\alpha, \beta\rangle = \frac{a_1b_1+a_2b_2}{\sqrt{a_1^2+a_2^2}\cdot\sqrt{b_1^2+b_2^2}}\\</script><p>由柯西不等式的代数形式有</p>
+<script type="math/tex; mode=display">
+\cos^2\langle\alpha, \beta\rangle = \frac{(a_1b_1+a_2b_2)^2}{(a_1^2+a_2^2)\cdot (b_1^2+b_2^2)}\le 1</script><p>即得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(a_1^2+a_2^2)\cdot (b_1^2+b_2^2)&\ge(a_1b_1+a_2b_2)^2\\
+\sqrt{a_1^2+a_2^2}\cdot\sqrt{b_1^2+b_2^2}&\ge |a_1b_1+a_2b_2|\\
+|\alpha|\cdot|\beta|&\ge |\alpha \cdot \beta|
+\end{aligned}</script><h2 id="三角形式"><a href="#三角形式" class="headerlink" title="三角形式"></a>三角形式</h2><p>设 $a_1, a_2, b_1, b_2$ 为实数, 则</p>
+<script type="math/tex; mode=display">
+\sqrt{a_1^2+a_2^2}+\sqrt{b_1^2+b_2^2}\ge \sqrt{(a_1+b_1)^2+(a_2+b_2)^2}</script><p>当且仅当 $\frac{a_1}{b_1}=\frac{a_2}{b_2}$时, 等号成立.</p>
+<p><strong>证</strong></p>
+<p>记平面上非零向量 $\alpha = (a_1, a_2), \beta = (b_1, b_2)$, 则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\alpha + \beta = (a_1+b_1, a_2+b2)\\
+&|\alpha| = \sqrt{a_1^2+a_2^2}\\
+&|\beta| = \sqrt{b_1^2+b_2^2}\\
+&|\alpha + \beta| = \sqrt{(a_1+b_1)^2+(a_2+b_2)^2}
+\end{aligned}</script><p>不妨设向量 $\alpha, \beta, \alpha+\beta$ 的起点都为 $O$, 终点分别为 $A, B, C$, 则在 $\Delta OBC$ 中, 由三角形两边之和不小于第三边</p>
+<script type="math/tex; mode=display">
+|\vec{OB}|+|\vec{BC}|\ge|\vec{OC}|</script><p>即</p>
+<script type="math/tex; mode=display">
+|\alpha|+|\beta| \ge |\alpha+\beta|</script><p>其中等号成立当且仅当 $\alpha$ 与 $\beta$ 的夹角为零, 即 $\frac{a_1}{b_1}=\frac{a_2}{b_2}$.</p>
+<h2 id="积分形式"><a href="#积分形式" class="headerlink" title="积分形式"></a>积分形式</h2><script type="math/tex; mode=display">
+\int f^2(x)dx\int g^2(x)dx\ge \left(\int f(x)g(x)dx\right)^2</script><h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><script type="math/tex; mode=display">
+|\sqrt{a}-\sqrt{b}|\le \sqrt{|a-b|}</script>]]></content>
+      <categories>
+        <category>不等式</category>
       </categories>
   </entry>
 </search>
