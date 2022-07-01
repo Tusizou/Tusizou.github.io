@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1.关系数据结构</title>
+    <title>1</title>
     <url>/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
@@ -33,11 +33,11 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p>关系中，候选码中的属性称为主属性（Prime Attribute），不包含在任何候选码中的属性称为非主属性（Non-Key Attribute）。</p>
 ]]></content>
       <categories>
-        <category>关系模式</category>
+        <category>未分类</category>
       </categories>
   </entry>
   <entry>
-    <title>2.数据依赖</title>
+    <title>2</title>
     <url>/2022/06/29/2.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
@@ -68,11 +68,11 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
 ]]></content>
       <categories>
-        <category>关系模式</category>
+        <category>未分类</category>
       </categories>
   </entry>
   <entry>
-    <title>3.关系模式的规范化</title>
+    <title>3</title>
     <url>/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
@@ -105,18 +105,16 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
 ]]></content>
       <categories>
-        <category>关系模式</category>
+        <category>未分类</category>
       </categories>
   </entry>
   <entry>
-    <title>4.关系模式的分解</title>
+    <title>4</title>
     <url>/2022/06/29/4.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
-<h1 id="一、关系模式分解的算法基础"><a href="#一、关系模式分解的算法基础" class="headerlink" title="一、关系模式分解的算法基础"></a>一、关系模式分解的算法基础</h1><p><strong>1. 函数依赖的逻辑蕴含</strong></p>
-<p>设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。</p>
-<p><strong>2. Armstrong 公理系统</strong></p>
-<p><strong>（1）Armstrong 公理</strong></p>
+<h1 id="一、关系模式分解的算法基础"><a href="#一、关系模式分解的算法基础" class="headerlink" title="一、关系模式分解的算法基础"></a>一、关系模式分解的算法基础</h1><h2 id="1-函数依赖的逻辑蕴含"><a href="#1-函数依赖的逻辑蕴含" class="headerlink" title="1. 函数依赖的逻辑蕴含"></a>1. 函数依赖的逻辑蕴含</h2><p>设 𝘍 是模式 𝘙&lt;𝘜&gt; 的函数依赖集，𝘟 和 𝘠 是属性集 𝘜 的子集。如果从 𝘍 中的函数依赖能推出 𝘟 $\to$ 𝘠，则称 𝘍 逻辑蕴含 𝘟 $\to$ 𝘠，或称 𝘟 $\to$ 𝘠 是 𝘍 的逻辑蕴含。</p>
+<h2 id="2-Armstrong-公理系统"><a href="#2-Armstrong-公理系统" class="headerlink" title="2. Armstrong 公理系统"></a>2. Armstrong 公理系统</h2><p><strong>（1）Armstrong 公理</strong></p>
 <p>设 𝘜 为属性集，𝘍 是 𝘜 上的函数依赖集，于是有关系模式 𝘙&lt;𝘜，𝘍&gt;。对 𝘙&lt;𝘜，𝘍&gt; 来说，有以下的推理规则：</p>
 <ul>
 <li>自反律（Reflexivity）：若 𝘠 $\subseteq$ 𝘟 $\subseteq$ 𝘜，则 𝘟 $\to$ 𝘠 为 𝘍 所蕴含。</li>
@@ -159,8 +157,7 @@ t_2:\overbrace{11\cdots\cdots\cdots1}^{X^+_F}\quad &\overbrace{00\cdots\cdots\cd
 t_1:11\cdots\cdots\cdots1\quad &11\cdots\cdots\cdots1
 \end{aligned}</script><p>利用反证法，若 𝘳 不是 𝘙&lt;𝘜，𝘍&gt; 的关系，则一定是因为 𝘍 中有某一个函数依赖 𝘝 $\to$ 𝘞 在 𝘳 上不成立导致的，即 𝘝 $\nrightarrow$ 𝘞。依据属性集闭包和函数依赖的定义，由 𝘳 的构成可知，一定有 $𝘝\subseteq X^+_F$，而 $W\nsubseteq X^+_F$，这与 𝘢 中结论 $W\subseteq X^+_F$ 矛盾。所以 𝘳 必是 𝘙&lt;𝘜，𝘍&gt; 的一个关系。</p>
 <p>𝘤. 若 𝘟 $\to$ 𝘠 不能由 𝘍 从 Armstrong 公理导出，由引理2，有 $Y\nsubseteq X^+_F$ ，因此必有 𝘠 的子集 𝘠’ 满足 $Y’\subseteq U-X^+_F$，依据函数依赖的定义，𝘟 $\to$ 𝘠 在 𝘳 中不成立，即 𝘟 $\to$ 𝘠 必不为 𝘙&lt;𝘜，𝘍&gt; 所蕴含。</p>
-<p><strong>3. 闭包</strong></p>
-<p><strong>（1）函数依赖集闭包</strong></p>
+<h2 id="3-闭包"><a href="#3-闭包" class="headerlink" title="3. 闭包"></a>3. 闭包</h2><p><strong>（1）函数依赖集闭包</strong></p>
 <p>在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，为 𝘍 所逻辑蕴含的函数依赖的全体叫做 𝘍 的闭包，记作 $F^+$。在一般情况下，$F\le F^+$。如果 $F=F^+$，则称 𝘍 是函数依赖的完备集。</p>
 <p><strong>（2）属性集闭包</strong></p>
 <p>设有关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘟 是 𝘜 的子集，称所有用公理从 𝘍 推出的函数依赖集 $X \to A_i$ 中 $A_i$ 的属性集为 𝘟 在 𝘍 上的属性闭包，记作 $X^+_F$，即：</p>
@@ -178,8 +175,7 @@ X^+_F=\{A_i|A_i\in U,X\to A_i \in F^+\}</script><p>由公理的自反律可知 �
 <p>$X_F^{(2)}$＝𝘈𝘉𝘊𝘋𝘌；由 𝘊 $\to$ 𝘌 可得 𝘌 在闭包中</p>
 <p>$X_F^{(3)}=X_F^{(2)}$＝𝘈𝘉𝘊𝘋𝘌；进一步求得的结果与上一步结果相同，结束。</p>
 <p>所以 $(AB)^+_F$＝𝘈𝘉𝘊𝘋𝘌＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝。</p>
-<p><strong>4. 函数依赖集</strong></p>
-<p><strong>（1）函数依赖集的等价和覆盖</strong></p>
+<h2 id="4-函数依赖集"><a href="#4-函数依赖集" class="headerlink" title="4. 函数依赖集"></a>4. 函数依赖集</h2><p><strong>（1）函数依赖集的等价和覆盖</strong></p>
 <p>设 𝘍 和 𝘎 是两个函数依赖集，如果 $F^+$＝$G^+$，则称 𝘍 和 𝘎 等价。𝘍 和 𝘎 等价说明 𝘍 覆盖 𝘎，同时 𝘎 也覆盖 𝘍。</p>
 <p><strong>（2）判定两函数依赖集等价的方法</strong></p>
 <p>从定义可知，判断 𝘍 和 𝘎 是否等价就是要判断它们是否相互覆盖，既要检查是否 𝘍 $\subseteq$ 𝘎$^+$，又要检查是否 𝘎 $\subseteq$ 𝘍$^+$，如果两者都成立才能确定 𝘍 和 𝘎 等价，具体判断方法如下：</p>
@@ -250,7 +246,76 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的�
 </ul>
 ]]></content>
       <categories>
-        <category>关系模式</category>
+        <category>未分类</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo 配置指南</title>
+    <url>/2022/07/02/Hexo%20%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="前置依赖环境"><a href="#前置依赖环境" class="headerlink" title="前置依赖环境"></a>前置依赖环境</h1><ul>
+<li><p><code>git</code></p>
+</li>
+<li><p><code>node v12.15.0</code></p>
+</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init     <span class="comment"># 初始化静态博客</span></span><br><span class="line">npm install   <span class="comment"># 安装依赖项</span></span><br><span class="line">hexo server   <span class="comment"># 开启本地服务端口</span></span><br></pre></td></tr></table></figure>
+<h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><h2 id="更换"><a href="#更换" class="headerlink" title="更换"></a>更换</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p><code>\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+<h2 id="分栏"><a href="#分栏" class="headerlink" title="分栏"></a>分栏</h2><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo new page tags         <span class="comment"># 生成标签页</span></span><br><span class="line">hexo new page categories   <span class="comment"># 生成目录页</span></span><br></pre></td></tr></table></figure>
+<p><code>\source\categories\index.md</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">目录</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">categories</span></span><br></pre></td></tr></table></figure>
+<p><code>\source\tags\index.md</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">tags</span></span><br></pre></td></tr></table></figure>
+<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p><code>\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Local Search</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="概述折叠"><a href="#概述折叠" class="headerlink" title="概述折叠"></a>概述折叠</h2><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Automatically excerpt description in homepage as preamble text.</span></span><br><span class="line"><span class="attr">excerpt_description:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>在<code>Front-matter</code>下方键入</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&amp;emsp;</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="以文件名排序"><a href="#以文件名排序" class="headerlink" title="以文件名排序"></a>以文件名排序</h2><p><code>_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-name</span></span><br></pre></td></tr></table></figure>
+<p><code>\node_modules\hexo-generator-tag\lib</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">orderBy</span> <span class="string">=</span> <span class="string">config.tag_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
+<p><code>\node_modules\hexo-generator-category\lib</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">orderBy</span> <span class="string">=</span> <span class="string">config.category_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
+<p><code>\node_modules\hexo-generator-archive\lib</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">allPosts</span> <span class="string">=</span> <span class="string">locals.posts.sort(config.archive_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">);</span></span><br></pre></td></tr></table></figure>
+<h2 id="隐藏创建-更新时间"><a href="#隐藏创建-更新时间" class="headerlink" title="隐藏创建/更新时间"></a>隐藏创建/更新时间</h2><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Post meta display settings</span></span><br><span class="line"><span class="attr">post_meta:</span></span><br><span class="line">  <span class="attr">item_text:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">created_at:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">updated_at:</span> </span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">another_day:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="PDF-渲染支持"><a href="#PDF-渲染支持" class="headerlink" title="PDF 渲染支持"></a>PDF 渲染支持</h2><blockquote>
+<p>npm install —save hexo-pdf</p>
+</blockquote>
+<p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">pdf:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Default height</span></span><br><span class="line">  <span class="attr">height:</span> <span class="string">500px</span></span><br></pre></td></tr></table></figure>
+<p><code>_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>hexo new page filename</p>
+</blockquote>
+<p>在生成的 filename 文件夹中放入PDF文件，再回到 md 文件中使用 <code>&#123;% pdf 文件名.pdf %&#125;</code> 引用PDF文件</p>
+<h1 id="GitHub-Pages部署"><a href="#GitHub-Pages部署" class="headerlink" title="GitHub Pages部署"></a>GitHub Pages部署</h1><p><code>\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;http://example.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://grocerynotes.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:GbtH-13/grocerynotes.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<h1 id="mathjax支持"><a href="#mathjax支持" class="headerlink" title="mathjax支持"></a>mathjax支持</h1><h2 id="更换渲染器"><a href="#更换渲染器" class="headerlink" title="更换渲染器"></a>更换渲染器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<h2 id="开启渲染"><a href="#开启渲染" class="headerlink" title="开启渲染"></a>开启渲染</h2><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Math Formulas Render Support</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="禁用渲染"><a href="#禁用渲染" class="headerlink" title="禁用渲染"></a>禁用渲染</h2><p><code>\scaffolds\post.md</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">title:</span> &#123;&#123; <span class="string">title</span> &#125;&#125;</span><br><span class="line"><span class="attr">date:</span> &#123;&#123; <span class="string">date</span> &#125;&#125;</span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">false</span>  <span class="comment"># 在文章front-matter中需要写true开启渲染</span></span><br></pre></td></tr></table></figure>
+<h2 id="解决转义冲突"><a href="#解决转义冲突" class="headerlink" title="解决转义冲突"></a>解决转义冲突</h2><p><code>\node_modules\kramed\lib\rules\inline.js</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/**</span></span><br><span class="line"> <span class="string">*</span> <span class="string">修改下列转义规则</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">escape:</span> <span class="string">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"> <span class="string">*</span> <span class="attr">em:</span> <span class="string">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br><span class="line"><span class="string">*/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">escape:</span> <span class="string">/^\\([`*\[\]()#$+\-.!_&gt;])/,</span></span><br><span class="line"><span class="attr">em:</span> <span class="string">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>未分类</category>
       </categories>
   </entry>
 </search>
