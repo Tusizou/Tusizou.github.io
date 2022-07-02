@@ -249,7 +249,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余
 <script type="math/tex; mode=display">
 \rho=\{R_1<U_1,F_1>,R_2<U_2,F_2>,\cdots,R_n<U_n,F_n>\}</script><p>其中 $U=\bigcup\limits^n_{i=1}U_i$，并且没有 $U_i\subseteq U_j$，1 $\le$ 𝘪，𝘫 $\le$ 𝘯，𝘍$_i$ 是 𝘍 在 𝘜$_i$ 上的投影。</p>
 <p>（2）函数依赖的投影</p>
-<p>函数依赖集合｛𝘟 $\to$ 𝘠 | 𝘟 $\to$ 𝘠 $\in$ 𝘍$^+$ $\and$ 𝘟𝘠 $\subseteq$ 𝘜$_i$｝的一个覆盖 𝘍$_i$ 叫做 𝘍 在属性 𝘜$_i$ 上的投影。</p>
+<p>函数依赖集合｛𝘟 $\to$ 𝘠 | 𝘟 $\to$ 𝘠 $\in$ 𝘍$^+$ $\wedge$ 𝘟𝘠 $\subseteq$ 𝘜$_i$｝的一个覆盖 𝘍$_i$ 叫做 𝘍 在属性 𝘜$_i$ 上的投影。</p>
 <p>例如，在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，𝘍 为 𝘙 上的函数依赖集，𝘍＝｛𝘈 $\to$ 𝘉，𝘉 $\to$ 𝘊，𝘈 $\to$ 𝘋，𝘋 $\to$ 𝘊｝，$\rho$＝｛𝘈𝘉，𝘈𝘊，𝘉𝘋｝是 𝘙 的一个分解，则：$\pi_{AB}(F)=\{A\to B\}$，$\pi_{AC}(F)=\{A\to C\}$，$\pi_{BD}(F)=\varnothing$。</p>
 <h1 id="二、无损连接性（Lossless-Join）"><a href="#二、无损连接性（Lossless-Join）" class="headerlink" title="二、无损连接性（Lossless Join）"></a>二、无损连接性（Lossless Join）</h1><p>（1）两个关系的无损连接性</p>
 <p>设关系模式 𝘙，如果把它分解为两个（或多个）子模式 $R_1$ 和 $R_2$，相应一个 𝘙 关系中是数据就要被分成 $R_1$、$R_2$ 两个（或多个）子表。假如把这些子表自然连接，即进行 $R_1 \Join R_2$ 操作，得到的结果与原来关系中的数据一致，信息并没有丢失，则称该分解具有无损连接性，否则如果 $R\neq R_1 \Join R_2$，则称该分解不具有无损连接性。</p>
