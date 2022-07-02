@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="&amp;emsp;">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-07-02T09:36:33.496Z">
-<meta property="article:modified_time" content="2022-07-02T09:36:33.496Z">
+<meta property="article:modified_time" content="2022-07-02T10:08:18.543Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
@@ -201,7 +201,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">关系模式</span></a>
+                  <a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/" itemprop="url" rel="index"><span itemprop="name">未分类</span></a>
                 </span>
             </span>
 
@@ -289,29 +289,57 @@ X^+_F=\{A_i|A_i\in U,X\to A_i \in F^+\}</script><p>由公理的自反律可知 �
 <h2 id="4-最小函数依赖集的求法"><a href="#4-最小函数依赖集的求法" class="headerlink" title="4. 最小函数依赖集的求法"></a>4. 最小函数依赖集的求法</h2><p>分三步对 𝘍 进行极小化处理，找出 𝘍 的一个最小依赖集：</p>
 <p>（1）逐一检查 𝘍 中各函数依赖 𝘟 $\to$ 𝘠，若 $Y=A_1A_2\cdots A_k,k\ge2$，则用 $\{X\to A_j | j=1,2,\cdots,k\}$ 来取代 𝘟 $\to$ 𝘠。</p>
 <p>（2）逐一取出 𝘍 中各函数依赖 𝘟 $\to$ 𝘈，令 𝘎＝𝘍 $-$｛𝘟 $\to$ 𝘈｝，若 $A\in X^+_G$，则从 𝘍 中去掉此函数依赖（因为 𝘍 与 𝘎 等价的充要条件是 $A\in X^+_G$）。</p>
-<p>（3）逐一取出 𝘍 中各函数依赖 𝘟 $\to$ 𝘈，设 $X=B_1B_2\cdots B_m$，逐一检查 $B_i(i=1,2,\cdots,m)$，如果 $A\in (X-B_i)^+_F$，则以 𝘟 $-$ 𝘉$_i$ 取代 𝘟（因为 𝘍 与 𝘍 $-$｛𝘟 $\to$ 𝘈｝$\cup$ ｛𝘡 $\to$ 𝘈｝ 等价的充要条件是 $A\in Z^+_F$，其中 𝘡＝𝘟 $-$ 𝘉$_i$）。</p>
+<p>（3）逐一取出 𝘍 中各函数依赖 𝘟 $\to$ 𝘈，设 $X=B_1B_2\cdots B_m$，逐一检查 $B_i(i=1,2,\cdots,m)$，如果 $A\in (X-B_i)^+_F$，则以 𝘟 $-$ 𝘉$_i$ 取代 𝘟（因为 𝘍 与 𝘍 $-$｛𝘟 $\to$ 𝘈｝$\cup$ ｛(𝘟 $-$ 𝘉$_i$) $\to$ 𝘈｝ 等价的充要条件是 $A\in (X-B_i)^+_F$）。</p>
 <p>因为对 𝘍 的每一次改造都保证了改造前后的两个函数依赖集等价，最后得到的 𝘍 就一定是极小依赖集，并且与原来的 𝘍 等价。应当指出的是，𝘍 的最小依赖集 $F_m$ 不一定是唯一的，它与对各函数依赖及 𝘟 $\to$ 𝘈 中 𝘟 各属性的处置有关。</p>
 <h3 id="例题1"><a href="#例题1" class="headerlink" title="例题1"></a>例题1</h3><p>设 𝘍＝｛𝘈 $\to$ 𝘉𝘊，𝘉 $\to$ 𝘈𝘊，𝘊 $\to$ 𝘈｝，对 𝘍 进行极小化处理。</p>
-<p>a. 根据分解规则把 𝘍 中的函数依赖转换成右部都是单属性的函数依赖集合，分解后的函数依赖集仍用 𝘍 表示：</p>
+<p>（1）根据分解规则把 𝘍 中的函数依赖转换成右部都是单属性的函数依赖集合，分解后的函数依赖集仍用 𝘍 表示：</p>
 <script type="math/tex; mode=display">
-F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的函数依赖。</p>
-<p>①判断 𝘈 $\to$ 𝘉 是否冗余：</p>
+F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余的函数依赖。</p>
+<p>① 判断 𝘈 $\to$ 𝘉 是否冗余：</p>
 <p>设 $G_1=\{A\to C,B\to A,B\to C,C\to A\}$，得 $A^+_{G1}=AC$。</p>
 <p>因为 $B\notin A^+_{G1}$，所以 𝘈 $\to$ 𝘉 不冗余。</p>
-<p>②判断 𝘈 $\to$ 𝘊 是否冗余：</p>
+<p>② 判断 𝘈 $\to$ 𝘊 是否冗余：</p>
 <p>设 $G_2=\{A\to B,B\to A,B\to C,C\to A\}$，得 $A^+_{G2}=ABC$。</p>
 <p>因为 $C\in A^+_{G2}$，所以 𝘈 $\to$ 𝘊 冗余（以后的检查不再考虑 𝘈 $\to$ 𝘊）。</p>
-<p>③判断 𝘉 $\to$ 𝘈 是否冗余：</p>
+<p>③ 判断 𝘉 $\to$ 𝘈 是否冗余：</p>
 <p>设 $G_3=\{A\to B,B\to C,C\to A\}$，得 $B^+_{G3}=BCA$。</p>
 <p>因为 $A\in B^+_{G3}$，所以 𝘉 $\to$ 𝘈 冗余（以后的检查不再考虑 𝘉 $\to$ 𝘈）。</p>
-<p>④判断 𝘉 $\to$ 𝘊 是否冗余：</p>
+<p>④ 判断 𝘉 $\to$ 𝘊 是否冗余：</p>
 <p>设 $G_4=\{A\to B，C\to A\}$，得 $B^+_{G4}=B$。</p>
 <p>因为 $C\notin B^+_{G4}$，所以 𝘉 $\to$ 𝘊 不冗余。</p>
-<p>⑤判断 𝘊 $\to$ 𝘈 是否冗余：</p>
+<p>⑤ 判断 𝘊 $\to$ 𝘈 是否冗余：</p>
 <p>设 $G_5=\{A\to B，B\to C\}$，得 $C^+_{G5}=C$。</p>
 <p>因为 $A\notin C^+_{G5}$，所以 𝘊 $\to$ 𝘈 不冗余。</p>
 <p>故最小依赖集为 $F_m=\{A\to B,B\to C,C\to A\}$。</p>
-<h3 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h3>
+<h3 id="例题2"><a href="#例题2" class="headerlink" title="例题2"></a>例题2</h3><p>求 𝘍＝｛𝘈𝘉 $\to$ 𝘊，𝘈 $\to$ 𝘉，𝘉 $\to$ 𝘈｝的最小函数依赖集 $F_m$。</p>
+<p>（1）将 𝘍 中的函数依赖都分解为右部为单属性的函数依赖，很显然，𝘍 满足该条件。</p>
+<p>（2）去掉 𝘍 中冗余的函数依赖。</p>
+<p>① 判断 𝘈𝘉 $\to$ 𝘊 是否冗余：</p>
+<p>设 $G_1=\{A\to B,B\to A\}$，得 $(AB)_{G1}^+=AB$。</p>
+<p>因为 $C\notin (AB)_{G1}^+ $，所以 𝘈𝘉 $\to$ 𝘊 不冗余。</p>
+<p>② 判断 𝘈 $\to$ 𝘉 是否冗余：</p>
+<p>设 $G_2=\{AB\to C,B\to A\}$，得 $A^+_{G2}=A$。</p>
+<p>因为 $B\notin A^+_{G2}$，所以 𝘈 $\to$ 𝘉 不冗余。</p>
+<p>③ 判断 𝘉 $\to$ 𝘈 是否冗余：</p>
+<p>设 $G_3=\{AB\to C,A\to B\}$，得 $B_{G3}^+=B$。</p>
+<p>因为 $A\notin B_{G3}^+$，所以 𝘉 $\to$ 𝘈 不冗余。</p>
+<p>经过检验后的函数依赖集仍然为 𝘍。</p>
+<p>（3）去掉各函数依赖左部冗余的属性。</p>
+<p>本例只需考虑 𝘈𝘉 $\to$ 𝘊 的情况。</p>
+<p>方法1：在决定因素中去掉 𝘉，求 $A_F^+$，若 $C\in A^+_F$，则以 𝘈 $\to$ 𝘊 代替 𝘈𝘉 $\to$ 𝘊。</p>
+<p>求得 $A^+_F=ABC$，因为 $C\in A^+_F$，所以，以 𝘈 $\to$ 𝘊 代替 𝘈𝘉 $\to$ 𝘊。</p>
+<p>故 $F_m=\{A\to C,A\to B,B\to A\}$。</p>
+<p>方法2： 在决定因素中去掉 𝘈，求$B^+_F$，若 $C\in B^+_F$，则以 𝘉 $\to$ 𝘊 代替 𝘈𝘉 $\to$ 𝘊。</p>
+<p>求得 $B^+_F=ABC$，因为 $C\in B^+_F$，所以，以 𝘉 $\to$ 𝘊 代替 𝘈𝘉 $\to$ 𝘊。</p>
+<p>故 $F_m=\{B\to C,A\to B,B\to A\}$。</p>
+<h1 id="五、关系模式码的求法"><a href="#五、关系模式码的求法" class="headerlink" title="五、关系模式码的求法"></a>五、关系模式码的求法</h1><p>设 𝘙&lt;𝘈$_1$，𝘈$_2$，$\cdots$，𝘈$_n$&gt; 为一关系模式，𝘍 为 𝘙 所满足的一组函数依赖，𝘟 为｛𝘈$_1$，𝘈$_2$，$\cdots$，𝘈$_n$｝的子集，如果 𝘟 满足以下条件：</p>
+<ul>
+<li>𝘟 $\to$ 𝘈$_1$，𝘈$_2$，$\cdots$，𝘈$_n\in$ 𝘍$^+$。</li>
+<li>不存在 𝘟 的真子集 𝘠，𝘠 $\subset$ 𝘟，𝘠 $\to$ 𝘈$_1$，𝘈$_2$，$\cdots$，𝘈$_n\in$ 𝘍$^+$。</li>
+</ul>
+<p>则称 𝘟 是关系模式的码。</p>
+<p>上述定义实际上也就是求关系模式码的方法。</p>
+
     </div>
 
     
@@ -388,7 +416,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E9%80%BB%E8%BE%91%E8%95%B4%E5%90%AB"><span class="nav-number">1.</span> <span class="nav-text">一、函数依赖的逻辑蕴含</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Armstrong-%E5%85%AC%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">二、Armstrong 公理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Armstrong-%E5%85%AC%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">1. Armstrong 公理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Armstrong-%E5%85%AC%E7%90%86%E7%9A%84%E4%B8%89%E4%B8%AA%E6%8E%A8%E7%90%86%E8%A7%84%E5%88%99"><span class="nav-number">2.2.</span> <span class="nav-text">2. Armstrong 公理的三个推理规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%A4%E4%B8%AA%E5%BC%95%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3. 两个引理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Armstrong-%E5%85%AC%E7%90%86%E6%98%AF%E6%9C%89%E6%95%88%E7%9A%84%E5%92%8C%E5%AE%8C%E5%A4%87%E7%9A%84"><span class="nav-number">2.4.</span> <span class="nav-text">4. Armstrong 公理是有效的和完备的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%97%AD%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">三、闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E9%97%AD%E5%8C%85"><span class="nav-number">3.1.</span> <span class="nav-text">1. 函数依赖集闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E9%9B%86%E9%97%AD%E5%8C%85"><span class="nav-number">3.2.</span> <span class="nav-text">2. 属性集闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B1%9E%E6%80%A7%E9%9B%86%E9%97%AD%E5%8C%85%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">3. 属性集闭包的求法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">四、函数依赖集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E7%9A%84%E7%AD%89%E4%BB%B7%E5%92%8C%E8%A6%86%E7%9B%96"><span class="nav-number">4.1.</span> <span class="nav-text">1. 函数依赖集的等价和覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%A4%E5%AE%9A%E4%B8%A4%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E7%AD%89%E4%BB%B7%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">2. 判定两函数依赖集等价的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86"><span class="nav-number">4.3.</span> <span class="nav-text">3. 最小函数依赖集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">4.4.</span> <span class="nav-text">4. 最小函数依赖集的求法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%981"><span class="nav-number">4.4.1.</span> <span class="nav-text">例题1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%982"><span class="nav-number">4.4.2.</span> <span class="nav-text">例题2</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E7%9A%84%E9%80%BB%E8%BE%91%E8%95%B4%E5%90%AB"><span class="nav-number">1.</span> <span class="nav-text">一、函数依赖的逻辑蕴含</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Armstrong-%E5%85%AC%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">二、Armstrong 公理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Armstrong-%E5%85%AC%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">1. Armstrong 公理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Armstrong-%E5%85%AC%E7%90%86%E7%9A%84%E4%B8%89%E4%B8%AA%E6%8E%A8%E7%90%86%E8%A7%84%E5%88%99"><span class="nav-number">2.2.</span> <span class="nav-text">2. Armstrong 公理的三个推理规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%A4%E4%B8%AA%E5%BC%95%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">3. 两个引理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Armstrong-%E5%85%AC%E7%90%86%E6%98%AF%E6%9C%89%E6%95%88%E7%9A%84%E5%92%8C%E5%AE%8C%E5%A4%87%E7%9A%84"><span class="nav-number">2.4.</span> <span class="nav-text">4. Armstrong 公理是有效的和完备的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%97%AD%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">三、闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E9%97%AD%E5%8C%85"><span class="nav-number">3.1.</span> <span class="nav-text">1. 函数依赖集闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B1%9E%E6%80%A7%E9%9B%86%E9%97%AD%E5%8C%85"><span class="nav-number">3.2.</span> <span class="nav-text">2. 属性集闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B1%9E%E6%80%A7%E9%9B%86%E9%97%AD%E5%8C%85%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">3.3.</span> <span class="nav-text">3. 属性集闭包的求法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">四、函数依赖集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E7%9A%84%E7%AD%89%E4%BB%B7%E5%92%8C%E8%A6%86%E7%9B%96"><span class="nav-number">4.1.</span> <span class="nav-text">1. 函数依赖集的等价和覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%A4%E5%AE%9A%E4%B8%A4%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E7%AD%89%E4%BB%B7%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">2. 判定两函数依赖集等价的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86"><span class="nav-number">4.3.</span> <span class="nav-text">3. 最小函数依赖集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%9C%80%E5%B0%8F%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%E9%9B%86%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">4.4.</span> <span class="nav-text">4. 最小函数依赖集的求法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%981"><span class="nav-number">4.4.1.</span> <span class="nav-text">例题1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E9%A2%982"><span class="nav-number">4.4.2.</span> <span class="nav-text">例题2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%A0%81%E7%9A%84%E6%B1%82%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">五、关系模式码的求法</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -441,7 +469,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的�
   </span>
   <span class="author" itemprop="copyrightHolder">Tusizou</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
@@ -467,7 +495,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>b. 去掉 𝘍 中冗余的�
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/pisces.js"></script>
+<script src="/js/schemes/muse.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
