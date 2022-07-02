@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>3.关系模式的规范化</title>
-    <url>/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/</url>
-    <content><![CDATA[<p>&emsp;</p>
-<span id="more"></span>
-<h1 id="一、1NF"><a href="#一、1NF" class="headerlink" title="一、1NF"></a>一、1NF</h1><p>如果关系模式 𝘙，其所有的属性均为简单属性，即每个属性都是不可再分的，则称 𝘙 属于第一范式（First Normal Form，1NF），记作 𝘙 $\in$ 1NF。</p>
-<p>例如，教学关系模式中所有的属性都是不可再分的简单属性，即：教学 $\in$ 1NF。</p>
-<h1 id="二、2NF"><a href="#二、2NF" class="headerlink" title="二、2NF"></a>二、2NF</h1><p>若 𝘙 $\in$ 1NF，且每一个非主属性完全依赖于码，则 𝘙 $\in$ 2NF。</p>
-<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
-<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
-<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
-<p>主码＝（学号，课程名）</p>
-<p>非主属性＝（姓名，年龄，性别，系名，系主任，成绩）</p>
-<p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
-<p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
-<h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
-<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
-<blockquote>
-<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
-</blockquote>
-<p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
-<h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
-<p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
-<p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
-<p>（1）所有非主属性对每一个码都是完全函数依赖。</p>
-<p>（2）所有的主属性对每一个不包含它的码，也是完全函数依赖。</p>
-<p>（3）没有任何属性完全函数依赖于非码的任何一组属性。</p>
-<p>例如，对于选课关系模式（学生，教师，课程），语义为：每位教师只能讲授一门课程，每门课程由若干教师讲授；每个学生选修某门课程对应一个固定的教师。由语义可以得到选课关系模式的函数依赖为：𝘍 = ｛（学生，课程）$\to$ 教师，（学生，教师）$\to$ 课程，教师 $\to$ 课程｝。这里（学生，课程）和（学生，教师）都是关系的码，所以关系模式的主属性集合为：｛学生，教师，课程｝，非主属性为：$\varnothing$。由于选课关系模式中无非主属性，所以它属于 3NF，但因为存在函数依赖：教师 $\to$ 课程，由于“教师”不是码，所以选课关系模式不属于 BCNF。可以按 BCNF 的要求将选课关系模式分解为以下两个关系模式：</p>
-<p>学生_教师（学生，教师），教师_课程（教师，课程）</p>
-<h1 id="五、4NF"><a href="#五、4NF" class="headerlink" title="五、4NF"></a>五、4NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，如果对于 𝘙 的每个非平凡多值依赖 𝘟 $\to\to$ 𝘠（𝘠 $\nsubseteq$ 𝘟），𝘟 必含有码，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 4NF。</p>
-<p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
-<h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
-]]></content>
-      <categories>
-        <category>关系模式</category>
-      </categories>
-  </entry>
-  <entry>
     <title>1.关系数据结构</title>
     <url>/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<p>&emsp;</p>
@@ -103,6 +66,43 @@ R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集�
 <p>若 𝘟 $\to\to$ 𝘠，而 𝘡＝$\varnothing$ ，即 𝘡 为空集，则称 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。即对于 𝘙&lt;𝘟，𝘠&gt;，如果有 𝘟 $\to\to$ 𝘠 成立，则 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。</p>
 <h1 id="三、连接依赖（Join-Dependency）"><a href="#三、连接依赖（Join-Dependency）" class="headerlink" title="三、连接依赖（Join Dependency）"></a>三、连接依赖（Join Dependency）</h1><p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的关系模式，$x_1,x_2,\cdots,x_n$ 是 𝘜 的子集，并且 $\bigcup\limits^n_{i=1}x_i=U$，如果 $R=\Join \mathop{R}\limits^n_{i=1}[x_i]$ 对 𝘙 的一切关系均成立，则称 𝘙 在 $x_1,x_2,\cdots,x_n$ 上具有 𝘯 目连接依赖，记作：$\Join [x_1][x_2]\cdots[x_n]$。</p>
 <p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
+]]></content>
+      <categories>
+        <category>关系模式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>3.关系模式的规范化</title>
+    <url>/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="一、1NF"><a href="#一、1NF" class="headerlink" title="一、1NF"></a>一、1NF</h1><p>如果关系模式 𝘙，其所有的属性均为简单属性，即每个属性都是不可再分的，则称 𝘙 属于第一范式（First Normal Form，1NF），记作 𝘙 $\in$ 1NF。</p>
+<p>例如，教学关系模式中所有的属性都是不可再分的简单属性，即：教学 $\in$ 1NF。</p>
+<h1 id="二、2NF"><a href="#二、2NF" class="headerlink" title="二、2NF"></a>二、2NF</h1><p>若 𝘙 $\in$ 1NF，且每一个非主属性完全依赖于码，则 𝘙 $\in$ 2NF。</p>
+<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
+<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
+<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
+<p>主码＝（学号，课程名）</p>
+<p>非主属性＝（姓名，年龄，性别，系名，系主任，成绩）</p>
+<p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
+<p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
+<h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
+<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
+<blockquote>
+<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
+</blockquote>
+<p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
+<h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
+<p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
+<p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
+<p>（1）所有非主属性对每一个码都是完全函数依赖。</p>
+<p>（2）所有的主属性对每一个不包含它的码，也是完全函数依赖。</p>
+<p>（3）没有任何属性完全函数依赖于非码的任何一组属性。</p>
+<p>例如，对于选课关系模式（学生，教师，课程），语义为：每位教师只能讲授一门课程，每门课程由若干教师讲授；每个学生选修某门课程对应一个固定的教师。由语义可以得到选课关系模式的函数依赖为：𝘍 = ｛（学生，课程）$\to$ 教师，（学生，教师）$\to$ 课程，教师 $\to$ 课程｝。这里（学生，课程）和（学生，教师）都是关系的码，所以关系模式的主属性集合为：｛学生，教师，课程｝，非主属性为：$\varnothing$。由于选课关系模式中无非主属性，所以它属于 3NF，但因为存在函数依赖：教师 $\to$ 课程，由于“教师”不是码，所以选课关系模式不属于 BCNF。可以按 BCNF 的要求将选课关系模式分解为以下两个关系模式：</p>
+<p>学生_教师（学生，教师），教师_课程（教师，课程）</p>
+<h1 id="五、4NF"><a href="#五、4NF" class="headerlink" title="五、4NF"></a>五、4NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，如果对于 𝘙 的每个非平凡多值依赖 𝘟 $\to\to$ 𝘠（𝘠 $\nsubseteq$ 𝘟），𝘟 必含有码，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 4NF。</p>
+<p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
+<h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
 ]]></content>
       <categories>
         <category>关系模式</category>
@@ -236,7 +236,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余
 <p>上述定义实际上也就是求关系模式码的方法。</p>
 ]]></content>
       <categories>
-        <category>未分类</category>
+        <category>关系模式</category>
       </categories>
   </entry>
   <entry>
@@ -281,6 +281,8 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">orderBy</span> <span class="string">=</span> <span class="string">config.category_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
 <p><code>\node_modules\hexo-generator-archive\lib</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">allPosts</span> <span class="string">=</span> <span class="string">locals.posts.sort(config.archive_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">);</span></span><br></pre></td></tr></table></figure>
+<h2 id="去除标题序号"><a href="#去除标题序号" class="headerlink" title="去除标题序号"></a>去除标题序号</h2><p><code>\themes\next\_config.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h2 id="隐藏创建-更新时间"><a href="#隐藏创建-更新时间" class="headerlink" title="隐藏创建/更新时间"></a>隐藏创建/更新时间</h2><p><code>\themes\next\_config.yml</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Post meta display settings</span></span><br><span class="line"><span class="attr">post_meta:</span></span><br><span class="line">  <span class="attr">item_text:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">created_at:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">updated_at:</span> </span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">another_day:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <h2 id="PDF-渲染支持"><a href="#PDF-渲染支持" class="headerlink" title="PDF 渲染支持"></a>PDF 渲染支持</h2><blockquote>
