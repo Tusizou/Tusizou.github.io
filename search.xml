@@ -240,6 +240,383 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余
       </categories>
   </entry>
   <entry>
+    <title>5.关系模式分解的规范化性质</title>
+    <url>/2022/07/03/5.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96%E6%80%A7%E8%B4%A8/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="一、分解"><a href="#一、分解" class="headerlink" title="一、分解"></a>一、分解</h1><p>（1）分解的定义</p>
+<p>关系模式 𝘙&lt;𝘜，𝘍&gt; 的一个分解是指 </p>
+<script type="math/tex; mode=display">
+\rho=\{R_1<U_1,F_1>,R_2<U_2,F_2>,\cdots,R_n<U_n,F_n>\}</script><p>其中 $U=\bigcup\limits^n_{i=1}$，并且没有 $U_i\subseteq U_j$，1 $\le$ 𝘪，𝘫 $\le$ 𝘯，𝘍$_i$ 是 𝘍 在 𝘜$_i$ 上的投影。</p>
+<p>（2）函数依赖的投影</p>
+<p>函数依赖集合｛𝘟 $\to$ 𝘠 | 𝘟 $\to$ 𝘠 $\in$ 𝘍$^+$ $\and$ 𝘟𝘠 $\subseteq$ 𝘜$_i$｝的一个覆盖 𝘍$_i$ 叫做 𝘍 在属性 𝘜$_i$ 上的投影。</p>
+<p>例如，在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，𝘍 为 𝘙 上的函数依赖集，𝘍＝｛𝘈 $\to$ 𝘉，𝘉 $\to$ 𝘊，𝘈 $\to$ 𝘋，𝘋 $\to$ 𝘊｝，$\rho$＝｛𝘈𝘉，𝘈𝘊，𝘉𝘋｝是 𝘙 的一个分解，则：$\pi_{AB}(F)=\{A\to B\}$，$\pi_{AC}(F)=\{A\to C\}$，$\pi_{BD}(F)=\varnothing$。</p>
+<h1 id="二、无损连接性（Lossless-Join）"><a href="#二、无损连接性（Lossless-Join）" class="headerlink" title="二、无损连接性（Lossless Join）"></a>二、无损连接性（Lossless Join）</h1><p>（1）两个关系的无损连接性</p>
+<p>设关系模式 𝘙，如果把它分解为两个（或多个）子模式 $R_1$ 和 $R_2$，相应一个 𝘙 关系中是数据就要被分成 $R_1$、$R_2$ 两个（或多个）子表。假如把这些子表自然连接，即进行 $R_1 \Join R_2$ 操作，得到的结果与原来关系中的数据一致，信息并没有丢失，则称该分解具有无损连接性，否则如果 $R\neq R_1 \Join R_2$，则称该分解不具有无损连接性。</p>
+<p>（2）无损连接性的形式化定义</p>
+<p>引入记号，设 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝是 𝘙&lt;𝘜，𝘍&gt; 的一个分解，𝘳 是 𝘙&lt;𝘜，𝘍&gt; 的一个关系，定义 $m_\rho(r)=\mathop{\Join}\limits^k_{i=1}\pi_{R_i}(r)$，即 $m_\rho(r)$ 是 𝘳 在 $\rho$ 中各关系模式上投影的自然连接，这里 $\pi_{R_i}(r)=\{t.U_i|t\in r\}$。根据该记号可以对无损连接性进行形式化定义，设 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝是 𝘙&lt;𝘜，𝘍&gt; 的一个分解，若对 𝘙&lt;𝘜，𝘍&gt; 的任何一个关系 𝘳 均有 $r=m_\rho(r)$ 成立，则称分解 $\rho$ 具有无损连接性，简称 $\rho$ 为无损分解。</p>
+<h2 id="1-保持无损连接性的判定"><a href="#1-保持无损连接性的判定" class="headerlink" title="1. 保持无损连接性的判定"></a>1. 保持无损连接性的判定</h2><p>设 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝是 𝘙&lt;𝘜，𝘍&gt; 的一个分解，𝘜＝｛𝘈$_1$，𝘈$_2$，$\cdots$，𝘈$_n$｝。</p>
+<p>（1）建立一张 𝘬 行 𝘯 列的表，每一行对应分解中的一个关系模式，每一列对应一个属性，若属性 𝘈$_j$ 属于 𝘜$_i$，则在 𝘪 行 𝘫 列处填上 𝘢$_j$，否则填上 𝘣$_{ij}$。</p>
+<p>（2）根据 𝘍 中每一个函数依赖（例如 𝘟 $\to$ 𝘠）修改表的内容，修改规则为：在 𝘟 所对应的列中，寻找符号相同的行，在这些行上修改属性 𝘠 所在列上的值，若其中有 𝘢$_j$，则全部改为 𝘢$_j$，否则全部改为 𝘣$_{mj}$，𝘮 是这些行的行号最小值。应当注意的是，若某个值 𝘣$_{tj}$ 被更改，那么该表的 𝘫 列中凡是值为 𝘣$_{tj}$ 的行，不管它是否是开始找到的那些行，均应做相应的更改。</p>
+<p>（3）如果在某次更改之后，有一行成为 𝘢$_1$，𝘢$_2$，$\cdots$，$a_n$，则算法终止，$\rho$ 具有无损连接性；否则 $\rho$ 不具有无损连接性。对扫描前后进行比较，观察表是否发生变化，如有变化，则返回第（2）步，否则算法终止。</p>
+<p><strong>例题</strong>：设 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝，𝘍＝｛𝘈 $\to$ 𝘋，𝘌 $\to$ 𝘋，𝘋 $\to$ 𝘉，𝘉𝘊 $\to$ 𝘋，𝘋𝘊 $\to$ 𝘈｝，𝘙 的一个分解为 $\rho$＝｛𝘙$_1$&lt;𝘈，𝘉&gt;，𝘙$_2$&lt;𝘈，𝘌&gt;，𝘙$_3$&lt;𝘊，𝘌&gt;，𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;，𝘙$_5$&lt;𝘈，𝘊&gt;｝，判断该分解是否具有无损连接性。</p>
+<p>（1）构造初始表</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{22}$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{24}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘣$_{32}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{34}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{52}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{54}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（2）根据函数依赖修改表的内容</p>
+<p>① 函数依赖 𝘈 $\to$ 𝘋</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{22}$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘣$_{32}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{34}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{52}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>② 函数依赖 𝘌 $\to$ 𝘋</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{22}$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘣$_{32}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{52}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>③ 函数依赖 𝘋 $\to $ 𝘉，这里 𝘣$_{14}$ 对应的 𝘉 列有 𝘢$_2$，故以 𝘣$_{14}$ 为基准</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>④ 函数依赖 𝘉𝘊 $\to$ 𝘋</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>⑤ 函数依赖 𝘋𝘊 $\to$ 𝘈</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（3）表中第三行为 𝘢$_1$，𝘢$_2$，$\cdots$，$a_5$，算法终止，$\rho$ 具有无损连接性。</p>
+<h2 id="2-两个关系时保持无损连接性的判定"><a href="#2-两个关系时保持无损连接性的判定" class="headerlink" title="2. 两个关系时保持无损连接性的判定"></a>2. 两个关系时保持无损连接性的判定</h2><p>当一个关系 𝘙 分解成 𝘙$_1$ 和 𝘙$_2$ 两个关系时，可通过下面的定理判断分解是否保持无损连接性。</p>
+<p>定理：𝘙&lt;𝘜，𝘍&gt; 的一个分解  $\rho$＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，𝘙$_2$&lt;𝘜$_2$，𝘍$_2$&gt;｝具有无损连接性的充要条件如下：</p>
+<script type="math/tex; mode=display">
+U_1\cap U_2\to U_1 - U_2 \in F^+</script><p>或</p>
+<script type="math/tex; mode=display">
+U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href="#三、依赖保持性" class="headerlink" title="三、依赖保持性"></a>三、依赖保持性</h1><p>设 𝘙&lt;𝘜，𝘍&gt; 的分解 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝，若 $F^+=(\cup F_i)^+$，则称分解 $\rho$ 保持函数依赖。</p>
+<p><strong>例题</strong>：关系默认 𝘙＝｛𝘊𝘐𝘛𝘠，𝘚𝘛，𝘡𝘐𝘗｝，其中 𝘊𝘐𝘛𝘠 为城市，𝘚𝘛 为街道，𝘡𝘐𝘗 为邮政编码，𝘍＝｛（𝘊𝘐𝘛𝘠，𝘚𝘛）$\to$ 𝘡𝘐𝘗，𝘡𝘐𝘗 $\to$ 𝘊𝘐𝘛𝘠｝。如果将 𝘙 分解成 𝘙$_1$ 和 𝘙$_2$，𝘙$_1$＝｛𝘚𝘛，𝘡𝘐𝘗｝，𝘙$_2$＝｛𝘊𝘐𝘛𝘠，𝘡𝘐𝘗｝，检查分解是否具有无损连接性和依赖保持性。</p>
+]]></content>
+      <categories>
+        <category>关系模式</category>
+      </categories>
+  </entry>
+  <entry>
     <title>5.判断分解服从规范的方法</title>
     <url>/2022/07/02/5.%E5%88%A4%E6%96%AD%E5%88%86%E8%A7%A3%E6%9C%8D%E4%BB%8E%E8%A7%84%E8%8C%83%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>&emsp;</p>

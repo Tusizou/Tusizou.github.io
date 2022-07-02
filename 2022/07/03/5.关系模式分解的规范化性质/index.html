@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="&amp;emsp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5.关系模式分解的规范化性质">
+<meta property="og:url" content="https://toki.github.io/2022/07/03/5.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96%E6%80%A7%E8%B4%A8/index.html">
+<meta property="og:site_name" content="Tusizou&#39;s Blog">
+<meta property="og:description" content="&amp;emsp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-02T18:31:45.639Z">
+<meta property="article:modified_time" content="2022-07-02T18:31:45.639Z">
+<meta property="article:author" content="Tusizou">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://toki.github.io/2022/07/03/5.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96%E6%80%A7%E8%B4%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>5.关系模式分解的规范化性质 | Tusizou's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tusizou's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/03/5.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96%E6%80%A7%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tusizou">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tusizou's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5.关系模式分解的规范化性质
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">关系模式</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>&emsp;</p>
+<span id="more"></span>
+<h1 id="一、分解"><a href="#一、分解" class="headerlink" title="一、分解"></a>一、分解</h1><p>（1）分解的定义</p>
+<p>关系模式 𝘙&lt;𝘜，𝘍&gt; 的一个分解是指 </p>
+<script type="math/tex; mode=display">
+\rho=\{R_1<U_1,F_1>,R_2<U_2,F_2>,\cdots,R_n<U_n,F_n>\}</script><p>其中 $U=\bigcup\limits^n_{i=1}$，并且没有 $U_i\subseteq U_j$，1 $\le$ 𝘪，𝘫 $\le$ 𝘯，𝘍$_i$ 是 𝘍 在 𝘜$_i$ 上的投影。</p>
+<p>（2）函数依赖的投影</p>
+<p>函数依赖集合｛𝘟 $\to$ 𝘠 | 𝘟 $\to$ 𝘠 $\in$ 𝘍$^+$ $\and$ 𝘟𝘠 $\subseteq$ 𝘜$_i$｝的一个覆盖 𝘍$_i$ 叫做 𝘍 在属性 𝘜$_i$ 上的投影。</p>
+<p>例如，在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，𝘍 为 𝘙 上的函数依赖集，𝘍＝｛𝘈 $\to$ 𝘉，𝘉 $\to$ 𝘊，𝘈 $\to$ 𝘋，𝘋 $\to$ 𝘊｝，$\rho$＝｛𝘈𝘉，𝘈𝘊，𝘉𝘋｝是 𝘙 的一个分解，则：$\pi_{AB}(F)=\{A\to B\}$，$\pi_{AC}(F)=\{A\to C\}$，$\pi_{BD}(F)=\varnothing$。</p>
+<h1 id="二、无损连接性（Lossless-Join）"><a href="#二、无损连接性（Lossless-Join）" class="headerlink" title="二、无损连接性（Lossless Join）"></a>二、无损连接性（Lossless Join）</h1><p>（1）两个关系的无损连接性</p>
+<p>设关系模式 𝘙，如果把它分解为两个（或多个）子模式 $R_1$ 和 $R_2$，相应一个 𝘙 关系中是数据就要被分成 $R_1$、$R_2$ 两个（或多个）子表。假如把这些子表自然连接，即进行 $R_1 \Join R_2$ 操作，得到的结果与原来关系中的数据一致，信息并没有丢失，则称该分解具有无损连接性，否则如果 $R\neq R_1 \Join R_2$，则称该分解不具有无损连接性。</p>
+<p>（2）无损连接性的形式化定义</p>
+<p>引入记号，设 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝是 𝘙&lt;𝘜，𝘍&gt; 的一个分解，𝘳 是 𝘙&lt;𝘜，𝘍&gt; 的一个关系，定义 $m_\rho(r)=\mathop{\Join}\limits^k_{i=1}\pi_{R_i}(r)$，即 $m_\rho(r)$ 是 𝘳 在 $\rho$ 中各关系模式上投影的自然连接，这里 $\pi_{R_i}(r)=\{t.U_i|t\in r\}$。根据该记号可以对无损连接性进行形式化定义，设 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝是 𝘙&lt;𝘜，𝘍&gt; 的一个分解，若对 𝘙&lt;𝘜，𝘍&gt; 的任何一个关系 𝘳 均有 $r=m_\rho(r)$ 成立，则称分解 $\rho$ 具有无损连接性，简称 $\rho$ 为无损分解。</p>
+<h2 id="1-保持无损连接性的判定"><a href="#1-保持无损连接性的判定" class="headerlink" title="1. 保持无损连接性的判定"></a>1. 保持无损连接性的判定</h2><p>设 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝是 𝘙&lt;𝘜，𝘍&gt; 的一个分解，𝘜＝｛𝘈$_1$，𝘈$_2$，$\cdots$，𝘈$_n$｝。</p>
+<p>（1）建立一张 𝘬 行 𝘯 列的表，每一行对应分解中的一个关系模式，每一列对应一个属性，若属性 𝘈$_j$ 属于 𝘜$_i$，则在 𝘪 行 𝘫 列处填上 𝘢$_j$，否则填上 𝘣$_{ij}$。</p>
+<p>（2）根据 𝘍 中每一个函数依赖（例如 𝘟 $\to$ 𝘠）修改表的内容，修改规则为：在 𝘟 所对应的列中，寻找符号相同的行，在这些行上修改属性 𝘠 所在列上的值，若其中有 𝘢$_j$，则全部改为 𝘢$_j$，否则全部改为 𝘣$_{mj}$，𝘮 是这些行的行号最小值。应当注意的是，若某个值 𝘣$_{tj}$ 被更改，那么该表的 𝘫 列中凡是值为 𝘣$_{tj}$ 的行，不管它是否是开始找到的那些行，均应做相应的更改。</p>
+<p>（3）如果在某次更改之后，有一行成为 𝘢$_1$，𝘢$_2$，$\cdots$，$a_n$，则算法终止，$\rho$ 具有无损连接性；否则 $\rho$ 不具有无损连接性。对扫描前后进行比较，观察表是否发生变化，如有变化，则返回第（2）步，否则算法终止。</p>
+<p><strong>例题</strong>：设 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛𝘈，𝘉，𝘊，𝘋，𝘌｝，𝘍＝｛𝘈 $\to$ 𝘋，𝘌 $\to$ 𝘋，𝘋 $\to$ 𝘉，𝘉𝘊 $\to$ 𝘋，𝘋𝘊 $\to$ 𝘈｝，𝘙 的一个分解为 $\rho$＝｛𝘙$_1$&lt;𝘈，𝘉&gt;，𝘙$_2$&lt;𝘈，𝘌&gt;，𝘙$_3$&lt;𝘊，𝘌&gt;，𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;，𝘙$_5$&lt;𝘈，𝘊&gt;｝，判断该分解是否具有无损连接性。</p>
+<p>（1）构造初始表</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{22}$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{24}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘣$_{32}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{34}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{52}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{54}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（2）根据函数依赖修改表的内容</p>
+<p>① 函数依赖 𝘈 $\to$ 𝘋</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{22}$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘣$_{32}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{34}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{52}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>② 函数依赖 𝘌 $\to$ 𝘋</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{22}$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘣$_{32}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘣$_{52}$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>③ 函数依赖 𝘋 $\to $ 𝘉，这里 𝘣$_{14}$ 对应的 𝘉 列有 𝘢$_2$，故以 𝘣$_{14}$ 为基准</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>④ 函数依赖 𝘉𝘊 $\to$ 𝘋</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘣$_{31}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘣$_{41}$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>⑤ 函数依赖 𝘋𝘊 $\to$ 𝘈</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">𝘈</th>
+<th style="text-align:center">𝘉</th>
+<th style="text-align:center">𝘊</th>
+<th style="text-align:center">𝘋</th>
+<th style="text-align:center">𝘌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">𝘙$_1$&lt;𝘈，𝘉&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{13}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘣$_{15}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_2$&lt;𝘈，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘣$_{23}$</td>
+<td style="text-align:center">𝘣$_{14}$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_3$&lt;𝘊，𝘌&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘢$_5$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_4$&lt;𝘉，𝘊，𝘋&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{45}$</td>
+</tr>
+<tr>
+<td style="text-align:center">𝘙$_5$&lt;𝘈，𝘊&gt;</td>
+<td style="text-align:center">𝘢$_1$</td>
+<td style="text-align:center">𝘢$_2$</td>
+<td style="text-align:center">𝘢$_3$</td>
+<td style="text-align:center">𝘢$_4$</td>
+<td style="text-align:center">𝘣$_{55}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（3）表中第三行为 𝘢$_1$，𝘢$_2$，$\cdots$，$a_5$，算法终止，$\rho$ 具有无损连接性。</p>
+<h2 id="2-两个关系时保持无损连接性的判定"><a href="#2-两个关系时保持无损连接性的判定" class="headerlink" title="2. 两个关系时保持无损连接性的判定"></a>2. 两个关系时保持无损连接性的判定</h2><p>当一个关系 𝘙 分解成 𝘙$_1$ 和 𝘙$_2$ 两个关系时，可通过下面的定理判断分解是否保持无损连接性。</p>
+<p>定理：𝘙&lt;𝘜，𝘍&gt; 的一个分解  $\rho$＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，𝘙$_2$&lt;𝘜$_2$，𝘍$_2$&gt;｝具有无损连接性的充要条件如下：</p>
+<script type="math/tex; mode=display">
+U_1\cap U_2\to U_1 - U_2 \in F^+</script><p>或</p>
+<script type="math/tex; mode=display">
+U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href="#三、依赖保持性" class="headerlink" title="三、依赖保持性"></a>三、依赖保持性</h1><p>设 𝘙&lt;𝘜，𝘍&gt; 的分解 $\rho$ ＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，$\cdots$，𝘙$_k$&lt;𝘜$_k$，𝘍$_k$&gt;｝，若 $F^+=(\cup F_i)^+$，则称分解 $\rho$ 保持函数依赖。</p>
+<p><strong>例题</strong>：关系默认 𝘙＝｛𝘊𝘐𝘛𝘠，𝘚𝘛，𝘡𝘐𝘗｝，其中 𝘊𝘐𝘛𝘠 为城市，𝘚𝘛 为街道，𝘡𝘐𝘗 为邮政编码，𝘍＝｛（𝘊𝘐𝘛𝘠，𝘚𝘛）$\to$ 𝘡𝘐𝘗，𝘡𝘐𝘗 $\to$ 𝘊𝘐𝘛𝘠｝。如果将 𝘙 分解成 𝘙$_1$ 和 𝘙$_2$，𝘙$_1$＝｛𝘚𝘛，𝘡𝘐𝘗｝，𝘙$_2$＝｛𝘊𝘐𝘛𝘠，𝘡𝘐𝘗｝，检查分解是否具有无损连接性和依赖保持性。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/02/6.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%86%E8%A7%A3%E6%96%B9%E6%B3%95/" rel="prev" title="6.关系模式的分解方法">
+      <i class="fa fa-chevron-left"></i> 6.关系模式的分解方法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%86%E8%A7%A3"><span class="nav-text">一、分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E6%80%A7%EF%BC%88Lossless-Join%EF%BC%89"><span class="nav-text">二、无损连接性（Lossless Join）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BF%9D%E6%8C%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E6%80%A7%E7%9A%84%E5%88%A4%E5%AE%9A"><span class="nav-text">1. 保持无损连接性的判定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%A4%E4%B8%AA%E5%85%B3%E7%B3%BB%E6%97%B6%E4%BF%9D%E6%8C%81%E6%97%A0%E6%8D%9F%E8%BF%9E%E6%8E%A5%E6%80%A7%E7%9A%84%E5%88%A4%E5%AE%9A"><span class="nav-text">2. 两个关系时保持无损连接性的判定</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BE%9D%E8%B5%96%E4%BF%9D%E6%8C%81%E6%80%A7"><span class="nav-text">三、依赖保持性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Tusizou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tusizou</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
