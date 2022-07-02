@@ -247,7 +247,7 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余
 <h1 id="一、分解"><a href="#一、分解" class="headerlink" title="一、分解"></a>一、分解</h1><p>（1）分解的定义</p>
 <p>关系模式 𝘙&lt;𝘜，𝘍&gt; 的一个分解是指 </p>
 <script type="math/tex; mode=display">
-\rho=\{R_1<U_1,F_1>,R_2<U_2,F_2>,\cdots,R_n<U_n,F_n>\}</script><p>其中 $U=\bigcup\limits^n_{i=1}$，并且没有 $U_i\subseteq U_j$，1 $\le$ 𝘪，𝘫 $\le$ 𝘯，𝘍$_i$ 是 𝘍 在 𝘜$_i$ 上的投影。</p>
+\rho=\{R_1<U_1,F_1>,R_2<U_2,F_2>,\cdots,R_n<U_n,F_n>\}</script><p>其中 $U=\bigcup\limits^n_{i=1}U_i$，并且没有 $U_i\subseteq U_j$，1 $\le$ 𝘪，𝘫 $\le$ 𝘯，𝘍$_i$ 是 𝘍 在 𝘜$_i$ 上的投影。</p>
 <p>（2）函数依赖的投影</p>
 <p>函数依赖集合｛𝘟 $\to$ 𝘠 | 𝘟 $\to$ 𝘠 $\in$ 𝘍$^+$ $\and$ 𝘟𝘠 $\subseteq$ 𝘜$_i$｝的一个覆盖 𝘍$_i$ 叫做 𝘍 在属性 𝘜$_i$ 上的投影。</p>
 <p>例如，在关系模式 𝘙&lt;𝘜，𝘍&gt; 中，𝘍 为 𝘙 上的函数依赖集，𝘍＝｛𝘈 $\to$ 𝘉，𝘉 $\to$ 𝘊，𝘈 $\to$ 𝘋，𝘋 $\to$ 𝘊｝，$\rho$＝｛𝘈𝘉，𝘈𝘊，𝘉𝘋｝是 𝘙 的一个分解，则：$\pi_{AB}(F)=\{A\to B\}$，$\pi_{AC}(F)=\{A\to C\}$，$\pi_{BD}(F)=\varnothing$。</p>
