@@ -782,8 +782,5 @@ U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href=
 <p>④ 模组安装。将模组文件移动到 <code>.minecraft\versions\1.16.5-Forge_36.2.35\mods</code> 即可。</p>
 <h1 id="OP-指令"><a href="#OP-指令" class="headerlink" title="OP 指令"></a>OP 指令</h1><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/gamemode</span>                         <span class="comment"># 1创造 0生存</span></span><br><span class="line"><span class="string">/tp</span> <span class="string">name1</span> <span class="string">name2</span>                   <span class="comment"># 将name1传送至name2身旁</span></span><br><span class="line"><span class="string">/gamerule</span> <span class="string">keepInventory</span> <span class="literal">true</span>      <span class="comment"># 死亡不掉落</span></span><br><span class="line"><span class="string">/gamerule</span> <span class="string">doFireTick</span> <span class="literal">false</span>        <span class="comment"># 火势不蔓延</span></span><br><span class="line"><span class="string">/gamerule</span> <span class="string">mobGriefing</span> <span class="literal">false</span>       <span class="comment"># 禁止 mob 与环境交互</span></span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>未分类</category>
-      </categories>
   </entry>
 </search>
