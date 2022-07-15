@@ -22,17 +22,17 @@
 
   <meta name="description" content="&amp;emsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.关系模式的规范化">
-<meta property="og:url" content="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/index.html">
+<meta property="og:title" content="【C#学习笔记】重载递增运算符">
+<meta property="og:url" content="https://toki.github.io/2022/07/15/%E3%80%90C#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
 <meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-29T07:03:37.719Z">
-<meta property="article:modified_time" content="2022-07-01T18:42:36.055Z">
+<meta property="article:published_time" content="2022-07-15T07:48:22.384Z">
+<meta property="article:modified_time" content="2022-07-15T07:48:22.384Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+<link rel="canonical" href="https://toki.github.io/2022/07/15/%E3%80%90C#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>3.关系模式的规范化 | Tusizou's Blog</title>
+  <title>【C#学习笔记】重载递增运算符 | Tusizou's Blog</title>
   
 
 
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/15/%E3%80%90C#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          3.关系模式的规范化
+          【C#学习笔记】重载递增运算符
         </h1>
 
         <div class="post-meta">
@@ -201,7 +201,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">关系模式</span></a>
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
                 </span>
             </span>
 
@@ -218,34 +218,19 @@
       
         <p>&emsp;</p>
 <span id="more"></span>
-<h1 id="一、1NF"><a href="#一、1NF" class="headerlink" title="一、1NF"></a>一、1NF</h1><p>如果关系模式 𝘙，其所有的属性均为简单属性，即每个属性都是不可再分的，则称 𝘙 属于第一范式（First Normal Form，1NF），记作 𝘙 $\in$ 1NF。</p>
-<p>例如，教学关系模式中所有的属性都是不可再分的简单属性，即：教学 $\in$ 1NF。</p>
-<h1 id="二、2NF"><a href="#二、2NF" class="headerlink" title="二、2NF"></a>二、2NF</h1><p>若 𝘙 $\in$ 1NF，且每一个非主属性完全依赖于码，则 𝘙 $\in$ 2NF。</p>
-<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
-<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
-<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
-<p>主码＝（学号，课程名）</p>
-<p>非主属性＝（姓名，年龄，性别，系名，系主任，成绩）</p>
-<p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
-<p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
-<h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
-<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
-<blockquote>
-<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
-</blockquote>
-<p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
-<h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
-<p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
-<p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
-<p>（1）所有非主属性对每一个码都是完全函数依赖。</p>
-<p>（2）所有的主属性对每一个不包含它的码，也是完全函数依赖。</p>
-<p>（3）没有任何属性完全函数依赖于非码的任何一组属性。</p>
-<p>例如，对于选课关系模式（学生，教师，课程），语义为：每位教师只能讲授一门课程，每门课程由若干教师讲授；每个学生选修某门课程对应一个固定的教师。由语义可以得到选课关系模式的函数依赖为：𝘍 = ｛（学生，课程）$\to$ 教师，（学生，教师）$\to$ 课程，教师 $\to$ 课程｝。这里（学生，课程）和（学生，教师）都是关系的码，所以关系模式的主属性集合为：｛学生，教师，课程｝，非主属性为：$\varnothing$。由于选课关系模式中无非主属性，所以它属于 3NF，但因为存在函数依赖：教师 $\to$ 课程，由于“教师”不是码，所以选课关系模式不属于 BCNF。可以按 BCNF 的要求将选课关系模式分解为以下两个关系模式：</p>
-<p>学生_教师（学生，教师），教师_课程（教师，课程）</p>
-<h1 id="五、4NF"><a href="#五、4NF" class="headerlink" title="五、4NF"></a>五、4NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，如果对于 𝘙 的每个非平凡多值依赖 𝘟 $\to\to$ 𝘠（𝘠 $\nsubseteq$ 𝘟），𝘟 必含有码，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 4NF。</p>
-<p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
-<h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
-
+<p>在运行时，当你的代码对对象执行前置操作（前置递增或前置递减）时，会发生以下行为：</p>
+<ul>
+<li>在对象上执行递增或递减代码；</li>
+<li>返回对象。</li>
+</ul>
+<p>在运行时，当你的代码对对象执行后置操作（后置递增或后置递减）时，会发生以下行为：</p>
+<ul>
+<li>如果对象是值类型，则系统会复制该对象；如果对象是引用类型，则引用会被复制；</li>
+<li>在对象上执行递增或递减代码；</li>
+<li>返回保存的操作数。</li>
+</ul>
+<p>如果操作数对象是值类型对象，那么一点问题都没有，但是当用户定义类型是引用类型时，就要小心了。对于引用类型的对象，前置操作没有问题，因为没有进行复制。但是，对于后置操作，因为保存的副本是引用的副本，所以这意味着原始引用和引用副本指向相同的对象，那么，当进行第二步操作的时候，递增或递减代码就会在对象上执行，这意味着保存的引用所指向的对象不再是它的起始状态了，返回对变化了的对象的引用可能不是所预期的行为。</p>
+<div class="pdfobject-container" data-target="重载递增运算符.pdf" data-height="500px"></div>
     </div>
 
     
@@ -259,10 +244,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="1.关系数据结构">
-      1.关系数据结构 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/03/6.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="6.关系模式分解的方法">
+      <i class="fa fa-chevron-left"></i> 6.关系模式分解的方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%911.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="【关系数据理论】1.关系数据结构">
+      【关系数据理论】1.关系数据结构 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -322,7 +310,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%811NF"><span class="nav-text">一、1NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%812NF"><span class="nav-text">二、2NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%813NF"><span class="nav-text">三、3NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81BCNF"><span class="nav-text">四、BCNF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%814NF"><span class="nav-text">五、4NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%815NF"><span class="nav-text">六、5NF</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -452,59 +439,6 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

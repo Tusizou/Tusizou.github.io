@@ -22,17 +22,17 @@
 
   <meta name="description" content="&amp;emsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.关系模式的规范化">
-<meta property="og:url" content="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/index.html">
+<meta property="og:title" content="【关系数据理论】3.关系模式的规范化">
+<meta property="og:url" content="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%913.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
 <meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-29T07:03:37.719Z">
-<meta property="article:modified_time" content="2022-07-01T18:42:36.055Z">
+<meta property="article:published_time" content="2022-07-15T08:03:47.195Z">
+<meta property="article:modified_time" content="2022-07-15T08:03:47.195Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+<link rel="canonical" href="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%913.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>3.关系模式的规范化 | Tusizou's Blog</title>
+  <title>【关系数据理论】3.关系模式的规范化 | Tusizou's Blog</title>
   
 
 
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%913.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          3.关系模式的规范化
+          【关系数据理论】3.关系模式的规范化
         </h1>
 
         <div class="post-meta">
@@ -229,11 +229,9 @@
 <p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
 <p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
 <h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
-<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
-<blockquote>
-<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
-</blockquote>
 <p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
+<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
+<p>证：设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
 <h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
 <p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
 <p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
@@ -259,10 +257,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="1.关系数据结构">
-      1.关系数据结构 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%912.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/" rel="prev" title="【关系数据理论】2.数据依赖">
+      <i class="fa fa-chevron-left"></i> 【关系数据理论】2.数据依赖
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%914.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="next" title="【关系数据理论】4.关系模式分解的算法基础">
+      【关系数据理论】4.关系模式分解的算法基础 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

@@ -22,17 +22,17 @@
 
   <meta name="description" content="&amp;emsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.关系模式的规范化">
-<meta property="og:url" content="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/index.html">
+<meta property="og:title" content="【关系数据理论】2.数据依赖">
+<meta property="og:url" content="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%912.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
 <meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-29T07:03:37.719Z">
-<meta property="article:modified_time" content="2022-07-01T18:42:36.055Z">
+<meta property="article:published_time" content="2022-07-15T08:03:41.884Z">
+<meta property="article:modified_time" content="2022-07-15T08:03:41.884Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+<link rel="canonical" href="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%912.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>3.关系模式的规范化 | Tusizou's Blog</title>
+  <title>【关系数据理论】2.数据依赖 | Tusizou's Blog</title>
   
 
 
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%912.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          3.关系模式的规范化
+          【关系数据理论】2.数据依赖
         </h1>
 
         <div class="post-meta">
@@ -218,33 +218,31 @@
       
         <p>&emsp;</p>
 <span id="more"></span>
-<h1 id="一、1NF"><a href="#一、1NF" class="headerlink" title="一、1NF"></a>一、1NF</h1><p>如果关系模式 𝘙，其所有的属性均为简单属性，即每个属性都是不可再分的，则称 𝘙 属于第一范式（First Normal Form，1NF），记作 𝘙 $\in$ 1NF。</p>
-<p>例如，教学关系模式中所有的属性都是不可再分的简单属性，即：教学 $\in$ 1NF。</p>
-<h1 id="二、2NF"><a href="#二、2NF" class="headerlink" title="二、2NF"></a>二、2NF</h1><p>若 𝘙 $\in$ 1NF，且每一个非主属性完全依赖于码，则 𝘙 $\in$ 2NF。</p>
+<h1 id="一、函数依赖（Functional-Dependency）"><a href="#一、函数依赖（Functional-Dependency）" class="headerlink" title="一、函数依赖（Functional Dependency）"></a>一、函数依赖（Functional Dependency）</h1><p><strong>（1）函数依赖</strong></p>
+<p>设 𝘙&lt;𝘜&gt; 是属性集合 𝘜 上的关系模式，𝘟、𝘠 是 𝘜 的子集。若对于 𝘙&lt;𝘜&gt; 的任意一个可能的关系 𝘳，𝘳 中不存在两个元组在 𝘟 上的属性值相等，而 𝘠 上的属性值不等，则称 𝘟 函数确定 𝘠 函数，或 𝘠 函数依赖于 𝘟 函数，记作 𝘟 $\to$ 𝘠，其中，𝘟 叫做决定因素（Determinant），𝘠 叫做依赖因素（Dependent）。若 𝘠 不函数依赖于 𝘟，则记作 𝘟 $\nrightarrow$ 𝘠。若 𝘟 $\to$ 𝘠，𝘠 $\to$ 𝘟，则记作 𝘟 $\leftrightarrow$ 𝘠。</p>
+<p>函数依赖具有自反律：若 𝘟 $\to$ 𝘠 在 𝘙&lt;𝘜&gt; 上成立，则对任何 𝘠’ $\subset$ 𝘠，有 𝘟 $\to$ 𝘠’ 成立。</p>
 <p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
 <p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
 <p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
-<p>主码＝（学号，课程名）</p>
-<p>非主属性＝（姓名，年龄，性别，系名，系主任，成绩）</p>
-<p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
-<p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
-<h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
-<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
-<blockquote>
-<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
-</blockquote>
-<p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
-<h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
-<p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
-<p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
-<p>（1）所有非主属性对每一个码都是完全函数依赖。</p>
-<p>（2）所有的主属性对每一个不包含它的码，也是完全函数依赖。</p>
-<p>（3）没有任何属性完全函数依赖于非码的任何一组属性。</p>
-<p>例如，对于选课关系模式（学生，教师，课程），语义为：每位教师只能讲授一门课程，每门课程由若干教师讲授；每个学生选修某门课程对应一个固定的教师。由语义可以得到选课关系模式的函数依赖为：𝘍 = ｛（学生，课程）$\to$ 教师，（学生，教师）$\to$ 课程，教师 $\to$ 课程｝。这里（学生，课程）和（学生，教师）都是关系的码，所以关系模式的主属性集合为：｛学生，教师，课程｝，非主属性为：$\varnothing$。由于选课关系模式中无非主属性，所以它属于 3NF，但因为存在函数依赖：教师 $\to$ 课程，由于“教师”不是码，所以选课关系模式不属于 BCNF。可以按 BCNF 的要求将选课关系模式分解为以下两个关系模式：</p>
-<p>学生_教师（学生，教师），教师_课程（教师，课程）</p>
-<h1 id="五、4NF"><a href="#五、4NF" class="headerlink" title="五、4NF"></a>五、4NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，如果对于 𝘙 的每个非平凡多值依赖 𝘟 $\to\to$ 𝘠（𝘠 $\nsubseteq$ 𝘟），𝘟 必含有码，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 4NF。</p>
-<p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
-<h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
+<p><strong>（2）平凡函数依赖</strong></p>
+<p>𝘟 $\to$ 𝘠，但 𝘠 $\nsubseteq$ 𝘟，则称 𝘟 $\to$ 𝘠 是非平凡函数依赖。若不特别声明，总是讨论非平凡函数依赖。</p>
+<p>𝘟 $\to$ 𝘠，但 𝘠 $\subseteq$ 𝘟，则称 𝘟 $\to$ 𝘠 是平凡函数依赖。</p>
+<p><strong>（3）完全函数依赖</strong></p>
+<p>在 𝘙&lt;𝘜&gt; 中，如果 𝘟 $\to$ 𝘠，并且对于 𝘟 的任何一个真子集 𝘟’，都有 𝘟’ $\nrightarrow$ 𝘠，则称 𝘠 对 𝘟 完全函数依赖，记作 𝘟 $\stackrel{F}{\longrightarrow}$ 𝘠。如果 𝘟 $\to$ 𝘠，但 𝘠 不完全函数依赖于 𝘟，则称 𝘠 对 𝘟 部分函数依赖，记作 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘠。</p>
+<p>例如，在教学关系模式中，学号和课程名为主码，而（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名。</p>
+<p><strong>（4）传递函数依赖</strong></p>
+<p>在 𝘙&lt;𝘜&gt; 中，如果 𝘟 $\to$ 𝘠，（𝘠 $\nsubseteq$ 𝘟），𝘠 $\nrightarrow$ 𝘟，𝘠 $\to$ 𝘡，则称 𝘡 对 𝘟 传递函数依赖，记作 𝘟 $\stackrel{传递}{\longrightarrow}$ 𝘡。</p>
+<p>例如，在教学关系模式中，因为存在：学号 $\to$ 系名，系名 $\to$ 系主任，所以也存在：学号 $\to$ 系主任。</p>
+<h1 id="二、多值依赖（Multivalued-Dependency）"><a href="#二、多值依赖（Multivalued-Dependency）" class="headerlink" title="二、多值依赖（Multivalued Dependency）"></a>二、多值依赖（Multivalued Dependency）</h1><p><strong>（1）多值依赖</strong></p>
+<p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的一个关系模式，𝘟、𝘠、𝘡 是 𝘜 的子集，并且 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。关系模式 𝘙&lt;𝘜&gt; 中多值依赖 𝘟 $\to\to$ 𝘠 成立，当且仅当对 𝘙&lt;𝘜&gt; 的任一关系 𝘳，给定的一对（𝘹，𝘻）值，有一组 𝘠 的值与之对应，这组值仅仅决定于 𝘹 值而与 𝘻 值无关。</p>
+<p>对于多值依赖的另一个等价的形式化定义是：在 𝘙&lt;𝘜&gt; 的任一关系 𝘳 中，如果存在元组 𝘵、𝘴 使得 𝘵[𝘟]＝𝘴[𝘟]，那么就必然存在元组 𝘸、𝘷 $\in$ 𝘳（𝘸、𝘷 可以与 𝘴、𝘵 相同），使得 𝘸[𝘟]＝𝘷[𝘟]＝𝘵[𝘟]，而 𝘸[𝘠]＝𝘵[𝘠]，𝘸[𝘡]＝𝘴[𝘡]，𝘷[𝘠]＝𝘴[𝘠]，𝘷[𝘡]＝𝘵[𝘡]（即<strong>交换 𝘴、𝘵 元组的 𝘠 值所得的两个新元组必在关系 𝘳 中</strong>），则 𝘠 多值依赖于 𝘟，记为 𝘟 $\to\to$ 𝘠。这里，𝘟、𝘠 是 𝘜 的子集，𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。</p>
+<p>多值依赖具有对称性，即：若 𝘟 $\to\to$ 𝘠，则 𝘟 $\to\to$ 𝘡，其中 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠。</p>
+<p>函数依赖是多值依赖的特殊情况，即：若  𝘟 $\to$ 𝘠，则  𝘟 $\to\to$ 𝘠。这是因为当 𝘟 $\to$ 𝘠 时，对 𝘟 的每一个值 𝘹，𝘠 都有一个确定的值 𝘺 与之对应，所以 𝘟 $\to\to$ 𝘠。</p>
+<p>多值依赖的有效性与属性集的范围有关。在关系模式 𝘙 中，函数依赖 𝘟 $\to$ 𝘠 的有效性仅仅决定于 𝘟、𝘠 这两个属性集；在多值依赖中，𝘟 $\to\to$ 𝘠 在 𝘜 上是否成立，不仅要检查 𝘟、𝘠 上的值，而且要检查 𝘡＝𝘜 $-$ 𝘟 $-$ 𝘠 上的值。因此，如果 𝘟 $\to\to$ 𝘠 在 𝘞（𝘞 $\subset$ 𝘜）上成立，则在 𝘜 上则不一定成立。除此之外，对多值依赖  𝘟 $\to\to$ 𝘠，若在 𝘙 上成立，也并不能断言对于任何 𝘠’ $\subset$ 𝘠，有  𝘟 $\to\to$ 𝘠’ 成立。</p>
+<p><strong>（2）平凡的多值依赖</strong></p>
+<p>若 𝘟 $\to\to$ 𝘠，而 𝘡＝$\varnothing$ ，即 𝘡 为空集，则称 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。即对于 𝘙&lt;𝘟，𝘠&gt;，如果有 𝘟 $\to\to$ 𝘠 成立，则 𝘟 $\to\to$ 𝘠 为平凡的多值依赖。</p>
+<h1 id="三、连接依赖（Join-Dependency）"><a href="#三、连接依赖（Join-Dependency）" class="headerlink" title="三、连接依赖（Join Dependency）"></a>三、连接依赖（Join Dependency）</h1><p>设 𝘙&lt;𝘜&gt; 是属性集 𝘜 上的关系模式，$x_1,x_2,\cdots,x_n$ 是 𝘜 的子集，并且 $\bigcup\limits^n_{i=1}x_i=U$，如果 $R=\Join \mathop{R}\limits^n_{i=1}[x_i]$ 对 𝘙 的一切关系均成立，则称 𝘙 在 $x_1,x_2,\cdots,x_n$ 上具有 𝘯 目连接依赖，记作：$\Join [x_1][x_2]\cdots[x_n]$。</p>
+<p>连接依赖不能直接从语义中推出，只能从连接运算中反映出来。</p>
 
     </div>
 
@@ -259,10 +257,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="1.关系数据结构">
-      1.关系数据结构 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%911.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="【关系数据理论】1.关系数据结构">
+      <i class="fa fa-chevron-left"></i> 【关系数据理论】1.关系数据结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%913.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/" rel="next" title="【关系数据理论】3.关系模式的规范化">
+      【关系数据理论】3.关系模式的规范化 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -322,7 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%811NF"><span class="nav-text">一、1NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%812NF"><span class="nav-text">二、2NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%813NF"><span class="nav-text">三、3NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81BCNF"><span class="nav-text">四、BCNF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%814NF"><span class="nav-text">五、4NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%815NF"><span class="nav-text">六、5NF</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96%EF%BC%88Functional-Dependency%EF%BC%89"><span class="nav-text">一、函数依赖（Functional Dependency）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E5%80%BC%E4%BE%9D%E8%B5%96%EF%BC%88Multivalued-Dependency%EF%BC%89"><span class="nav-text">二、多值依赖（Multivalued Dependency）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%BF%9E%E6%8E%A5%E4%BE%9D%E8%B5%96%EF%BC%88Join-Dependency%EF%BC%89"><span class="nav-text">三、连接依赖（Join Dependency）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

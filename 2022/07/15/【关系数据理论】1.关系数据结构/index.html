@@ -22,17 +22,17 @@
 
   <meta name="description" content="&amp;emsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.关系模式的规范化">
-<meta property="og:url" content="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/index.html">
+<meta property="og:title" content="【关系数据理论】1.关系数据结构">
+<meta property="og:url" content="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%911.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
 <meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-29T07:03:37.719Z">
-<meta property="article:modified_time" content="2022-07-01T18:42:36.055Z">
+<meta property="article:published_time" content="2022-07-15T08:03:34.979Z">
+<meta property="article:modified_time" content="2022-07-15T08:03:34.979Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+<link rel="canonical" href="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%911.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>3.关系模式的规范化 | Tusizou's Blog</title>
+  <title>【关系数据理论】1.关系数据结构 | Tusizou's Blog</title>
   
 
 
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/06/29/3.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A7%84%E8%8C%83%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%911.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          3.关系模式的规范化
+          【关系数据理论】1.关系数据结构
         </h1>
 
         <div class="post-meta">
@@ -218,33 +218,32 @@
       
         <p>&emsp;</p>
 <span id="more"></span>
-<h1 id="一、1NF"><a href="#一、1NF" class="headerlink" title="一、1NF"></a>一、1NF</h1><p>如果关系模式 𝘙，其所有的属性均为简单属性，即每个属性都是不可再分的，则称 𝘙 属于第一范式（First Normal Form，1NF），记作 𝘙 $\in$ 1NF。</p>
-<p>例如，教学关系模式中所有的属性都是不可再分的简单属性，即：教学 $\in$ 1NF。</p>
-<h1 id="二、2NF"><a href="#二、2NF" class="headerlink" title="二、2NF"></a>二、2NF</h1><p>若 𝘙 $\in$ 1NF，且每一个非主属性完全依赖于码，则 𝘙 $\in$ 2NF。</p>
-<p>例如，对于教学关系模式：教学 &lt;𝘜，𝘍&gt;</p>
-<p>𝘜＝｛学号，姓名，年龄，性别，系名，系主任，课程名，成绩｝</p>
-<p>𝘍＝｛学号 $\to$ 姓名，学号 $\to$ 年龄，学号 $\to$ 性别，学号 $\to$ 系名，系名 $\to$ 系主任，（学号，课程名） $\to$ 成绩｝</p>
-<p>主码＝（学号，课程名）</p>
-<p>非主属性＝（姓名，年龄，性别，系名，系主任，成绩）</p>
-<p>非主属性对码的函数依赖＝｛（学号，课程名）$\stackrel{P}{\longrightarrow}$ 姓名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 年龄，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 性别，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系名，（学号，课程名）$\stackrel{P}{\longrightarrow}$ 系主任，（学号，课程名）$\stackrel{F}{\longrightarrow}$ 成绩｝</p>
-<p>显然，教学关系模式不服从 2NF，即：教学 $\notin$ 2NF。根据 2NF 的定义，将教学关系模式分解为两个关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），选课（学号，课程名，成绩）</p>
-<h1 id="三、3NF"><a href="#三、3NF" class="headerlink" title="三、3NF"></a>三、3NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; 中若不存在这样的码 𝘟、属性组 𝘠 及非主属性 𝘡（𝘡 $\nsubseteq$ 𝘠）使得 𝘟 $\to$ 𝘠、𝘠 $\nrightarrow$ 𝘟、𝘠 $\to$ 𝘡 成立，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 3NF。</p>
-<p>可以证明，若 𝘙 $\in$ 3NF，则每一个非主属性既不传递依赖于码，也不部分依赖于码，即：关系模式 𝘙 是 3NF，则 𝘙 一定是 2NF。</p>
-<blockquote>
-<p>设 𝘙 $\in$ 3NF，𝘟 是关系 𝘙 的码，假设 𝘙 $\notin$ 2NF，则存在一个非主属性 𝘡 部分函数依赖于码，即 𝘟 $\stackrel{P}{\longrightarrow}$ 𝘡，从而存在 𝘠 $\subset$ 𝘟，𝘠 $\stackrel{F}{\longrightarrow}$ 𝘡（𝘡 $\nsubseteq$ 𝘠），并且有 𝘟 $\to$ 𝘠，这与 3NF 的定义矛盾，由此结论成立。</p>
-</blockquote>
-<p>例如，对于学生_系关系模式：学生_系（学号，姓名，年龄，性别，系名，系主任），会发现其中存在传递依赖关系，即：学号 $\to$ 系名，系名 $\to$ 系主任，则：学号 $\stackrel{传递}{\longrightarrow}$  系主任。由于主码“学号”与非主属性“系主任”之间存在传递函数依赖，所以学生_系 $\notin$ 3NF，可以按 3NF 的要求将其分解为以下两个关系模式：<br>学生（学号，姓名，年龄，性别，系名），教学系（系名，系主任）</p>
-<h1 id="四、BCNF"><a href="#四、BCNF" class="headerlink" title="四、BCNF"></a>四、BCNF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，若 𝘟 $\to$ 𝘠 且 𝘠 $\nsubseteq$ 𝘟 时 𝘟 必含有码，则关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF。</p>
-<p>如果关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ BCNF，由于 𝘙 排除了任何属性对码的传递函数依赖和部分函数依赖，所以 𝘙 一定属于 3NF。</p>
-<p>由 BCNF 的定义可以得到，一个满足 BCNF 的关系模式必须满足以下条件：</p>
-<p>（1）所有非主属性对每一个码都是完全函数依赖。</p>
-<p>（2）所有的主属性对每一个不包含它的码，也是完全函数依赖。</p>
-<p>（3）没有任何属性完全函数依赖于非码的任何一组属性。</p>
-<p>例如，对于选课关系模式（学生，教师，课程），语义为：每位教师只能讲授一门课程，每门课程由若干教师讲授；每个学生选修某门课程对应一个固定的教师。由语义可以得到选课关系模式的函数依赖为：𝘍 = ｛（学生，课程）$\to$ 教师，（学生，教师）$\to$ 课程，教师 $\to$ 课程｝。这里（学生，课程）和（学生，教师）都是关系的码，所以关系模式的主属性集合为：｛学生，教师，课程｝，非主属性为：$\varnothing$。由于选课关系模式中无非主属性，所以它属于 3NF，但因为存在函数依赖：教师 $\to$ 课程，由于“教师”不是码，所以选课关系模式不属于 BCNF。可以按 BCNF 的要求将选课关系模式分解为以下两个关系模式：</p>
-<p>学生_教师（学生，教师），教师_课程（教师，课程）</p>
-<h1 id="五、4NF"><a href="#五、4NF" class="headerlink" title="五、4NF"></a>五、4NF</h1><p>关系模式 𝘙&lt;𝘜，𝘍&gt; $\in$ 1NF，如果对于 𝘙 的每个非平凡多值依赖 𝘟 $\to\to$ 𝘠（𝘠 $\nsubseteq$ 𝘟），𝘟 必含有码，则称 𝘙&lt;𝘜，𝘍&gt; $\in$ 4NF。</p>
-<p>根据定义，4NF 要求每一个非平凡的多值依赖 𝘟 $\to\to$ 𝘠，𝘟都含有候选码，则必然是 𝘟 $\to$ 𝘠，所以 4NF 所允许的非平凡多值依赖实际上是函数依赖。显然，如果一个关系模式属于 4NF，则必然也属于 BCNF。</p>
-<h1 id="六、5NF"><a href="#六、5NF" class="headerlink" title="六、5NF"></a>六、5NF</h1><p>如果关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含，则称 𝘙 $\in$ 5NF。所谓“关系模式 𝘙 中的每一个连接依赖均由 𝘙 的候选码所隐含”是指在连接时，所连接的属性均为候选码。</p>
+<h1 id="一、关系的数学定义"><a href="#一、关系的数学定义" class="headerlink" title="一、关系的数学定义"></a>一、关系的数学定义</h1><p>现实世界中存在的可以相互区分的事物或概念称为实体（Entity）。在关系模型中，无论是实体集，还是实体集之间的联系均有单一的关系表示。由于关系模型是建立在集合代数基础上的，因而一般从集合论角度对关系数据结构进行定义。</p>
+<p><strong>1. 域（Domain）的定义</strong></p>
+<p>域（Domain）是一组具有相同数据类型的值的集合。</p>
+<p>例如，整数、正数、负数、｛0、1｝等，都可以作为域。</p>
+<p><strong>2. 笛卡尔积（Cartesian Product）的定义</strong></p>
+<p>给定一组域 $D_1, D_2, \cdots, D_n$，这些域中可以有相同的部分，则 $D_1, D_2, \cdots, D_n$  的笛卡尔积（Cartesian Product）为</p>
+<script type="math/tex; mode=display">
+D_1\times D_2\times \cdots \times D_n=\{ (d_1,d_2,\cdots,d_n)|d_i\in D_i, i=1, 2, \cdots, n \}</script><p>式中，每一个元素 $(d_1, d_2, \cdots, d_n)$ 为一个 𝘯 元组（n-Tuple），简称元组（Tuple）。元素中的每一个值 $d_i$ 称作一个分量（Component）。</p>
+<p><strong>3. 关系（Relation）的定义</strong></p>
+<p>$D_1\times D_2\times \cdots \times D_n$ 的子集称为在域 $D_1, D_2, \cdots, D_n$ 上的关系（Relation），表示为</p>
+<script type="math/tex; mode=display">
+R(D_1, D_2, \cdots, D_n)</script><p>式中，𝘙 表示关系的名字，𝘯 是关系的目或度（Degree）。当 𝘯 = 1 时，称该关系为单元关系（Unary Relation）；当 𝘯 = 2 时，称该关系为二元关系（Binary Relation）。</p>
+<p><strong>4. 关系模式（Relation Schema）的定义</strong></p>
+<p>关系的描述称为关系模式（Relation Schema），关系模式可以形式化地表示为</p>
+<script type="math/tex; mode=display">
+R<U,D,Dom,F></script><p>式中，𝘙 为关系名，𝘜 为关系的属性集合，𝘋 为属性集合 𝘜 中属性的数据域，𝘋𝘰𝘮 为属性到域的映射的集合，𝘍 为属性间数据的依赖关系集合。</p>
+<h1 id="二、关系中的基本名词"><a href="#二、关系中的基本名词" class="headerlink" title="二、关系中的基本名词"></a>二、关系中的基本名词</h1><p><strong>1. 元组</strong></p>
+<p>关系表中的每一横行称作一个元组（Tuple），组成元组的元素为分量。数据库中的一个实体或实体间的一个联系均使用一个元组表示。</p>
+<p><strong>2. 属性</strong></p>
+<p>关系中的每一列称为一个属性（Attribute）。属性具有型和值两层含义：属性的型指属性名和属性取值域；属性值指属性具体的取值。由于关系中的属性名具有标识列的作用，因而同一关系中的属性名不能相同。关系中往往有多个属性，属性用于表示实体的特征。</p>
+<p><strong>3. 候选码和主码</strong></p>
+<p>若关系中的某一属性值（或单个属性）的值能唯一地标识一个元组，则称该属性组（或属性）为候选码（Candidata Key）。为数据管理方便，当一个关系有多个候选码时，应选定其中的一个候选码为主码（Primary Key）。当然，如果关系中只有一个候选码，这个唯一的候选码就是主码。</p>
+<p><strong>4. 全码</strong></p>
+<p>若关系的候选码中只包含一个属性，则称它为单属性码；若候选码是由多个属性构成的，则称它为多属性码。若关系中只有一个候选码，且这个候选码中包括全部属性，则这种候选码为全码（All-Key）。全码是候选码的特例，它说明该关系中不存在属性之间相互决定的情况。</p>
+<p><strong>5. 主属性和非主属性</strong></p>
+<p>关系中，候选码中的属性称为主属性（Prime Attribute），不包含在任何候选码中的属性称为非主属性（Non-Key Attribute）。</p>
 
     </div>
 
@@ -259,10 +258,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/06/29/1.%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="1.关系数据结构">
-      1.关系数据结构 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/15/%E3%80%90C#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="prev" title="【C#学习笔记】重载递增运算符">
+      <i class="fa fa-chevron-left"></i> 【C#学习笔记】重载递增运算符
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%912.%E6%95%B0%E6%8D%AE%E4%BE%9D%E8%B5%96/" rel="next" title="【关系数据理论】2.数据依赖">
+      【关系数据理论】2.数据依赖 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -322,7 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%811NF"><span class="nav-text">一、1NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%812NF"><span class="nav-text">二、2NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%813NF"><span class="nav-text">三、3NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81BCNF"><span class="nav-text">四、BCNF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%814NF"><span class="nav-text">五、4NF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%815NF"><span class="nav-text">六、5NF</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%85%B3%E7%B3%BB%E7%9A%84%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89"><span class="nav-text">一、关系的数学定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%B3%E7%B3%BB%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%90%8D%E8%AF%8D"><span class="nav-text">二、关系中的基本名词</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
