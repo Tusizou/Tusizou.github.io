@@ -771,4 +771,22 @@ U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href=
         <category>关系模式</category>
       </categories>
   </entry>
+  <entry>
+    <title>【C#学习笔记】new关键字</title>
+    <url>/2022/07/15/%E3%80%90C#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<p>派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽（mask）基类成员。</p>
+<ul>
+<li>要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。</li>
+<li>通过在派生类中声明心的带有相同签名的函数成员，可以屏蔽继承的函数成员。请记住，签名由名称和参数列表组成，不包括返回类型。</li>
+<li>要让编译器知道你在故意屏蔽继承的成员，可使用 new 修饰符。否则，程序可以成功编译，但编译器回警告你隐藏了一个继承的成员。</li>
+<li>可以屏蔽静态成员。</li>
+</ul>
+<div class="pdfobject-container" data-target="new关键字.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+  </entry>
 </search>
