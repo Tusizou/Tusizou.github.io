@@ -22,17 +22,17 @@
 
   <meta name="description" content="&amp;emsp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Csharp】1.new关键字">
-<meta property="og:url" content="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E3%80%911.new%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:title" content="【Csharp】3.构造函数初始化语句">
+<meta property="og:url" content="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E3%80%913.%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E5%8F%A5/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
 <meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-18T10:28:55.446Z">
-<meta property="article:modified_time" content="2022-07-18T10:28:55.447Z">
+<meta property="article:published_time" content="2022-07-18T10:42:00.145Z">
+<meta property="article:modified_time" content="2022-07-18T10:42:00.145Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E3%80%911.new%E5%85%B3%E9%94%AE%E5%AD%97/">
+<link rel="canonical" href="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E3%80%913.%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E5%8F%A5/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>【Csharp】1.new关键字 | Tusizou's Blog</title>
+  <title>【Csharp】3.构造函数初始化语句 | Tusizou's Blog</title>
   
 
 
@@ -178,7 +178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E3%80%911.new%E5%85%B3%E9%94%AE%E5%AD%97/">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E3%80%913.%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E5%8F%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,10 +191,19 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【Csharp】1.new关键字
+          【Csharp】3.构造函数初始化语句
         </h1>
 
         <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
 
           
 
@@ -209,23 +218,16 @@
       
         <p>&emsp;</p>
 <span id="more"></span>
-<h1 id="类中的-new-关键字"><a href="#类中的-new-关键字" class="headerlink" title="类中的 new 关键字"></a>类中的 new 关键字</h1><p>派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽（mask）基类成员。</p>
+<p>如果希望派生类使用一个指定的基类构造函数而不是无参数构造函数，必须在构造函数初始化语句中指定它。</p>
 <ul>
-<li>要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。</li>
-<li>通过在派生类中声明心的带有相同签名的函数成员，可以屏蔽继承的函数成员。请记住，签名由名称和参数列表组成，不包括返回类型。</li>
-<li>要让编译器知道你在故意屏蔽继承的成员，可使用 new 修饰符。否则，程序可以成功编译，但编译器回警告你隐藏了一个继承的成员。</li>
-<li>可以屏蔽静态成员。</li>
+<li>使用关键字 base 并指明使用哪一个<strong>基类</strong>构造函数。</li>
+<li>使用关键字 this 并指明应该使用<strong>当前类</strong>的哪一个构造函数。</li>
 </ul>
-<div class="pdfobject-container" data-target="类中的new关键字.pdf" data-height="500px"></div>
-<h1 id="结构中的-new-关键字"><a href="#结构中的-new-关键字" class="headerlink" title="结构中的 new 关键字"></a>结构中的 new 关键字</h1><p>C# 隐式地为每个结构提供一个无参数的构造函数，这个构造函数把结构的每个成员设置为该类型的默认值，值成员设置成它们的默认值，引用成员设置成 null。</p>
-<p>对于每个结构，都存在预定义的无参数构造函数，而且不能删除或重定义。但是，可以创建另外的构造函数，只要它们有参数。注意，这和类不同，对于类，编译器只在没有声明其他构造函数时提供隐式的无参数构造函数。</p>
-<p>调用一个构造函数，包括隐式无参数构造函数，要使用 new 运算符。注意，即使不从堆中分配内存，也要使用 new 运算符。也可以不使用 new 运算符创建结构的实例。然而，如果这样做，有一些限制，如下：</p>
-<ul>
-<li>在显式设置数据成员之后，才能使用它们的值。</li>
-<li>在对所有数据成员赋值之后，才能调用结构的函数成员。</li>
-</ul>
-<div class="pdfobject-container" data-target="结构中的new关键字.pdf" data-height="500px"></div>
-
+<p>构造函数初始化语句由关键字 base 和要调用的基类构造函数的参数列表构成。使用关键字 base 时，基类构造函数初始化语句放在冒号后面，跟在类的构造函数声明的参数列表后面。</p>
+<div class="pdfobject-container" data-target="base构造函数初始化语句.pdf" data-height="500px"></div>
+<p>使用关键字 this 时，构造函数初始化语句可以让构造过程（实际上是编译器）使用当前类中其他的构造函数。这种语法很有用的另一种情况是，一个类有好几个构造函数，并且它们都需要在对象构造的过程开始时执行一些公共代码，对于这种情况，可以把公共代码提取出来作为一个构造函数，被其他所有的构造函数用作构造函数初始化语句。由于减少了重复代码，实际上这也是推荐的做法。</p>
+<p>有时候在实例化对象时无法完全初始化对象，此时，必须禁止从类的外部调用构造函数，因为那样的话只会初始化对象的一部分，要避免这个问题，可以把构造函数声明为 private，而不是 public，然后只让其他构造函数使用它、</p>
+<div class="pdfobject-container" data-target="this构造函数初始化语句.pdf" data-height="500px"></div>
     </div>
 
     
@@ -240,12 +242,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/07/18/Hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" rel="prev" title="Hexo配置指南">
-      <i class="fa fa-chevron-left"></i> Hexo配置指南
+    <a href="/2022/07/18/%E3%80%90Csharp%E3%80%912.new%E5%85%B3%E9%94%AE%E5%AD%97/" rel="prev" title="【Csharp】2.new关键字">
+      <i class="fa fa-chevron-left"></i> 【Csharp】2.new关键字
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/07/18/%E3%80%90Csharp%E3%80%911.%E5%91%BD%E5%90%8D%E7%BA%A6%E5%AE%9A/" rel="next" title="【Csharp】1.命名约定">
-      【Csharp】1.命名约定 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/07/18/%E3%80%90Csharp%E3%80%914.%E5%B1%9E%E6%80%A7/" rel="next" title="【Csharp】4.属性">
+      【Csharp】4.属性 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -305,7 +307,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E4%B8%AD%E7%9A%84-new-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">类中的 new 关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84-new-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">结构中的 new 关键字</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
