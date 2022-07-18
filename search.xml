@@ -754,14 +754,22 @@ U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href=
     <url>/2022/07/16/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
-<p>派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽（mask）基类成员。</p>
+<h1 id="类中的-new-关键字"><a href="#类中的-new-关键字" class="headerlink" title="类中的 new 关键字"></a>类中的 new 关键字</h1><p>派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽（mask）基类成员。</p>
 <ul>
 <li>要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。</li>
 <li>通过在派生类中声明心的带有相同签名的函数成员，可以屏蔽继承的函数成员。请记住，签名由名称和参数列表组成，不包括返回类型。</li>
 <li>要让编译器知道你在故意屏蔽继承的成员，可使用 new 修饰符。否则，程序可以成功编译，但编译器回警告你隐藏了一个继承的成员。</li>
 <li>可以屏蔽静态成员。</li>
 </ul>
-<div class="pdfobject-container" data-target="new关键字.pdf" data-height="500px"></div>
+<div class="pdfobject-container" data-target="类中的new关键字.pdf" data-height="500px"></div>
+<h1 id="结构中的-new-关键字"><a href="#结构中的-new-关键字" class="headerlink" title="结构中的 new 关键字"></a>结构中的 new 关键字</h1><p>C# 隐式地为每个结构提供一个无参数的构造函数，这个构造函数把结构的每个成员设置为该类型的默认值，值成员设置成它们的默认值，引用成员设置成 null。</p>
+<p>对于每个结构，都存在预定义的无参数构造函数，而且不能删除或重定义。但是，可以创建另外的构造函数，只要它们有参数。注意，这和类不同，对于类，编译器只在没有声明其他构造函数时提供隐式的无参数构造函数。</p>
+<p>调用一个构造函数，包括隐式无参数构造函数，要使用 new 运算符。注意，即使不从堆中分配内存，也要使用 new 运算符。也可以不使用 new 运算符创建结构的实例。然而，如果这样做，有一些限制，如下：</p>
+<ul>
+<li>在显式设置数据成员之后，才能使用它们的值。</li>
+<li>在对所有数据成员赋值之后，才能调用结构的函数成员。</li>
+</ul>
+<div class="pdfobject-container" data-target="结构中的new关键字.pdf" data-height="500px"></div>
 ]]></content>
       <categories>
         <category>C#</category>
