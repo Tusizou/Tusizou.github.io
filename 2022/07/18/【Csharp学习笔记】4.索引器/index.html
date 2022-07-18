@@ -20,15 +20,19 @@
     var CONFIG = {"hostname":"toki.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Tusizou&#39;s Blog">
-<meta property="og:url" content="https://toki.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/index.html">
+  <meta name="description" content="&amp;emsp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Csharp学习笔记】4.索引器">
+<meta property="og:url" content="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%914.%E7%B4%A2%E5%BC%95%E5%99%A8/index.html">
 <meta property="og:site_name" content="Tusizou&#39;s Blog">
+<meta property="og:description" content="&amp;emsp;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-18T09:29:47.967Z">
+<meta property="article:modified_time" content="2022-07-18T09:29:47.968Z">
 <meta property="article:author" content="Tusizou">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://toki.github.io/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">
+<link rel="canonical" href="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%914.%E7%B4%A2%E5%BC%95%E5%99%A8/">
 
 
 <script id="page-configurations">
@@ -36,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 未分类 | Tusizou's Blog</title>
+  <title>【Csharp学习笔记】4.索引器 | Tusizou's Blog</title>
   
 
 
@@ -167,51 +171,123 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">未分类
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://toki.github.io/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%914.%E7%B4%A2%E5%BC%95%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Tusizou">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tusizou's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Csharp学习笔记】4.索引器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>&emsp;</p>
+<span id="more"></span>
+<h1 id="索引器概述"><a href="#索引器概述" class="headerlink" title="索引器概述"></a>索引器概述</h1><p>索引器是一组 get 和 set 访问器。可以认为索引器是为类的多个数据成员提供 get 和 set 访问的属性，通过提供索引器，可以在许多可能的数据成员中进行选择。索引本身可以是任何类型，而不仅仅是数值类型。</p>
+<p>索引器和属性在很多方面是相似的</p>
+<ul>
+<li>和属性一样，索引器不用分配内存来存储。</li>
+<li>索引器和属性都主要被用来访问其他数据成员，它们与这些成员关联，并为它们提供获取和设置访问。<ul>
+<li>属性通常表示单个数据成员</li>
+<li>索引器通常表示多个数据成员</li>
+</ul>
+</li>
+</ul>
+<p>关于索引器的特征，一些注意事项如下：</p>
+<ul>
+<li>和属性一样，索引器可以只有一个访问器，也可以两个都有。</li>
+<li>索引器总是实例成员，因此不能被声明为 static。</li>
+<li>和属性一样，实现 get 和 set 访问器的代码不一定要关联到某个字段或属性。这段代码可以做任何事情也可以什么的都不做，只要 get 访问器返回某个指定类型的值即可。</li>
+</ul>
+<p>关于索引器的语法，一些注意事项如下：</p>
+<ul>
+<li>索引器没有名称，在名称的位置是关键字 this。</li>
+<li>参数列表在方括号中间。</li>
+<li>参数列表中必须至少声明一个参数。</li>
+</ul>
+<h1 id="索引器的访问器"><a href="#索引器的访问器" class="headerlink" title="索引器的访问器"></a>索引器的访问器</h1><p>当索引器被用于赋值时，set 访问器被调用，并接受两项数据：</p>
+<ul>
+<li>一个名为 value 的隐式参数，其中持有要保存的数据；</li>
+<li>一个或更多索引参数，表示数据应该保存到哪里。</li>
+</ul>
+<p>set 访问器</p>
+<ul>
+<li>返回类型为 void</li>
+<li>它使用的参数列表和索引器声明中的相同。</li>
+<li>它有一个名为 value 的隐式参数，值参类型和索引器类型相同。</li>
+</ul>
+<p>当索引器被用于获取值时，可以通过一个或多个索引参数调用 get 访问器，索引参数指示获取哪个值。get 访问器方法体内的代码必须检查索引参数，确定它表示的是哪个字段，并返回该字段的值。</p>
+<p>get 访问器</p>
+<ul>
+<li>它的参数列表和索引器声明中的相同</li>
+<li>它返回与索引器类型相同的值</li>
+</ul>
+<div class="pdfobject-container" data-target="索引器概述.pdf" data-height="500px"></div>
+<h1 id="索引器重载"><a href="#索引器重载" class="headerlink" title="索引器重载"></a>索引器重载</h1><p>只要索引器的参数列表不同，类就可以有任意多个索引器。索引器类型不同是不够的，这叫作索引器重载，因为所有的索引器都有相同的“名称”：this 访问引用。</p>
+<div class="pdfobject-container" data-target="索引器重载.pdf" data-height="500px"></div>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-07-18T17:47:51+08:00"
-              content="2022-07-18">
-          07-18
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/07/18/Hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/" itemprop="url">
-            <span itemprop="name">Hexo配置指南</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%913.%E5%B1%9E%E6%80%A7/" rel="prev" title="【Csharp学习笔记】3.属性">
+      <i class="fa fa-chevron-left"></i> 【Csharp学习笔记】3.属性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%915.%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="next" title="【Csharp学习笔记】5.重载递增运算符">
+      【Csharp学习笔记】5.重载递增运算符 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -264,6 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="nav-text">索引器概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%99%A8%E7%9A%84%E8%AE%BF%E9%97%AE%E5%99%A8"><span class="nav-text">索引器的访问器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%99%A8%E9%87%8D%E8%BD%BD"><span class="nav-text">索引器重载</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

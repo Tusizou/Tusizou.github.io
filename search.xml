@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hexo配置指南</title>
-    <url>/2022/07/02/Hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
+    <url>/2022/07/18/Hexo%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
 <h1 id="前置依赖环境"><a href="#前置依赖环境" class="headerlink" title="前置依赖环境"></a>前置依赖环境</h1><ul>
@@ -36,7 +36,8 @@
 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&amp;emsp;</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><code>\themes\next\_config.yml</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">solarized</span></span><br></pre></td></tr></table></figure>
-<h2 id="排序依据"><a href="#排序依据" class="headerlink" title="排序依据"></a>排序依据</h2><p><code>_config.yml</code></p>
+<h2 id="排序依据"><a href="#排序依据" class="headerlink" title="排序依据"></a>排序依据</h2><p>打开搜索栏，搜索 <code>orderBy</code>，根据搜索结果将所有的 <code>date</code> 改为 <code>name</code> 后，可能需要重启电脑。</p>
+<p><code>_config.yml</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-name</span></span><br></pre></td></tr></table></figure>
 <p><code>\node_modules\hexo-generator-tag\lib</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">orderBy</span> <span class="string">=</span> <span class="string">config.tag_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
@@ -44,6 +45,8 @@
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">orderBy</span> <span class="string">=</span> <span class="string">config.category_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
 <p><code>\node_modules\hexo-generator-archive\lib</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">allPosts</span> <span class="string">=</span> <span class="string">locals.posts.sort(config.archive_generator.order_by</span> <span class="string">||</span> <span class="string">&#x27;-name&#x27;</span><span class="string">);</span></span><br></pre></td></tr></table></figure>
+<p><code>\node_modules\hexo\lib\plugins\helper\list_posts.js</code></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">const</span> <span class="string">orderby</span> <span class="string">=</span> <span class="string">options.orderby</span> <span class="string">||</span> <span class="string">&#x27;name&#x27;</span><span class="string">;</span></span><br></pre></td></tr></table></figure>
 <h2 id="去除标题序号"><a href="#去除标题序号" class="headerlink" title="去除标题序号"></a>去除标题序号</h2><p><code>\themes\next\_config.yml</code></p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <h2 id="隐藏创建-更新时间"><a href="#隐藏创建-更新时间" class="headerlink" title="隐藏创建/更新时间"></a>隐藏创建/更新时间</h2><p><code>\themes\next\_config.yml</code></p>
@@ -77,11 +80,169 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line">path = sys.argv[<span class="number">1</span>]</span><br><span class="line">targetpath = <span class="string">r&#x27;&#x27;&#x27;D:\Tusizou&#x27;s Blog\source\_posts&#x27;&#x27;&#x27;</span> + <span class="string">&quot;\\&quot;</span></span><br><span class="line">postpath = targetpath + os.path.basename(path)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(path,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> rawfile:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(postpath, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf8&#x27;</span>) <span class="keyword">as</span> newfile:</span><br><span class="line">        str1 = <span class="string">r&#x27;&#x27;&#x27;---</span></span><br><span class="line"><span class="string">title: &#x27;&#x27;&#x27;</span></span><br><span class="line">        str2 = Path(path).stem</span><br><span class="line">        str3 = <span class="string">r&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">categories: &#x27;&#x27;&#x27;</span></span><br><span class="line">        str4 = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">mathjax: &#x27;&#x27;&#x27;</span></span><br><span class="line">        str5=<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">---</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&amp;emsp;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;!--more--&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">str</span> = str1+str2+str3+sys.argv[<span class="number">2</span>]+str4+sys.argv[<span class="number">3</span>]+str5</span><br><span class="line">        newfile.write(<span class="built_in">str</span>+rawfile.read())</span><br><span class="line"></span><br><span class="line">image_path = os.path.dirname(path)+<span class="string">&#x27;\\&#x27;</span>+Path(path).stem</span><br><span class="line"><span class="keyword">if</span> os.path.exists(image_path):</span><br><span class="line">    source_path = os.path.abspath(image_path)</span><br><span class="line">    target_path = os.path.abspath(<span class="string">r&#x27;&#x27;&#x27;D:\Tusizou&#x27;s Blog\source\_posts\\&#x27;&#x27;&#x27;</span>+Path(path).stem)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(target_path):</span><br><span class="line">        <span class="comment"># 如果目标路径存在原文件夹的话就先删除</span></span><br><span class="line">        shutil.rmtree(target_path)</span><br><span class="line"></span><br><span class="line">    shutil.copytree(source_path, target_path)</span><br></pre></td></tr></table></figure>
 <p>修改注册表将发布到 Hexo 的功能添加到鼠标右键文件的右键菜单中，同时编写 bat 脚本调用 python 程序发布</p>
 <p><code>发布到Hexo.bat</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">cd /d %~dp0</span><br><span class="line">echo 输入类别</span><br><span class="line">set /p type=</span><br><span class="line">echo 是否支持数学公式(默认为true)</span><br><span class="line">set /p mathjax=</span><br><span class="line">if &quot;%mathjax%&quot;==&quot;&quot; set mathjax=true</span><br><span class="line">set file=&quot;%1&quot;</span><br><span class="line">echo 发布成功</span><br><span class="line">cmd /c python 发布到Hexo.py %1 %type% %mathjax%</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">@echo off</span><br><span class="line">cd /d %~dp0</span><br><span class="line">echo 输入类别(默认为未分类)</span><br><span class="line">set /p type=</span><br><span class="line">if &quot;%type%&quot;==&quot;&quot; set type=未分类</span><br><span class="line">echo 是否支持数学公式(默认为false)</span><br><span class="line">set /p mathjax=</span><br><span class="line">if &quot;%mathjax%&quot;==&quot;&quot; set mathjax=false</span><br><span class="line">set file=&quot;%1&quot;</span><br><span class="line">echo 发布成功</span><br><span class="line">cmd /c python 发布到Hexo.py %1 %type% %mathjax%</span><br></pre></td></tr></table></figure>
 <p>修改注册表：win+R 输入regedit，进入路径 <code>计算机\HKEY_CLASSES_ROOT\*\shell</code>，新建项并命名为 <code>Post</code>，双击 <code>默认</code>项，添加数值数据 <code>发布到Hexo</code>，该名称为右键文件时的右键菜单中显示的名字；在 <code>Post</code> 下再次新建项 <code>command</code>，双击 <code>默认</code>项，添加数值数据为 <code>发布到Hexo.bat</code> 文件所在路径，并加上 <code>”%1&quot;</code>，最终结果为：<code>&quot;发布到Hexo.bat&quot; &quot;%1&quot;</code>。</p>
+<p>因为懒得命令行开启本地服务端口，在博客源文件路径下写 bat 命令如下</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">cd</span> /d &quot;D:\Tusizou&#x27;s Blog&quot;</span><br><span class="line"><span class="built_in">start</span> microsoftedge &quot;http://localhost:<span class="number">4000</span>&quot;</span><br><span class="line"><span class="built_in">cmd</span> /k &quot;hexo g &amp;&amp; hexo s&quot;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>未分类</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Csharp学习笔记】1.new关键字</title>
+    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%911.new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="类中的-new-关键字"><a href="#类中的-new-关键字" class="headerlink" title="类中的 new 关键字"></a>类中的 new 关键字</h1><p>派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽（mask）基类成员。</p>
+<ul>
+<li>要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。</li>
+<li>通过在派生类中声明心的带有相同签名的函数成员，可以屏蔽继承的函数成员。请记住，签名由名称和参数列表组成，不包括返回类型。</li>
+<li>要让编译器知道你在故意屏蔽继承的成员，可使用 new 修饰符。否则，程序可以成功编译，但编译器回警告你隐藏了一个继承的成员。</li>
+<li>可以屏蔽静态成员。</li>
+</ul>
+<div class="pdfobject-container" data-target="类中的new关键字.pdf" data-height="500px"></div>
+<h1 id="结构中的-new-关键字"><a href="#结构中的-new-关键字" class="headerlink" title="结构中的 new 关键字"></a>结构中的 new 关键字</h1><p>C# 隐式地为每个结构提供一个无参数的构造函数，这个构造函数把结构的每个成员设置为该类型的默认值，值成员设置成它们的默认值，引用成员设置成 null。</p>
+<p>对于每个结构，都存在预定义的无参数构造函数，而且不能删除或重定义。但是，可以创建另外的构造函数，只要它们有参数。注意，这和类不同，对于类，编译器只在没有声明其他构造函数时提供隐式的无参数构造函数。</p>
+<p>调用一个构造函数，包括隐式无参数构造函数，要使用 new 运算符。注意，即使不从堆中分配内存，也要使用 new 运算符。也可以不使用 new 运算符创建结构的实例。然而，如果这样做，有一些限制，如下：</p>
+<ul>
+<li>在显式设置数据成员之后，才能使用它们的值。</li>
+<li>在对所有数据成员赋值之后，才能调用结构的函数成员。</li>
+</ul>
+<div class="pdfobject-container" data-target="结构中的new关键字.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Csharp学习笔记】2.构造函数初始化语句</title>
+    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%912.%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<p>如果希望派生类使用一个指定的基类构造函数而不是无参数构造函数，必须在构造函数初始化语句中指定它。</p>
+<ul>
+<li>使用关键字 base 并指明使用哪一个<strong>基类</strong>构造函数。</li>
+<li>使用关键字 this 并指明应该使用<strong>当前类</strong>的哪一个构造函数。</li>
+</ul>
+<p>构造函数初始化语句由关键字 base 和要调用的基类构造函数的参数列表构成。使用关键字 base 时，基类构造函数初始化语句放在冒号后面，跟在类的构造函数声明的参数列表后面。</p>
+<div class="pdfobject-container" data-target="base构造函数初始化语句.pdf" data-height="500px"></div>
+<p>使用关键字 this 时，构造函数初始化语句可以让构造过程（实际上是编译器）使用当前类中其他的构造函数。这种语法很有用的另一种情况是，一个类有好几个构造函数，并且它们都需要在对象构造的过程开始时执行一些公共代码，对于这种情况，可以把公共代码提取出来作为一个构造函数，被其他所有的构造函数用作构造函数初始化语句。由于减少了重复代码，实际上这也是推荐的做法。</p>
+<p>有时候在实例化对象时无法完全初始化对象，此时，必须禁止从类的外部调用构造函数，因为那样的话只会初始化对象的一部分，要避免这个问题，可以把构造函数声明为 private，而不是 public，然后只让其他构造函数使用它、</p>
+<div class="pdfobject-container" data-target="this构造函数初始化语句.pdf" data-height="500px"></div>]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Csharp学习笔记】3.属性</title>
+    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%913.%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="属性概述"><a href="#属性概述" class="headerlink" title="属性概述"></a>属性概述</h1><p>属性是代表类实例或类中的数据项的成员。</p>
+<p>与字段类似，属性有如下特征：</p>
+<ul>
+<li>它是命名的类成员。</li>
+<li>它有类型。</li>
+<li>它可以被赋值和读取。</li>
+</ul>
+<p>与字段不同，属性是一个函数成员：</p>
+<ul>
+<li>它不一定为数据存储分配内存</li>
+<li>它执行代码</li>
+</ul>
+<p>属性是一组（两个）匹配的、命名的、称为访问器的方法：</p>
+<ul>
+<li>set 访问器为属性赋值</li>
+<li>get 访问器从属性获取值。</li>
+</ul>
+<h1 id="属性的访问器"><a href="#属性的访问器" class="headerlink" title="属性的访问器"></a>属性的访问器</h1><p>set 访问器</p>
+<ul>
+<li>拥有一个单独的、隐式的值参，名称为 value，与属性的类型相同</li>
+<li>拥有一个返回类型 void</li>
+</ul>
+<p>get 访问器</p>
+<ul>
+<li>没有参数</li>
+<li>拥有一个与属性类型相同的返回类型</li>
+</ul>
+<div class="pdfobject-container" data-target="属性.pdf" data-height="500px"></div>]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Csharp学习笔记】4.索引器</title>
+    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%914.%E7%B4%A2%E5%BC%95%E5%99%A8/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="索引器概述"><a href="#索引器概述" class="headerlink" title="索引器概述"></a>索引器概述</h1><p>索引器是一组 get 和 set 访问器。可以认为索引器是为类的多个数据成员提供 get 和 set 访问的属性，通过提供索引器，可以在许多可能的数据成员中进行选择。索引本身可以是任何类型，而不仅仅是数值类型。</p>
+<p>索引器和属性在很多方面是相似的</p>
+<ul>
+<li>和属性一样，索引器不用分配内存来存储。</li>
+<li>索引器和属性都主要被用来访问其他数据成员，它们与这些成员关联，并为它们提供获取和设置访问。<ul>
+<li>属性通常表示单个数据成员</li>
+<li>索引器通常表示多个数据成员</li>
+</ul>
+</li>
+</ul>
+<p>关于索引器的特征，一些注意事项如下：</p>
+<ul>
+<li>和属性一样，索引器可以只有一个访问器，也可以两个都有。</li>
+<li>索引器总是实例成员，因此不能被声明为 static。</li>
+<li>和属性一样，实现 get 和 set 访问器的代码不一定要关联到某个字段或属性。这段代码可以做任何事情也可以什么的都不做，只要 get 访问器返回某个指定类型的值即可。</li>
+</ul>
+<p>关于索引器的语法，一些注意事项如下：</p>
+<ul>
+<li>索引器没有名称，在名称的位置是关键字 this。</li>
+<li>参数列表在方括号中间。</li>
+<li>参数列表中必须至少声明一个参数。</li>
+</ul>
+<h1 id="索引器的访问器"><a href="#索引器的访问器" class="headerlink" title="索引器的访问器"></a>索引器的访问器</h1><p>当索引器被用于赋值时，set 访问器被调用，并接受两项数据：</p>
+<ul>
+<li>一个名为 value 的隐式参数，其中持有要保存的数据；</li>
+<li>一个或更多索引参数，表示数据应该保存到哪里。</li>
+</ul>
+<p>set 访问器</p>
+<ul>
+<li>返回类型为 void</li>
+<li>它使用的参数列表和索引器声明中的相同。</li>
+<li>它有一个名为 value 的隐式参数，值参类型和索引器类型相同。</li>
+</ul>
+<p>当索引器被用于获取值时，可以通过一个或多个索引参数调用 get 访问器，索引参数指示获取哪个值。get 访问器方法体内的代码必须检查索引参数，确定它表示的是哪个字段，并返回该字段的值。</p>
+<p>get 访问器</p>
+<ul>
+<li>它的参数列表和索引器声明中的相同</li>
+<li>它返回与索引器类型相同的值</li>
+</ul>
+<div class="pdfobject-container" data-target="索引器概述.pdf" data-height="500px"></div>
+<h1 id="索引器重载"><a href="#索引器重载" class="headerlink" title="索引器重载"></a>索引器重载</h1><p>只要索引器的参数列表不同，类就可以有任意多个索引器。索引器类型不同是不够的，这叫作索引器重载，因为所有的索引器都有相同的“名称”：this 访问引用。</p>
+<div class="pdfobject-container" data-target="索引器重载.pdf" data-height="500px"></div>
+]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Csharp学习笔记】5.重载递增运算符</title>
+    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%915.%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<p>在运行时，当你的代码对对象执行前置操作（前置递增或前置递减）时，会发生以下行为：</p>
+<ul>
+<li>在对象上执行递增或递减代码；</li>
+<li>返回对象。</li>
+</ul>
+<p>在运行时，当你的代码对对象执行后置操作（后置递增或后置递减）时，会发生以下行为：</p>
+<ul>
+<li>如果对象是值类型，则系统会复制该对象；如果对象是引用类型，则引用会被复制；</li>
+<li>在对象上执行递增或递减代码；</li>
+<li>返回保存的操作数。</li>
+</ul>
+<p>如果操作数对象是值类型对象，那么一点问题都没有，但是当用户定义类型是引用类型时，就要小心了。对于引用类型的对象，前置操作没有问题，因为没有进行复制。但是，对于后置操作，因为保存的副本是引用的副本，所以这意味着原始引用和引用副本指向相同的对象，那么，当进行第二步操作的时候，递增或递减代码就会在对象上执行，这意味着保存的引用所指向的对象不再是它的起始状态了，返回对变化了的对象的引用可能不是所预期的行为。</p>
+<div class="pdfobject-container" data-target="重载递增运算符.pdf" data-height="500px"></div>]]></content>
+      <categories>
+        <category>C#</category>
       </categories>
   </entry>
   <entry>
@@ -316,51 +477,6 @@ F=\{A\to B,A\to C,B\to A,B\to C,C\to A\}</script><p>（2）去掉 𝘍 中冗余
 </ul>
 <p>则称 𝘟 是关系模式的码。</p>
 <p>上述定义实际上也就是求关系模式码的方法。</p>
-]]></content>
-      <categories>
-        <category>关系模式</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【关系数据理论】6.关系模式分解的方法</title>
-    <url>/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%916.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>&emsp;</p>
-<span id="more"></span>
-<h1 id="一、保持函数依赖的-3NF-分解"><a href="#一、保持函数依赖的-3NF-分解" class="headerlink" title="一、保持函数依赖的 3NF 分解"></a>一、保持函数依赖的 3NF 分解</h1><p>对于给定的关系模式 𝘙&lt;𝘜，𝘍&gt;，将其转化为 3NF 保持函数依赖的分解算法如下：</p>
-<p>（1）对 𝘙&lt;𝘜，𝘍&gt; 中的 𝘍 进行极小化处理，将极小化处理后的函数依赖集仍记为 𝘍。</p>
-<p>（2）找出不在 𝘍 中出现的属性，把这样的属性构成一个关系模式，并把这些属性从 𝘜 中去掉。</p>
-<p>（3）如果 𝘍 中有一个函数依赖涉及 𝘙 的全部属性，则 𝘙 不能再分解。</p>
-<p>（4）如果 𝘍 中含有 𝘟 $\to$ 𝘈，则分解应包含模式 𝘟𝘈；如果 𝘟 $\to$ 𝘈$_1$，𝘟 $\to$ 𝘈$_2$，$\cdots$，𝘟 $\to$ 𝘈$_n$ 均属于 𝘍，则分解应包含模式 𝘟𝘈$_1$𝘈$_2\cdots$𝘈$_n$。</p>
-<p><strong>例题</strong>：设关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛𝘊，𝘛，𝘏，𝘙，𝘚，𝘎，𝘟，𝘠，𝘡｝，𝘍＝｛𝘊 $\to$ 𝘛，𝘊𝘚 $\to$ 𝘎，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘛𝘏 $\to$ 𝘙，𝘊 $\to$ 𝘟｝，将 𝘙 分解为 3NF，且保持函数依赖。</p>
-<p>解：由于该函数依赖集已经是最小化的，则分解 $\rho$ 为</p>
-<script type="math/tex; mode=display">
-\rho =\{\mathrm{CTX},\mathrm{CSG},\mathrm{HRC},\mathrm{HSR},\mathrm{THR},\mathrm{YZ}\}</script><h1 id="二、保持无损连接性和依赖保持性的-3NF-分解"><a href="#二、保持无损连接性和依赖保持性的-3NF-分解" class="headerlink" title="二、保持无损连接性和依赖保持性的 3NF 分解"></a>二、保持无损连接性和依赖保持性的 3NF 分解</h1><p>对于给定的关系模式 𝘙&lt;𝘜，𝘍&gt;，将其转化为 3NF 保持无损连接性和依赖保持性的分解算法如下：</p>
-<p>（1）设 𝘟 是 𝘙&lt;𝘜，𝘍&gt; 的码，𝘙&lt;𝘜，𝘍&gt; 已分解为 $\rho$＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，𝘙$_2$&lt;𝘜$_2$，𝘍$_2$&gt;，$\cdots$，𝘙$_n$&lt;𝘜$_n$，𝘍$_n$&gt;｝，令 $\tau$＝$\rho$ $\cup$ ｛𝘙$^*$&lt;𝘟，𝘍$_x$&gt;｝，其中 𝘍$_x$ 是函数依赖在码上的投影。</p>
-<p>（2）若有某个 𝘜$_i$，𝘟 $\subseteq$ 𝘜$_i$，则将 𝘙$^*$&lt;𝘟，𝘍$_x$&gt; 从 $\tau$ 中去掉，$\tau$ 就是所求的分解。</p>
-<p><strong>例题</strong>：设关系模式 𝘙&lt;&gt;𝘜，𝘍&gt;，𝘜＝｛𝘊，𝘛，𝘏，𝘙，𝘚，𝘎｝，𝘍＝｛𝘊 $\to$ 𝘛，𝘊𝘚 $\to$ 𝘎，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘛 $\to$ 𝘙｝，将 𝘙 分解为 3NF，且既保持无损连接性又保持依赖保持性。</p>
-<p>解：求得关系模式 𝘙 的码为 𝘏𝘚，它的一个保持函数依赖的 3NF 为</p>
-<script type="math/tex; mode=display">
-\rho =\{\mathrm{CT},\mathrm{CSG},\mathrm{HRC},\mathrm{HSR},\mathrm{THR}\}</script><p>因为 𝘏𝘚 $\subseteq$ 𝘏𝘚𝘙，所以 $\tau$＝$\rho$＝｛𝘊𝘛，𝘊𝘚𝘎，𝘏𝘙𝘊，𝘏𝘚𝘙，𝘛𝘏𝘙｝也是保持无损连接性的分解。</p>
-<h1 id="三、保持无损连接性的-BCNF-分解"><a href="#三、保持无损连接性的-BCNF-分解" class="headerlink" title="三、保持无损连接性的 BCNF 分解"></a>三、保持无损连接性的 BCNF 分解</h1><p>对于给定的关系模式 𝘙&lt;𝘜，𝘍&gt;，将其转化为 BCND 保持无损连接性的分解算法如下：</p>
-<p>（1）令 $\rho$＝𝘙&lt;𝘜，𝘍&gt;。</p>
-<p>（2）检查 $\rho$ 中各关系模式是否均属于 BCNF，若是，则算法终止。</p>
-<p>（3）假设 $\rho$ 中 𝘙$_i$&lt;𝘜$_i$，𝘍$_i$&gt; 不属于 BCNF，那么必定有 𝘟 $\to$ 𝘈 $\in$ 𝘍$_i^+$（𝘈 $\notin$ 𝘟），且 𝘟 不是 𝘙$_i$ 的码，因此，𝘟𝘈 是 𝘜$_i$ 的真子集。对 𝘙$_i$ 进行分解，得 $\sigma$＝｛𝘚$_1$，𝘚$_2$｝，𝘜$_{S_1}$＝𝘟𝘈，𝘜$_{S_2}$＝𝘜$_i$ $-$｛𝘈｝，以 $\sigma$ 代替 𝘙$_i$&lt;𝘜$_i$，𝘍$_i$&gt;，返回第（2）步。</p>
-<p><strong>例题1</strong>：设关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛𝘊，𝘛，𝘏，𝘙，𝘚，𝘎｝，𝘍＝｛𝘊 $\to$ 𝘛，𝘊𝘚 $\to$ 𝘎，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘛 $\to$ 𝘙｝，试把 𝘙 分解成具有无损连接的 BCNF。</p>
-<p>解：令 $\rho$＝｛𝘊𝘛𝘏𝘙𝘚𝘎｝。</p>
-<p>① 关系模式 𝘙&lt;𝘜，𝘍&gt; 的码为 𝘏𝘚，选择 𝘊𝘚 $\to$ 𝘎 分解，得出：$\rho$＝｛𝘚$_1$，𝘚$_2$｝，其中，𝘚$_1$＝𝘊𝘚𝘎，𝘚$_2$＝𝘊𝘛𝘏𝘙𝘚，$\pi_{S_1}(F)$＝｛𝘊𝘚 $\to$ 𝘎｝，$\pi_{S_2}(F)$＝｛𝘊 $\to$ 𝘛，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘛 $\to$ 𝘙｝。显然，𝘙&lt;𝘚$_2$，$\pi_{S_2}(F)$&gt;  不服从 BCNF，需要继续分解。</p>
-<p>② 关系模式 𝘙&lt;𝘚$_2$，$\pi_{S_2}(F)$&gt; 的码为 𝘏𝘚，选择 𝘊 $\to$ 𝘛 分解，得出：$\rho$＝｛𝘚$_1$，𝘚$_3$，𝘚$_4$｝，其中，𝘚$_3$＝𝘊𝘛，𝘚$_4$＝𝘊𝘏𝘙𝘚，$\pi_{S_3}(F)$＝｛𝘊 $\to$ 𝘛｝，$\pi_{S_4}(F)$＝｛𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘊 $\to$ 𝘙｝，注意函数依赖 𝘏𝘛 $\to$ 𝘙 变更为 𝘏𝘊 $\to$ 𝘙。显然，𝘙&lt;𝘚$_4$，$\pi_{S_4}(F)$&gt; 不服从 BCND，需要继续分解。</p>
-<p>③ 关系模式 𝘙&lt;𝘚$_4$，$\pi_{S_4}(F)$&gt; 的码为 𝘏𝘚，选择 𝘏𝘊 $\to$ 𝘙 分解，得出：$\rho$＝｛𝘚$_1$，𝘚$_3$，𝘚$_5$，𝘚$_6$｝，其中，𝘚$_5$＝𝘏𝘊𝘙，𝘚$_6$＝𝘊𝘏𝘚，$\pi_{S_5}(F)$＝｛𝘏𝘊 $\to$ 𝘙｝，$\pi_{S_6}(F)$＝$\varnothing$。此时关系模式已经满足 BCNF。</p>
-<p>④ 最后的分解为 $\rho$＝｛𝘊𝘚𝘎，𝘊𝘛，𝘊𝘏𝘙，𝘊𝘏𝘚｝。</p>
-<p><strong>例题2</strong>：设关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛学号，课程号，成绩，教师名，教师所在系｝，𝘍＝｛（学号，课程号）$\to$ 成绩，课程号 $\to$ 教师名，教师名 $\to$ 教师所在系｝，将其分解为具有无损链接的 BCNF。</p>
-<p>解：令 $\rho$＝｛学号，课程号，成绩，教师名，教师所在系｝</p>
-<p>① 关系模式 𝘙 的码为（学号，课程号），选择“教师名 $\to$ 教师所在系”进行分解，得出：$\rho$＝｛𝘙$_1$，𝘙$_2$｝，其中，𝘙$_1$＝｛教师名，教师所在系｝，𝘍$_1$＝｛教师名 $\to$ 教师所在系｝，𝘙$_2$＝｛学号，课程号，成绩，教师名｝，𝘍$_2$＝｛（学号，课程号）$\to$ 成绩，课程号 $\to$ 教师名｝。显然，需要对 𝘙$_2$ 进行分解。</p>
-<p>② 关系模式 𝘙$_2$ 的码为（学号，课程号），选择“课程号 $\to$ 教师名”进行分解，得出：$\rho$＝｛𝘙$_1$，𝘙$_3$，𝘙$_4$｝，其中，𝘙$_3$＝｛课程号，教师名｝，𝘍$_3$＝｛课程号 $\to$ 教师名｝，𝘙$_4$＝｛学号，课程号，成绩｝，𝘍$_4$＝｛（学号，课程号）$\to$ 成绩｝。此时关系模式 𝘙$_3$ 和 𝘙$_4$ 均属于 BCNF。</p>
-<p>③ 最后的分解为：$\rho$＝｛（教师名，教师所在系），（课程号，教师名），（学号，课程号，成绩）｝。</p>
-<h1 id="四、关系模式分解的重要结论"><a href="#四、关系模式分解的重要结论" class="headerlink" title="四、关系模式分解的重要结论"></a>四、关系模式分解的重要结论</h1><ul>
-<li>若要求分解保持函数依赖，则模式分解总可以达到 3NF，但不一定达到 BCNF。</li>
-<li>若要求分解具有无损连接性，则分解一定可以达到 BCNF。</li>
-<li>若要求分解既保持函数依赖，又具有无损连接性，那么模式分解一定可以达到 3NF，但不一定达到 BCNF。</li>
-</ul>
 ]]></content>
       <categories>
         <category>关系模式</category>
@@ -750,107 +866,48 @@ U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href=
       </categories>
   </entry>
   <entry>
-    <title>【Csharp学习笔记】new关键字</title>
-    <url>/2022/07/16/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91new%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+    <title>【关系数据理论】6.关系模式分解的方法</title>
+    <url>/2022/07/15/%E3%80%90%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E7%90%86%E8%AE%BA%E3%80%916.%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F%E5%88%86%E8%A7%A3%E7%9A%84%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>&emsp;</p>
 <span id="more"></span>
-<h1 id="类中的-new-关键字"><a href="#类中的-new-关键字" class="headerlink" title="类中的 new 关键字"></a>类中的 new 关键字</h1><p>派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽（mask）基类成员。</p>
-<ul>
-<li>要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。</li>
-<li>通过在派生类中声明心的带有相同签名的函数成员，可以屏蔽继承的函数成员。请记住，签名由名称和参数列表组成，不包括返回类型。</li>
-<li>要让编译器知道你在故意屏蔽继承的成员，可使用 new 修饰符。否则，程序可以成功编译，但编译器回警告你隐藏了一个继承的成员。</li>
-<li>可以屏蔽静态成员。</li>
+<h1 id="一、保持函数依赖的-3NF-分解"><a href="#一、保持函数依赖的-3NF-分解" class="headerlink" title="一、保持函数依赖的 3NF 分解"></a>一、保持函数依赖的 3NF 分解</h1><p>对于给定的关系模式 𝘙&lt;𝘜，𝘍&gt;，将其转化为 3NF 保持函数依赖的分解算法如下：</p>
+<p>（1）对 𝘙&lt;𝘜，𝘍&gt; 中的 𝘍 进行极小化处理，将极小化处理后的函数依赖集仍记为 𝘍。</p>
+<p>（2）找出不在 𝘍 中出现的属性，把这样的属性构成一个关系模式，并把这些属性从 𝘜 中去掉。</p>
+<p>（3）如果 𝘍 中有一个函数依赖涉及 𝘙 的全部属性，则 𝘙 不能再分解。</p>
+<p>（4）如果 𝘍 中含有 𝘟 $\to$ 𝘈，则分解应包含模式 𝘟𝘈；如果 𝘟 $\to$ 𝘈$_1$，𝘟 $\to$ 𝘈$_2$，$\cdots$，𝘟 $\to$ 𝘈$_n$ 均属于 𝘍，则分解应包含模式 𝘟𝘈$_1$𝘈$_2\cdots$𝘈$_n$。</p>
+<p><strong>例题</strong>：设关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛𝘊，𝘛，𝘏，𝘙，𝘚，𝘎，𝘟，𝘠，𝘡｝，𝘍＝｛𝘊 $\to$ 𝘛，𝘊𝘚 $\to$ 𝘎，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘛𝘏 $\to$ 𝘙，𝘊 $\to$ 𝘟｝，将 𝘙 分解为 3NF，且保持函数依赖。</p>
+<p>解：由于该函数依赖集已经是最小化的，则分解 $\rho$ 为</p>
+<script type="math/tex; mode=display">
+\rho =\{\mathrm{CTX},\mathrm{CSG},\mathrm{HRC},\mathrm{HSR},\mathrm{THR},\mathrm{YZ}\}</script><h1 id="二、保持无损连接性和依赖保持性的-3NF-分解"><a href="#二、保持无损连接性和依赖保持性的-3NF-分解" class="headerlink" title="二、保持无损连接性和依赖保持性的 3NF 分解"></a>二、保持无损连接性和依赖保持性的 3NF 分解</h1><p>对于给定的关系模式 𝘙&lt;𝘜，𝘍&gt;，将其转化为 3NF 保持无损连接性和依赖保持性的分解算法如下：</p>
+<p>（1）设 𝘟 是 𝘙&lt;𝘜，𝘍&gt; 的码，𝘙&lt;𝘜，𝘍&gt; 已分解为 $\rho$＝｛𝘙$_1$&lt;𝘜$_1$，𝘍$_1$&gt;，𝘙$_2$&lt;𝘜$_2$，𝘍$_2$&gt;，$\cdots$，𝘙$_n$&lt;𝘜$_n$，𝘍$_n$&gt;｝，令 $\tau$＝$\rho$ $\cup$ ｛𝘙$^*$&lt;𝘟，𝘍$_x$&gt;｝，其中 𝘍$_x$ 是函数依赖在码上的投影。</p>
+<p>（2）若有某个 𝘜$_i$，𝘟 $\subseteq$ 𝘜$_i$，则将 𝘙$^*$&lt;𝘟，𝘍$_x$&gt; 从 $\tau$ 中去掉，$\tau$ 就是所求的分解。</p>
+<p><strong>例题</strong>：设关系模式 𝘙&lt;&gt;𝘜，𝘍&gt;，𝘜＝｛𝘊，𝘛，𝘏，𝘙，𝘚，𝘎｝，𝘍＝｛𝘊 $\to$ 𝘛，𝘊𝘚 $\to$ 𝘎，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘛 $\to$ 𝘙｝，将 𝘙 分解为 3NF，且既保持无损连接性又保持依赖保持性。</p>
+<p>解：求得关系模式 𝘙 的码为 𝘏𝘚，它的一个保持函数依赖的 3NF 为</p>
+<script type="math/tex; mode=display">
+\rho =\{\mathrm{CT},\mathrm{CSG},\mathrm{HRC},\mathrm{HSR},\mathrm{THR}\}</script><p>因为 𝘏𝘚 $\subseteq$ 𝘏𝘚𝘙，所以 $\tau$＝$\rho$＝｛𝘊𝘛，𝘊𝘚𝘎，𝘏𝘙𝘊，𝘏𝘚𝘙，𝘛𝘏𝘙｝也是保持无损连接性的分解。</p>
+<h1 id="三、保持无损连接性的-BCNF-分解"><a href="#三、保持无损连接性的-BCNF-分解" class="headerlink" title="三、保持无损连接性的 BCNF 分解"></a>三、保持无损连接性的 BCNF 分解</h1><p>对于给定的关系模式 𝘙&lt;𝘜，𝘍&gt;，将其转化为 BCND 保持无损连接性的分解算法如下：</p>
+<p>（1）令 $\rho$＝𝘙&lt;𝘜，𝘍&gt;。</p>
+<p>（2）检查 $\rho$ 中各关系模式是否均属于 BCNF，若是，则算法终止。</p>
+<p>（3）假设 $\rho$ 中 𝘙$_i$&lt;𝘜$_i$，𝘍$_i$&gt; 不属于 BCNF，那么必定有 𝘟 $\to$ 𝘈 $\in$ 𝘍$_i^+$（𝘈 $\notin$ 𝘟），且 𝘟 不是 𝘙$_i$ 的码，因此，𝘟𝘈 是 𝘜$_i$ 的真子集。对 𝘙$_i$ 进行分解，得 $\sigma$＝｛𝘚$_1$，𝘚$_2$｝，𝘜$_{S_1}$＝𝘟𝘈，𝘜$_{S_2}$＝𝘜$_i$ $-$｛𝘈｝，以 $\sigma$ 代替 𝘙$_i$&lt;𝘜$_i$，𝘍$_i$&gt;，返回第（2）步。</p>
+<p><strong>例题1</strong>：设关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛𝘊，𝘛，𝘏，𝘙，𝘚，𝘎｝，𝘍＝｛𝘊 $\to$ 𝘛，𝘊𝘚 $\to$ 𝘎，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘛 $\to$ 𝘙｝，试把 𝘙 分解成具有无损连接的 BCNF。</p>
+<p>解：令 $\rho$＝｛𝘊𝘛𝘏𝘙𝘚𝘎｝。</p>
+<p>① 关系模式 𝘙&lt;𝘜，𝘍&gt; 的码为 𝘏𝘚，选择 𝘊𝘚 $\to$ 𝘎 分解，得出：$\rho$＝｛𝘚$_1$，𝘚$_2$｝，其中，𝘚$_1$＝𝘊𝘚𝘎，𝘚$_2$＝𝘊𝘛𝘏𝘙𝘚，$\pi_{S_1}(F)$＝｛𝘊𝘚 $\to$ 𝘎｝，$\pi_{S_2}(F)$＝｛𝘊 $\to$ 𝘛，𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘛 $\to$ 𝘙｝。显然，𝘙&lt;𝘚$_2$，$\pi_{S_2}(F)$&gt;  不服从 BCNF，需要继续分解。</p>
+<p>② 关系模式 𝘙&lt;𝘚$_2$，$\pi_{S_2}(F)$&gt; 的码为 𝘏𝘚，选择 𝘊 $\to$ 𝘛 分解，得出：$\rho$＝｛𝘚$_1$，𝘚$_3$，𝘚$_4$｝，其中，𝘚$_3$＝𝘊𝘛，𝘚$_4$＝𝘊𝘏𝘙𝘚，$\pi_{S_3}(F)$＝｛𝘊 $\to$ 𝘛｝，$\pi_{S_4}(F)$＝｛𝘏𝘙 $\to$ 𝘊，𝘏𝘚 $\to$ 𝘙，𝘏𝘊 $\to$ 𝘙｝，注意函数依赖 𝘏𝘛 $\to$ 𝘙 变更为 𝘏𝘊 $\to$ 𝘙。显然，𝘙&lt;𝘚$_4$，$\pi_{S_4}(F)$&gt; 不服从 BCND，需要继续分解。</p>
+<p>③ 关系模式 𝘙&lt;𝘚$_4$，$\pi_{S_4}(F)$&gt; 的码为 𝘏𝘚，选择 𝘏𝘊 $\to$ 𝘙 分解，得出：$\rho$＝｛𝘚$_1$，𝘚$_3$，𝘚$_5$，𝘚$_6$｝，其中，𝘚$_5$＝𝘏𝘊𝘙，𝘚$_6$＝𝘊𝘏𝘚，$\pi_{S_5}(F)$＝｛𝘏𝘊 $\to$ 𝘙｝，$\pi_{S_6}(F)$＝$\varnothing$。此时关系模式已经满足 BCNF。</p>
+<p>④ 最后的分解为 $\rho$＝｛𝘊𝘚𝘎，𝘊𝘛，𝘊𝘏𝘙，𝘊𝘏𝘚｝。</p>
+<p><strong>例题2</strong>：设关系模式 𝘙&lt;𝘜，𝘍&gt;，𝘜＝｛学号，课程号，成绩，教师名，教师所在系｝，𝘍＝｛（学号，课程号）$\to$ 成绩，课程号 $\to$ 教师名，教师名 $\to$ 教师所在系｝，将其分解为具有无损链接的 BCNF。</p>
+<p>解：令 $\rho$＝｛学号，课程号，成绩，教师名，教师所在系｝</p>
+<p>① 关系模式 𝘙 的码为（学号，课程号），选择“教师名 $\to$ 教师所在系”进行分解，得出：$\rho$＝｛𝘙$_1$，𝘙$_2$｝，其中，𝘙$_1$＝｛教师名，教师所在系｝，𝘍$_1$＝｛教师名 $\to$ 教师所在系｝，𝘙$_2$＝｛学号，课程号，成绩，教师名｝，𝘍$_2$＝｛（学号，课程号）$\to$ 成绩，课程号 $\to$ 教师名｝。显然，需要对 𝘙$_2$ 进行分解。</p>
+<p>② 关系模式 𝘙$_2$ 的码为（学号，课程号），选择“课程号 $\to$ 教师名”进行分解，得出：$\rho$＝｛𝘙$_1$，𝘙$_3$，𝘙$_4$｝，其中，𝘙$_3$＝｛课程号，教师名｝，𝘍$_3$＝｛课程号 $\to$ 教师名｝，𝘙$_4$＝｛学号，课程号，成绩｝，𝘍$_4$＝｛（学号，课程号）$\to$ 成绩｝。此时关系模式 𝘙$_3$ 和 𝘙$_4$ 均属于 BCNF。</p>
+<p>③ 最后的分解为：$\rho$＝｛（教师名，教师所在系），（课程号，教师名），（学号，课程号，成绩）｝。</p>
+<h1 id="四、关系模式分解的重要结论"><a href="#四、关系模式分解的重要结论" class="headerlink" title="四、关系模式分解的重要结论"></a>四、关系模式分解的重要结论</h1><ul>
+<li>若要求分解保持函数依赖，则模式分解总可以达到 3NF，但不一定达到 BCNF。</li>
+<li>若要求分解具有无损连接性，则分解一定可以达到 BCNF。</li>
+<li>若要求分解既保持函数依赖，又具有无损连接性，那么模式分解一定可以达到 3NF，但不一定达到 BCNF。</li>
 </ul>
-<div class="pdfobject-container" data-target="类中的new关键字.pdf" data-height="500px"></div>
-<h1 id="结构中的-new-关键字"><a href="#结构中的-new-关键字" class="headerlink" title="结构中的 new 关键字"></a>结构中的 new 关键字</h1><p>C# 隐式地为每个结构提供一个无参数的构造函数，这个构造函数把结构的每个成员设置为该类型的默认值，值成员设置成它们的默认值，引用成员设置成 null。</p>
-<p>对于每个结构，都存在预定义的无参数构造函数，而且不能删除或重定义。但是，可以创建另外的构造函数，只要它们有参数。注意，这和类不同，对于类，编译器只在没有声明其他构造函数时提供隐式的无参数构造函数。</p>
-<p>调用一个构造函数，包括隐式无参数构造函数，要使用 new 运算符。注意，即使不从堆中分配内存，也要使用 new 运算符。也可以不使用 new 运算符创建结构的实例。然而，如果这样做，有一些限制，如下：</p>
-<ul>
-<li>在显式设置数据成员之后，才能使用它们的值。</li>
-<li>在对所有数据成员赋值之后，才能调用结构的函数成员。</li>
-</ul>
-<div class="pdfobject-container" data-target="结构中的new关键字.pdf" data-height="500px"></div>
 ]]></content>
       <categories>
-        <category>C#</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Csharp学习笔记】重载递增运算符</title>
-    <url>/2022/07/16/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%87%8D%E8%BD%BD%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
-    <content><![CDATA[<p>&emsp;</p>
-<span id="more"></span>
-<p>在运行时，当你的代码对对象执行前置操作（前置递增或前置递减）时，会发生以下行为：</p>
-<ul>
-<li>在对象上执行递增或递减代码；</li>
-<li>返回对象。</li>
-</ul>
-<p>在运行时，当你的代码对对象执行后置操作（后置递增或后置递减）时，会发生以下行为：</p>
-<ul>
-<li>如果对象是值类型，则系统会复制该对象；如果对象是引用类型，则引用会被复制；</li>
-<li>在对象上执行递增或递减代码；</li>
-<li>返回保存的操作数。</li>
-</ul>
-<p>如果操作数对象是值类型对象，那么一点问题都没有，但是当用户定义类型是引用类型时，就要小心了。对于引用类型的对象，前置操作没有问题，因为没有进行复制。但是，对于后置操作，因为保存的副本是引用的副本，所以这意味着原始引用和引用副本指向相同的对象，那么，当进行第二步操作的时候，递增或递减代码就会在对象上执行，这意味着保存的引用所指向的对象不再是它的起始状态了，返回对变化了的对象的引用可能不是所预期的行为。</p>
-<div class="pdfobject-container" data-target="重载递增运算符.pdf" data-height="500px"></div>]]></content>
-      <categories>
-        <category>C#</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Csharp学习笔记】构造函数初始化语句</title>
-    <url>/2022/07/17/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<p>&emsp;</p>
-<span id="more"></span>
-<p>如果希望派生类使用一个指定的基类构造函数而不是无参数构造函数，必须在构造函数初始化语句中指定它。</p>
-<ul>
-<li>使用关键字 base 并指明使用哪一个<strong>基类</strong>构造函数。</li>
-<li>使用关键字 this 并指明应该使用<strong>当前类</strong>的哪一个构造函数。</li>
-</ul>
-<p>构造函数初始化语句由关键字 base 和要调用的基类构造函数的参数列表构成。使用关键字 base 时，基类构造函数初始化语句放在冒号后面，跟在类的构造函数声明的参数列表后面。</p>
-<div class="pdfobject-container" data-target="base构造函数初始化语句.pdf" data-height="500px"></div>
-<p>使用关键字 this 时，构造函数初始化语句可以让构造过程（实际上是编译器）使用当前类中其他的构造函数。这种语法很有用的另一种情况是，一个类有好几个构造函数，并且它们都需要在对象构造的过程开始时执行一些公共代码，对于这种情况，可以把公共代码提取出来作为一个构造函数，被其他所有的构造函数用作构造函数初始化语句。由于减少了重复代码，实际上这也是推荐的做法。</p>
-<p>有时候在实例化对象时无法完全初始化对象，此时，必须禁止从类的外部调用构造函数，因为那样的话只会初始化对象的一部分，要避免这个问题，可以把构造函数声明为 private，而不是 public，然后只让其他构造函数使用它、</p>
-<div class="pdfobject-container" data-target="this构造函数初始化语句.pdf" data-height="500px"></div>]]></content>
-      <categories>
-        <category>C#</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Csharp学习笔记】属性</title>
-    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>&emsp;</p>
-<span id="more"></span>
-<h1 id="属性概述"><a href="#属性概述" class="headerlink" title="属性概述"></a>属性概述</h1><p>属性是代表类实例或类中的数据项的成员。</p>
-<p>与字段类似，属性有如下特征：</p>
-<ul>
-<li>它是命名的类成员。</li>
-<li>它有类型。</li>
-<li>它可以被赋值和读取。</li>
-</ul>
-<p>与字段不同，属性是一个函数成员：</p>
-<ul>
-<li>它不一定为数据存储分配内存</li>
-<li>它执行代码</li>
-</ul>
-<p>属性是一组（两个）匹配的、命名的、称为访问器的方法：</p>
-<ul>
-<li>set 访问器为属性赋值</li>
-<li>get 访问器从属性获取值。</li>
-</ul>
-<h1 id="属性的访问器"><a href="#属性的访问器" class="headerlink" title="属性的访问器"></a>属性的访问器</h1><p>set 访问器</p>
-<ul>
-<li>拥有一个单独的、隐式的值参，名称为 value，与属性的类型相同</li>
-<li>拥有一个返回类型 void</li>
-</ul>
-<p>get 访问器</p>
-<ul>
-<li>没有参数</li>
-<li>拥有一个与属性类型相同的返回类型</li>
-</ul>
-<div class="pdfobject-container" data-target="属性.pdf" data-height="500px"></div>]]></content>
-      <categories>
-        <category>C#</category>
+        <category>关系模式</category>
       </categories>
   </entry>
 </search>
