@@ -816,4 +816,41 @@ U_1\cap U_2\to U_2 - U_1 \in F^+</script><h1 id="三、依赖保持性"><a href=
         <category>C#</category>
       </categories>
   </entry>
+  <entry>
+    <title>【Csharp学习笔记】属性</title>
+    <url>/2022/07/18/%E3%80%90Csharp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>&emsp;</p>
+<span id="more"></span>
+<h1 id="属性概述"><a href="#属性概述" class="headerlink" title="属性概述"></a>属性概述</h1><p>属性是代表类实例或类中的数据项的成员。</p>
+<p>与字段类似，属性有如下特征：</p>
+<ul>
+<li>它是命名的类成员。</li>
+<li>它有类型。</li>
+<li>它可以被赋值和读取。</li>
+</ul>
+<p>与字段不同，属性是一个函数成员：</p>
+<ul>
+<li>它不一定为数据存储分配内存</li>
+<li>它执行代码</li>
+</ul>
+<p>属性是一组（两个）匹配的、命名的、称为访问器的方法：</p>
+<ul>
+<li>set 访问器为属性赋值</li>
+<li>get 访问器从属性获取值。</li>
+</ul>
+<h1 id="属性的访问器"><a href="#属性的访问器" class="headerlink" title="属性的访问器"></a>属性的访问器</h1><p>set 访问器</p>
+<ul>
+<li>拥有一个单独的、隐式的值参，名称为 value，与属性的类型相同</li>
+<li>拥有一个返回类型 void</li>
+</ul>
+<p>get 访问器</p>
+<ul>
+<li>没有参数</li>
+<li>拥有一个与属性类型相同的返回类型</li>
+</ul>
+<div class="pdfobject-container" data-target="属性.pdf" data-height="500px"></div>]]></content>
+      <categories>
+        <category>C#</category>
+      </categories>
+  </entry>
 </search>
