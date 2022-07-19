@@ -99,7 +99,7 @@
 <p>下划线+小驼峰：用于私有和受保护的字段。</p>
 <div class="pdfobject-container" data-target="命名约定.pdf" data-height="500px"></div>]]></content>
       <categories>
-        <category>C#</category>
+        <category>Csharp</category>
       </categories>
   </entry>
   <entry>
@@ -125,7 +125,7 @@
 <div class="pdfobject-container" data-target="结构中的new关键字.pdf" data-height="500px"></div>
 ]]></content>
       <categories>
-        <category>C#</category>
+        <category>Csharp</category>
       </categories>
   </entry>
   <entry>
@@ -144,7 +144,7 @@
 <p>有时候在实例化对象时无法完全初始化对象，此时，必须禁止从类的外部调用构造函数，因为那样的话只会初始化对象的一部分，要避免这个问题，可以把构造函数声明为 private，而不是 public，然后只让其他构造函数使用它、</p>
 <div class="pdfobject-container" data-target="this构造函数初始化语句.pdf" data-height="500px"></div>]]></content>
       <categories>
-        <category>C#</category>
+        <category>Csharp</category>
       </categories>
   </entry>
   <entry>
@@ -181,7 +181,7 @@
 </ul>
 <div class="pdfobject-container" data-target="属性.pdf" data-height="500px"></div>]]></content>
       <categories>
-        <category>C#</category>
+        <category>Csharp</category>
       </categories>
   </entry>
   <entry>
@@ -233,7 +233,7 @@
 <div class="pdfobject-container" data-target="索引器重载.pdf" data-height="500px"></div>
 ]]></content>
       <categories>
-        <category>C#</category>
+        <category>Csharp</category>
       </categories>
   </entry>
   <entry>
@@ -255,7 +255,7 @@
 <p>如果操作数对象是值类型对象，那么一点问题都没有，但是当用户定义类型是引用类型时，就要小心了。对于引用类型的对象，前置操作没有问题，因为没有进行复制。但是，对于后置操作，因为保存的副本是引用的副本，所以这意味着原始引用和引用副本指向相同的对象，那么，当进行第二步操作的时候，递增或递减代码就会在对象上执行，这意味着保存的引用所指向的对象不再是它的起始状态了，返回对变化了的对象的引用可能不是所预期的行为。</p>
 <div class="pdfobject-container" data-target="重载递增运算符.pdf" data-height="500px"></div>]]></content>
       <categories>
-        <category>C#</category>
+        <category>Csharp</category>
       </categories>
   </entry>
   <entry>
